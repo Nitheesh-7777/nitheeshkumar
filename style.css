@@ -21,7 +21,12 @@
 html {
   scroll-behavior: smooth;
 }
-
+body {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
 body {
   line-height: 1.6;
   color: var(--text-color);

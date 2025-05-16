@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Basics Programs - Learning with Nitheesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="../../assets/favicon.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #4e73df;
+      --secondary-color: #2e59d9;
+      --accent-color: #f8f9fc;
+      --text-color: #5a5c69;
+      --light-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+     .shine-text {
+      display: inline-block;
+      font-weight: bold;
+      background-image: linear-gradient(
+        90deg,
+        #f5c542,
+        #fff8b5,
+        #ffd700,
+        #fff8b5,
+        #f5c542
+      );
+      background-size: 300% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: glitter-text 2s linear infinite;
+    }
+
+    @keyframes glitter-text {
+      0% {
+        background-position: 200% center;
+      }
+      100% {
+        background-position: -200% center;
+      }
+    }
+    body {
+      background-color: #f8f9fc;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .header-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 0.5rem 0;
+      margin-bottom: 2rem;
+      border-radius: 0 0 20px 20px;
+      box-shadow: var(--light-shadow);
+    }
+    
+    .header-title {
+      font-weight: 800;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .header-subtitle {
+      font-weight: 300;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .program-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--light-shadow);
+      transition: var(--transition);
+      border-left: 4px solid var(--primary-color);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .card-text {
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .btn-view {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      align-self: flex-start;
+    }
+    
+    .btn-view:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .modal-content {
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-header {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 10px 10px 0 0;
+      padding: 1.25rem;
+    }
+    
+    .modal-title {
+      font-weight: 700;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .code-block {
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    .explanation-section {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    
+    .explanation-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+    }
+    
+    .io-section {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .input-box, .output-box {
+      flex: 1;
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    
+    .io-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    footer {
+      /* background-color: #2c3e50; */
+      font-weight: 500;
+      color: rgb(14, 109, 186);
+      
+    }
+        .back-home-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-home-button:hover {
+      background-color: var(--secondary-color);
+      transform: scale(1.05);
+    }
+
+    .back-home-button:active {
+      transform: scale(0.95);
+    }
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 1.8rem;
+      }
+      
+      .header-subtitle {
+        font-size: 1rem;
+      }
+      
+      .io-section {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<div class="header-section text-center">
+  <div class="container">
+    <h1 class="header-title">Java <span class="shine-text">Algorithm</span> Programs</h1>
+    <p class="header-subtitle">Master fundamental Java concepts with these beginner-friendly programs</p>
+  </div>
+</div>
+
+<!-- Programs Grid -->
+<div class="container py-4">
+  <div class="row g-5">
+
+<!-- Program 35: Linear Search -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-search me-2"></i> Linear Search</h5>
+      <p class="card-text">A program to implement linear search.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program35Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program35Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-search me-2"></i> Linear Search</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to implement linear search.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Array: [10, 20, 30, 40, 50], Key: 30</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Element found at index 2</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class LinearSearch {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {10, 20, 30, 40, 50};<br>
+        int key = 30;<br>
+        boolean found = false;<br>
+
+        for (int i = 0; i &lt; arr.length; i++) {<br>
+            if (arr[i] == key) {<br>
+                System.out.println("Element found at index " + i);<br>
+                found = true;<br>
+                break;<br>
+            }<br>
+        }<br>
+
+        if (!found) {<br>
+            System.out.println("Element not found.");<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Iterate through each element in the array.</li>
+            <li>If the current element matches the key, print the index and exit.</li>
+            <li>If the loop completes without finding the key, print "Element not found."</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 36: Binary Search (Iterative) -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-search me-2"></i> Binary Search (Iterative)</h5>
+      <p class="card-text">A program to implement binary search using iteration.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program36Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program36Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-search me-2"></i> Binary Search (Iterative)</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to implement binary search using iteration.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Sorted Array: [10, 20, 30, 40, 50], Key: 40</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Element found at index 3</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class BinarySearchIterative {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {10, 20, 30, 40, 50};<br>
+        int key = 40;<br>
+        int result = binarySearch(arr, key);<br>
+
+        if (result == -1)<br>
+            System.out.println("Element not found.");<br>
+        else<br>
+            System.out.println("Element found at index " + result);<br>
+    }<br>
+
+    public static int binarySearch(int[] arr, int key) {<br>
+        int start = 0, end = arr.length - 1;<br>
+        while (start &lt;= end) {<br>
+            int mid = (start + end) / 2;<br>
+            if (arr[mid] == key)<br>
+                return mid;<br>
+            else if (arr[mid] &lt; key)<br>
+                start = mid + 1;<br>
+            else<br>
+                end = mid - 1;<br>
+        }<br>
+        return -1;<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Start with two pointers: `start` at the beginning, `end` at the end of the array.</li>
+            <li>Find the middle element. If it matches the key, return the index.</li>
+            <li>If the key is smaller, search the left half. If larger, search the right half.</li>
+            <li>Repeat until the element is found or the pointers cross.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 37: Binary Search (Recursive) -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-search me-2"></i> Binary Search (Recursive)</h5>
+      <p class="card-text">A program to implement binary search using recursion.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program37Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program37Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-search me-2"></i> Binary Search (Recursive)</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to implement binary search using recursion.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Sorted Array: [5, 15, 25, 35, 45], Key: 15</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Element found at index 1</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class BinarySearchRecursive {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {5, 15, 25, 35, 45};<br>
+        int key = 15;<br>
+        int result = binarySearch(arr, 0, arr.length - 1, key);<br>
+
+        if (result == -1)<br>
+            System.out.println("Element not found.");<br>
+        else<br>
+            System.out.println("Element found at index " + result);<br>
+    }
+<br>
+    public static int binarySearch(int[] arr, int start, int end, int key) {<br>
+        if (start &gt; end)<br>
+            return -1;<br>
+
+        int mid = (start + end) / 2;<br>
+
+        if (arr[mid] == key)<br>
+            return mid;<br>
+        else if (arr[mid] &gt; key)<br>
+            return binarySearch(arr, start, mid - 1, key);<br>
+        else<br>
+            return binarySearch(arr, mid + 1, end, key);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>The function takes start and end indices and finds the middle element.</li>
+            <li>If it matches the key, return the index.</li>
+            <li>If key is smaller, search the left half recursively.</li>
+            <li>If key is larger, search the right half recursively.</li>
+            <li>If start > end, the key is not found.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 38: Bubble Sort -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sort-amount-up me-2"></i> Bubble Sort</h5>
+      <p class="card-text">A program to implement bubble sort.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program38Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program38Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sort-amount-up me-2"></i> Bubble Sort</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to implement bubble sort.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Array: [5, 3, 8, 1, 2]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Sorted Array: [1, 2, 3, 5, 8]</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class BubbleSort {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {5, 3, 8, 1, 2};<br>
+        int n = arr.length;<br>
+
+        for (int i = 0; i &lt; n - 1; i++) {<br>
+            for (int j = 0; j &lt; n - i - 1; j++) {<br>
+                if (arr[j] &gt; arr[j + 1]) {<br>
+                    // swap arr[j] and arr[j + 1]<br>
+                    int temp = arr[j];<br>
+                    arr[j] = arr[j + 1];<br>
+                    arr[j + 1] = temp;<br>
+                }<br>
+            }<br>
+        }<br>
+
+        System.out.print("Sorted Array: ");<br>
+        for (int num : arr) {<br>
+            System.out.print(num + " ");<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Loop through the array multiple times.</li>
+            <li>Compare each pair of adjacent elements.</li>
+            <li>Swap them if they are in the wrong order.</li>
+            <li>Repeat until the array is sorted.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 39: Selection Sort -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sort-numeric-down me-2"></i> Selection Sort</h5>
+      <p class="card-text">A program to implement selection sort.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program39Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program39Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sort-numeric-down me-2"></i> Selection Sort</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to implement selection sort.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Array: [29, 10, 14, 37, 13]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Sorted Array: [10, 13, 14, 29, 37]</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class SelectionSort {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {29, 10, 14, 37, 13};<br>
+        int n = arr.length;<br>
+
+        for (int i = 0; i &lt; n - 1; i++) {<br>
+            int minIndex = i;<br>
+            for (int j = i + 1; j &lt; n; j++) {<br>
+                if (arr[j] &lt; arr[minIndex]) {<br>
+                    minIndex = j;<br>
+                }<br>
+            }<br>
+            // Swap arr[i] and arr[minIndex]<br>
+            int temp = arr[i];<br>
+            arr[i] = arr[minIndex];<br>
+            arr[minIndex] = temp;<br>
+        }<br>
+
+        System.out.print("Sorted Array: ");<br>
+        for (int num : arr) {<br>
+            System.out.print(num + " ");<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Find the minimum element in the unsorted part of the array.</li>
+            <li>Swap it with the first element of the unsorted part.</li>
+            <li>Repeat for the rest of the array.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 40: Insertion Sort -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sort-amount-up-alt me-2"></i> Insertion Sort</h5>
+      <p class="card-text">A program to implement insertion sort.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program40Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program40Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sort-amount-up-alt me-2"></i> Insertion Sort</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to implement insertion sort.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Array: [9, 7, 5, 3, 1]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Sorted Array: [1, 3, 5, 7, 9]</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class InsertionSort {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {9, 7, 5, 3, 1};<br>
+        int n = arr.length;<br>
+
+        for (int i = 1; i &lt; n; i++) {<br>
+            int key = arr[i];<br>
+            int j = i - 1;<br>
+
+            // Move elements greater than key to one position ahead
+            while (j &gt;= 0 &amp;&amp; arr[j] &gt; key) {<br>
+                arr[j + 1] = arr[j];<br>
+                j = j - 1;<br>
+            }<br>
+            arr[j + 1] = key;<br>
+        }<br>
+
+        System.out.print("Sorted Array: ");<br>
+        for (int num : arr) {<br>
+            System.out.print(num + " ");<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Iterate from the second element to the end of the array.</li>
+            <li>Compare each element with elements before it and insert it in the correct position by shifting larger elements right.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 41: Merge Sort -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-code-branch me-2"></i> Merge Sort</h5>
+      <p class="card-text">A program to implement merge sort.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program41Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program41Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-code-branch me-2"></i> Merge Sort</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to implement merge sort.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Array: [12, 11, 13, 5, 6, 7]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Sorted Array: [5, 6, 7, 11, 12, 13]</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class MergeSort {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {12, 11, 13, 5, 6, 7};<br>
+        mergeSort(arr, 0, arr.length - 1);<br>
+
+        System.out.print("Sorted Array: ");<br>
+        for (int num : arr) {<br>
+            System.out.print(num + " ");<br>
+        }<br>
+    }<br>
+
+    static void mergeSort(int[] arr, int left, int right) {<br>
+        if (left &lt; right) {<br>
+            int mid = left + (right - left) / 2;<br>
+
+            mergeSort(arr, left, mid);<br>
+            mergeSort(arr, mid + 1, right);<br>
+
+            merge(arr, left, mid, right);<br>
+        }<br>
+    }<br>
+
+    static void merge(int[] arr, int left, int mid, int right) {<br>
+        int n1 = mid - left + 1;<br>
+        int n2 = right - mid;
+<br>
+        int[] L = new int[n1];<br>
+        int[] R = new int[n2];<br>
+
+        for (int i = 0; i &lt; n1; ++i)<br>
+            L[i] = arr[left + i];<br>
+        for (int j = 0; j &lt; n2; ++j)<br>
+            R[j] = arr[mid + 1 + j];<br>
+
+        int i = 0, j = 0, k = left;<br>
+        while (i &lt; n1 &amp;&amp; j &lt; n2) {<br>
+            if (L[i] &lt;= R[j]) {<br>
+                arr[k] = L[i];<br>
+                i++;<br>
+            } else {<br>
+                arr[k] = R[j];<br>
+                j++;<br>
+            }<br>
+            k++;<br>
+        }<br>
+<br>
+        while (i &lt; n1) {<br>
+            arr[k] = L[i];<br>
+            i++;<br>
+            k++;<br>
+        }<br>
+
+        while (j &lt; n2) {<br>
+            arr[k] = R[j];<br>
+            j++;<br>
+            k++;<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Recursively divide the array into halves until single-element arrays are obtained.</li>
+            <li>Merge the halves by comparing elements and forming a sorted array segment by segment.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 42: Quick Sort -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-random me-2"></i> Quick Sort</h5>
+      <p class="card-text">A program to implement quick sort.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program42Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program42Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-random me-2"></i> Quick Sort</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to implement quick sort.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Array: [34, 7, 23, 32, 5, 62]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Sorted Array: [5, 7, 23, 32, 34, 62]</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class QuickSort {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {34, 7, 23, 32, 5, 62};<br>
+        quickSort(arr, 0, arr.length - 1);<br>
+
+        System.out.print("Sorted Array: ");<br>
+        for (int num : arr) {<br>
+            System.out.print(num + " ");<br>
+        }<br>
+    }<br>
+
+    static void quickSort(int[] arr, int low, int high) {<br>
+        if (low &lt; high) {<br>
+            int pi = partition(arr, low, high);<br>
+            quickSort(arr, low, pi - 1);<br>
+            quickSort(arr, pi + 1, high);<br>
+        }<br>
+    }<br>
+<br>
+    static int partition(int[] arr, int low, int high) {<br>
+        int pivot = arr[high];<br>
+        int i = low - 1;<br>
+
+        for (int j = low; j &lt; high; j++) {<br>
+            if (arr[j] &lt;= pivot) {<br>
+                i++;<br>
+                int temp = arr[i];<br>
+                arr[i] = arr[j];<br>
+                arr[j] = temp;<br>
+            }<br>
+        }<br>
+
+        int temp = arr[i + 1];<br>
+        arr[i + 1] = arr[high];<br>
+        arr[high] = temp;<br>
+
+        return i + 1;<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Choose the last element as pivot.</li>
+            <li>Partition the array so elements less than pivot are left and greater are right.</li>
+            <li>Recursively apply the same logic to left and right subarrays.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 43: Counting Sort -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sort-numeric-up me-2"></i> Counting Sort</h5>
+      <p class="card-text">A program to implement counting sort.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program43Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program43Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sort-numeric-up me-2"></i> Counting Sort</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to implement counting sort.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Array: [4, 2, 2, 8, 3, 3, 1]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Sorted Array: [1, 2, 2, 3, 3, 4, 8]</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class CountingSort {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {4, 2, 2, 8, 3, 3, 1};<br>
+        int max = findMax(arr);<br>
+        int[] count = new int[max + 1];<br>
+        int[] output = new int[arr.length];<br>
+
+        // Count the occurrences<br>
+        for (int num : arr) {<br>
+            count[num]++;<br>
+        }<br>
+
+        // Modify the count array<br>
+        for (int i = 1; i &lt; count.length; i++) {<br>
+            count[i] += count[i - 1];<br>
+        }<br>
+
+        // Build the output array<br>
+        for (int i = arr.length - 1; i &gt;= 0; i--) {<br>
+            output[count[arr[i]] - 1] = arr[i];<br>
+            count[arr[i]]--;<br>
+        }<br>
+
+        // Print sorted array<br>
+        System.out.print("Sorted Array: ");<br>
+        for (int num : output) {<br>
+            System.out.print(num + " ");<br>
+        }<br>
+    }<br>
+
+    static int findMax(int[] arr) {<br>
+        int max = arr[0];<br>
+        for (int num : arr) {<br>
+            if (num &gt; max) {<br>
+                max = num;<br>
+            }<br>
+        }<br>
+        return max;<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Count occurrences of each number in the input array.</li>
+            <li>Compute cumulative counts to determine positions.</li>
+            <li>Build the output array by placing elements in the correct index using count values.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 44: Heap Sort -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-cogs me-2"></i> Heap Sort</h5>
+      <p class="card-text">A program to implement heap sort.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program44Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program44Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-cogs me-2"></i> Heap Sort</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to implement heap sort.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Array: [15, 5, 20, 1, 17, 10, 30]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Sorted Array: [1, 5, 10, 15, 17, 20, 30]</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class HeapSort {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {15, 5, 20, 1, 17, 10, 30};<br>
+        heapSort(arr);<br>
+
+        System.out.print("Sorted Array: ");<br>
+        for (int num : arr) {<br>
+            System.out.print(num + " ");<br>
+        }<br>
+    }<br>
+
+    public static void heapSort(int[] arr) {<br>
+        int n = arr.length;<br>
+
+        // Build max heap<br>
+        for (int i = n / 2 - 1; i >= 0; i--) {<br>
+            heapify(arr, n, i);<br>
+        }<br>
+
+        // Extract elements from heap one by one<br>
+        for (int i = n - 1; i > 0; i--) {<br>
+            // Swap the root (maximum) with the last element<br>
+            int temp = arr[0];<br>
+            arr[0] = arr[i];<br>
+            arr[i] = temp;<br>
+
+            // Call heapify on the reduced heap<br>
+            heapify(arr, i, 0);<br>
+        }<br>
+    }<br>
+
+    public static void heapify(int[] arr, int n, int i) {<br>
+        int largest = i;<br>
+        int left = 2 * i + 1;<br>
+        int right = 2 * i + 2;<br>
+
+        // If left child is larger than root<br>
+        if (left < n && arr[left] > arr[largest]) {<br>
+            largest = left;<br>
+        }<br>
+
+        // If right child is larger than largest so far<br>
+        if (right < n && arr[right] > arr[largest]) {<br>
+            largest = right;<br>
+        }<br>
+
+        // If largest is not root<br>
+        if (largest != i) {<br>
+            int swap = arr[i];<br>
+            arr[i] = arr[largest];<br>
+            arr[largest] = swap;<br>
+
+            // Recursively heapify the affected sub-tree<br>
+            heapify(arr, n, largest);<br>
+        }<br>
+    }<br>
+} <br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Build a max heap from the input array.</li>
+            <li>Swap the root (maximum element) with the last element.</li>
+            <li>Reduce the heap size and call heapify to restore the heap property.</li>
+            <li>Repeat until all elements are sorted.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  </div>
+</div>
+
+<footer class="text-center">
+
+    <p>© 2023 Learning with Nitheesh. All rights reserved.</p>
+
+</footer>
+<button class="back-home-button" onclick="window.location.href='../'">
+     Back to Home
+  </button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

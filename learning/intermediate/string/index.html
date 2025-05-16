@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Basics Programs - Learning with Nitheesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="../../../assets/favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #4e73df;
+      --secondary-color: #2e59d9;
+      --accent-color: #f8f9fc;
+      --text-color: #5a5c69;
+      --light-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    body {
+      background-color: #f8f9fc;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .header-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 0.5rem 0;
+      margin-bottom: 2rem;
+      border-radius: 0 0 20px 20px;
+      box-shadow: var(--light-shadow);
+    }
+    
+    .header-title {
+      font-weight: 800;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .header-subtitle {
+      font-weight: 300;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .program-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--light-shadow);
+      transition: var(--transition);
+      border-left: 4px solid var(--primary-color);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .card-text {
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .btn-view {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      align-self: flex-start;
+    }
+    
+    .btn-view:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .modal-content {
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-header {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 10px 10px 0 0;
+      padding: 1.25rem;
+    }
+    
+    .modal-title {
+      font-weight: 700;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .code-block {
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    .explanation-section {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    
+    .explanation-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+    }
+    
+    .io-section {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .input-box, .output-box {
+      flex: 1;
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    
+    .io-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    footer {
+      /* background-color: #2c3e50; */
+      font-weight: 500;
+      color: rgb(14, 109, 186);
+      
+    }
+        .back-home-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-home-button:hover {
+      background-color: var(--secondary-color);
+      transform: scale(1.05);
+    }
+
+    .back-home-button:active {
+      transform: scale(0.95);
+    }
+    /* mark */
+    mark {
+      
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+    }
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 1.8rem;
+      }
+      
+      .header-subtitle {
+        font-size: 1rem;
+      }
+      
+      .io-section {
+        flex-direction: column;
+      }
+    }
+    .shine-text {
+      display: inline-block;
+      font-weight: bold;
+      background-image: linear-gradient(
+        90deg,
+        #f5c542,
+        #fff8b5,
+        #ffd700,
+        #fff8b5,
+        #f5c542
+      );
+      background-size: 300% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: glitter-text 2s linear infinite;
+    }
+
+    @keyframes glitter-text {
+      0% {
+        background-position: 200% center;
+      }
+      100% {
+        background-position: -200% center;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<div class="header-section text-center">
+  <div class="container">
+  <h1 class="header-title">Java <span class="shine-text">String Intermediate</span> Programs</h1>
+
+  <p class="header-subtitle">Master fundamental Java concepts with these beginner-friendly programs</p>
+  </div>
+</div>
+
+<!-- Programs Grid -->
+<div class="container py-4">
+  <div class="row g-5">
+
+<!-- Program: Anagram Check -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-text-width me-2"></i> Anagram Check</h5>
+      <p class="card-text">Check if two strings are anagrams of each other.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#anagramCheckModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="anagramCheckModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-text-width me-2"></i> Anagram Check</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to check if two strings are anagrams of each other.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"listen", "silent"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Yes, they are anagrams.</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.Arrays;
+
+public class AnagramCheck {
+    public static void main(String[] args) {
+        String str1 = "listen";
+        String str2 = "silent";
+
+        if (areAnagrams(str1, str2)) {
+            System.out.println("Yes, they are anagrams.");
+        } else {
+            System.out.println("No, they are not anagrams.");
+        }
+    }
+
+    public static boolean areAnagrams(String s1, String s2) {
+        // Remove spaces and convert to lowercase
+        s1 = s1.replaceAll("\\s", "").toLowerCase();
+        s2 = s2.replaceAll("\\s", "").toLowerCase();
+
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+
+        char[] arr1 = s1.toCharArray();
+        char[] arr2 = s2.toCharArray();
+
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+
+        return Arrays.equals(arr1, arr2);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Convert both strings to lowercase and remove spaces.</li>
+            <li>If lengths differ, they cannot be anagrams.</li>
+            <li>Convert strings to char arrays, sort them, and compare.</li>
+            <li>If sorted arrays are equal, strings are anagrams.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Remove Duplicate Characters -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-ban me-2"></i> Remove Duplicate Characters</h5>
+      <p class="card-text">Remove all duplicate characters from a string.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#removeDuplicatesModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="removeDuplicatesModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-ban me-2"></i> Remove Duplicate Characters</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to remove all duplicate characters from a string.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"programming"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>"progamin"</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.LinkedHashSet;
+
+public class RemoveDuplicateChars {
+    public static void main(String[] args) {
+        String input = "programming";
+        String result = removeDuplicates(input);
+        System.out.println(result);
+    }
+
+    public static String removeDuplicates(String str) {
+        LinkedHashSet<Character> set = new LinkedHashSet<>();
+        for (char c : str.toCharArray()) {
+            set.add(c);
+        }
+        StringBuilder sb = new StringBuilder();
+        for (char c : set) {
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use a LinkedHashSet to maintain insertion order and uniqueness.</li>
+            <li>Traverse the string and add each character to the set.</li>
+            <li>Build a new string from the set elements.</li>
+            <li>Return the string without duplicate characters.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Longest Word in Sentence -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-text-width me-2"></i> Longest Word in Sentence</h5>
+      <p class="card-text">Find the longest word in a sentence.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#longestWordModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="longestWordModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-text-width me-2"></i> Longest Word in Sentence</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the longest word in a sentence.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"The quick brown fox jumped over the lazy dog"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Longest Word: "jumped"</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class LongestWordInSentence {
+    public static void main(String[] args) {
+        String sentence = "The quick brown fox jumped over the lazy dog";
+        String longestWord = findLongestWord(sentence);
+        System.out.println("Longest Word: \"" + longestWord + "\"");
+    }
+
+    public static String findLongestWord(String sentence) {
+        String[] words = sentence.split("\\s+");
+        String longest = "";
+        for (String word : words) {
+            if (word.length() > longest.length()) {
+                longest = word;
+            }
+        }
+        return longest;
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Split the sentence into words by whitespace.</li>
+            <li>Initialize an empty string to track the longest word.</li>
+            <li>Iterate through each word, updating the longest if current word length is greater.</li>
+            <li>Return the longest word found.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Character Frequency Count -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-chart-bar me-2"></i> Character Frequency Count</h5>
+      <p class="card-text">Count the frequency of each character in a string.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#charFreqModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="charFreqModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-chart-bar me-2"></i> Character Frequency Count</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to count the frequency of each character in a string.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"balloon"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>b:1 a:1 l:2 o:2 n:1</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.HashMap;
+import java.util.Map;
+
+public class CharacterFrequencyCount {
+    public static void main(String[] args) {
+        String input = "balloon";
+        Map<Character, Integer> freqMap = new HashMap<>();
+
+        for (char ch : input.toCharArray()) {
+            freqMap.put(ch, freqMap.getOrDefault(ch, 0) + 1);
+        }
+
+        for (Map.Entry<Character, Integer> entry : freqMap.entrySet()) {
+            System.out.print(entry.getKey() + ":" + entry.getValue() + " ");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use a HashMap to store character frequencies.</li>
+            <li>Iterate over each character, incrementing its count in the map.</li>
+            <li>Print the character and its frequency from the map.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: String Rotation Check -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sync-alt me-2"></i> String Rotation Check</h5>
+      <p class="card-text">Check if one string is a rotation of another.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#stringRotationModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="stringRotationModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sync-alt me-2"></i> String Rotation Check</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to check if one string is a rotation of another.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"waterbottle", "erbottlewat"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Yes, it is a rotation</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class StringRotationCheck {
+    public static boolean isRotation(String s1, String s2) {
+        if (s1.length() != s2.length()) return false;
+        String temp = s1 + s1;
+        return temp.contains(s2);
+    }
+
+    public static void main(String[] args) {
+        String s1 = "waterbottle";
+        String s2 = "erbottlewat";
+
+        if (isRotation(s1, s2)) {
+            System.out.println("Yes, it is a rotation");
+        } else {
+            System.out.println("No, it is not a rotation");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>If strings are of different lengths, they cannot be rotations.</li>
+            <li>Concatenate the first string to itself.</li>
+            <li>If the second string is a substring of this concatenated string, it is a rotation.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Reverse Words in a Sentence -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-reply me-2"></i> Reverse Words in a Sentence</h5>
+      <p class="card-text">Reverse the order of words in a sentence.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#reverseWordsModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="reverseWordsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-reply me-2"></i> Reverse Words in a Sentence</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to reverse the order of words in a sentence.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"hello world program"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>"program world hello"</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class ReverseWords {
+    public static String reverseWords(String sentence) {
+        String[] words = sentence.split(" ");
+        StringBuilder reversed = new StringBuilder();
+
+        for (int i = words.length - 1; i >= 0; i--) {
+            reversed.append(words[i]);
+            if (i != 0) reversed.append(" ");
+        }
+        return reversed.toString();
+    }
+
+    public static void main(String[] args) {
+        String input = "hello world program";
+        System.out.println(reverseWords(input));
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Split the sentence into words using space as a delimiter.</li>
+            <li>Traverse the words array backward and append words to the result.</li>
+            <li>Return the reversed word string.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: String Compression -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-compress me-2"></i> String Compression</h5>
+      <p class="card-text">Compress the string by counting consecutive characters.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#stringCompressionModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="stringCompressionModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-compress me-2"></i> String Compression</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Compress the string by counting consecutive characters.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"aabcccccaaa"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>"a2b1c5a3"</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class StringCompression {
+    public static String compress(String str) {
+        StringBuilder compressed = new StringBuilder();
+        int count = 1;
+
+        for (int i = 1; i <= str.length(); i++) {
+            if (i < str.length() && str.charAt(i) == str.charAt(i - 1)) {
+                count++;
+            } else {
+                compressed.append(str.charAt(i - 1));
+                compressed.append(count);
+                count = 1;
+            }
+        }
+        return compressed.toString();
+    }
+
+    public static void main(String[] args) {
+        String input = "aabcccccaaa";
+        System.out.println(compress(input));
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Traverse the string while counting consecutive repeating characters.</li>
+            <li>Append the character and its count to the result when a new character is encountered.</li>
+            <li>Return the compressed string.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: strstr() Implementation -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-search me-2"></i> strstr() Implementation</h5>
+      <p class="card-text">Write a function to implement strstr() (find substring).</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#strstrModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="strstrModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-search me-2"></i> strstr() Implementation</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a function to implement strstr() (find substring).</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"hello", "ll"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Found at index 2</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class StrStrImplementation {
+    public static int strstr(String haystack, String needle) {
+        int hLen = haystack.length();
+        int nLen = needle.length();
+
+        if (nLen == 0) return 0; // Empty needle
+
+        for (int i = 0; i <= hLen - nLen; i++) {
+            int j = 0;
+            while (j < nLen && haystack.charAt(i + j) == needle.charAt(j)) {
+                j++;
+            }
+            if (j == nLen) {
+                return i; // Found at index i
+            }
+        }
+        return -1; // Not found
+    }
+
+    public static void main(String[] args) {
+        String haystack = "hello";
+        String needle = "ll";
+
+        int index = strstr(haystack, needle);
+        if (index != -1) {
+            System.out.println("Found at index " + index);
+        } else {
+            System.out.println("Not found");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Iterate through the main string up to length difference.</li>
+            <li>For each position, check if substring matches the needle.</li>
+            <li>If match found, return the starting index.</li>
+            <li>If no match, return -1.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: String to Integer Conversion -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-code me-2"></i> String to Integer Conversion</h5>
+      <p class="card-text">Write a program to convert a numeric string into an integer.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#stringToIntModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="stringToIntModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-code me-2"></i> String to Integer Conversion</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to convert a numeric string into an integer.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"12345"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Integer: 12345</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class StringToInteger {
+    public static int stringToInt(String str) {
+        int result = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (c < '0' || c > '9') {
+                throw new IllegalArgumentException("Invalid numeric string");
+            }
+            result = result * 10 + (c - '0');
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        String numericString = "12345";
+        int number = stringToInt(numericString);
+        System.out.println("Integer: " + number);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize result as 0.</li>
+            <li>Traverse each character of the string.</li>
+            <li>Check if character is digit; if not, throw error.</li>
+            <li>Update result by multiplying current result by 10 and adding numeric value of character.</li>
+            <li>Return final result.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: First Non-Repeating Character -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-user-secret me-2"></i> First Non-Repeating Character</h5>
+      <p class="card-text">Write a program to find the first non-repeating character in a string.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#firstNonRepeatingCharModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="firstNonRepeatingCharModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-user-secret me-2"></i> First Non-Repeating Character</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the first non-repeating character in a string.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"aabbcddee"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>First Unique: c</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class FirstNonRepeatingChar {
+    public static char firstNonRepeatingChar(String str) {
+        Map<Character, Integer> charCount = new LinkedHashMap<>();
+        for (char c : str.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+        }
+        for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+        return '\0'; // No unique char found
+    }
+
+    public static void main(String[] args) {
+        String input = "aabbcddee";
+        char result = firstNonRepeatingChar(input);
+        if (result != '\0') {
+            System.out.println("First Unique: " + result);
+        } else {
+            System.out.println("No unique character found.");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use a LinkedHashMap to maintain character count and insertion order.</li>
+            <li>Traverse the string to count occurrences of each character.</li>
+            <li>Traverse map entries to find the first character with count 1.</li>
+            <li>Return the first unique character found, or indicate none exists.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: All Unique Characters -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-check-double me-2"></i> All Unique Characters</h5>
+      <p class="card-text">Check if a string has all unique characters.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#allUniqueCharsModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="allUniqueCharsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-check-double me-2"></i> All Unique Characters</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Check if a string has all unique characters.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"abcdefg"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Yes, all characters are unique.</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.HashSet;
+import java.util.Set;
+
+public class AllUniqueCharacters {
+    public static boolean areAllUnique(String str) {
+        Set<Character> chars = new HashSet<>();
+        for (char c : str.toCharArray()) {
+            if (chars.contains(c)) {
+                return false;
+            }
+            chars.add(c);
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        String input = "abcdefg";
+        if (areAllUnique(input)) {
+            System.out.println("Yes, all characters are unique.");
+        } else {
+            System.out.println("No, there are duplicate characters.");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use a HashSet to track characters encountered.</li>
+            <li>Traverse the string; if a character is already in the set, duplicates exist.</li>
+            <li>If traversal finishes without duplicates, all characters are unique.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Convert to Title Case -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-font me-2"></i> Convert to Title Case</h5>
+      <p class="card-text">Convert the first letter of each word to uppercase.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#titleCaseModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="titleCaseModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-font me-2"></i> Convert to Title Case</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Convert the first letter of each word to uppercase.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"welcome to coding world"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>"Welcome To Coding World"</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class TitleCaseConverter {
+    public static String toTitleCase(String str) {
+        String[] words = str.split("\\s+");
+        StringBuilder sb = new StringBuilder();
+        for (String word : words) {
+            if (word.length() > 0) {
+                sb.append(Character.toUpperCase(word.charAt(0)));
+                sb.append(word.substring(1).toLowerCase());
+                sb.append(" ");
+            }
+        }
+        return sb.toString().trim();
+    }
+
+    public static void main(String[] args) {
+        String input = "welcome to coding world";
+        String result = toTitleCase(input);
+        System.out.println(result);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Split the input string into words by spaces.</li>
+            <li>Capitalize the first character of each word, convert rest to lowercase.</li>
+            <li>Concatenate all words with spaces and trim the trailing space.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: All Substrings of a String -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-code me-2"></i> All Substrings of a String</h5>
+      <p class="card-text">Generate all substrings of a string.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#substringsModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="substringsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-code me-2"></i> All Substrings of a String</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to generate all substrings of a string.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"abc"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>"a", "ab", "abc", "b", "bc", "c"</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class AllSubstrings {
+    public static void main(String[] args) {
+        String str = "abc";
+        for (int i = 0; i &lt; str.length(); i++) {
+            for (int j = i + 1; j &lt;= str.length(); j++) {
+                System.out.println(str.substring(i, j));
+            }
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use two nested loops: the outer loop picks the start index.</li>
+            <li>The inner loop picks the end index for the substring.</li>
+            <li>Print the substring from start to end index for all combinations.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Vowel and Consonant Count -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-font me-2"></i> Vowel and Consonant Count</h5>
+      <p class="card-text">Count vowels and consonants in a string.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#vowelConsonantModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="vowelConsonantModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-font me-2"></i> Vowel and Consonant Count</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to count vowels and consonants in a string.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"hello world"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Vowels: 3, Consonants: 7</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class VowelConsonantCount {
+    public static void main(String[] args) {
+        String str = "hello world";
+        int vowels = 0, consonants = 0;
+        str = str.toLowerCase();
+
+        for (int i = 0; i &lt; str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch >= 'a' &amp;&amp; ch &lt;= 'z') {
+                if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                    vowels++;
+                } else {
+                    consonants++;
+                }
+            }
+        }
+
+        System.out.println("Vowels: " + vowels + ", Consonants: " + consonants);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Convert the string to lowercase for uniformity.</li>
+            <li>Iterate over each character, check if it’s an alphabet.</li>
+            <li>Count vowels if the character matches a vowel, else consonants.</li>
+            <li>Ignore spaces and other non-alphabetic characters.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Digits Only Check -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-keyboard me-2"></i> Digits Only Check</h5>
+      <p class="card-text">Check if a string contains only digits.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#digitsOnlyModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="digitsOnlyModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-keyboard me-2"></i> Digits Only Check</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to check if a string contains only digits.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"123456"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Yes, it contains only digits.</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class DigitsOnlyCheck {
+    public static void main(String[] args) {
+        String str = "123456";
+        boolean isDigitsOnly = true;
+
+        for (int i = 0; i &lt; str.length(); i++) {
+            if (!Character.isDigit(str.charAt(i))) {
+                isDigitsOnly = false;
+                break;
+            }
+        }
+
+        if (isDigitsOnly) {
+            System.out.println("Yes, it contains only digits.");
+        } else {
+            System.out.println("No, it contains other characters.");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Iterate over each character in the string.</li>
+            <li>Check if every character is a digit using <code>Character.isDigit()</code>.</li>
+            <li>If any character is not a digit, mark as false and break the loop.</li>
+            <li>Print appropriate message based on the flag.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Longest Substring Without Repeating Characters -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-text-width me-2"></i> Longest Substring Without Repeating Characters</h5>
+      <p class="card-text">Find the length of the longest substring with all unique characters.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#longestUniqueSubstringModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="longestUniqueSubstringModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-text-width me-2"></i> Longest Substring Without Repeating Characters</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Find the length of the longest substring with all unique characters.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"abcabcbb"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Length: 3</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.HashSet;
+
+public class LongestUniqueSubstring {
+    public static void main(String[] args) {
+        String s = "abcabcbb";
+        System.out.println("Length: " + lengthOfLongestSubstring(s));
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
+        int maxLen = 0, start = 0;
+        HashSet&lt;Character&gt; set = new HashSet&lt;&gt;();
+
+        for (int end = 0; end &lt; s.length(); end++) {
+            while (set.contains(s.charAt(end))) {
+                set.remove(s.charAt(start));
+                start++;
+            }
+            set.add(s.charAt(end));
+            maxLen = Math.max(maxLen, end - start + 1);
+        }
+        return maxLen;
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use two pointers (start and end) to maintain a sliding window.</li>
+            <li>Use a HashSet to track unique characters in the current window.</li>
+            <li>If the current character is already in the set, shrink the window from the left until it is removed.</li>
+            <li>Update max length after expanding the window.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Remove Non-Alphabetic Characters -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-ban me-2"></i> Remove Non-Alphabetic Characters</h5>
+      <p class="card-text">Write a program to remove all non-alphabetic characters from a string.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#removeNonAlphaModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="removeNonAlphaModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-ban me-2"></i> Remove Non-Alphabetic Characters</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to remove all non-alphabetic characters from a string.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"Hello@123#World!"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>"HelloWorld"</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class RemoveNonAlphabetic {
+    public static void main(String[] args) {
+        String input = "Hello@123#World!";
+        String result = input.replaceAll("[^a-zA-Z]", "");
+        System.out.println(result);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use regex <code>[^a-zA-Z]</code> to match all non-alphabetic characters.</li>
+            <li>Replace all matched characters with an empty string.</li>
+            <li>Print the cleaned string containing only alphabets.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Pangram Check -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-check-double me-2"></i> Pangram Check</h5>
+      <p class="card-text">Check if a string is a pangram (contains all alphabets).</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#pangramCheckModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="pangramCheckModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-check-double me-2"></i> Pangram Check</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Check if a string is a pangram (contains all alphabets).</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"The quick brown fox jumps over the lazy dog"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Yes, it's a pangram.</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class PangramCheck {
+    public static void main(String[] args) {
+        String sentence = "The quick brown fox jumps over the lazy dog";
+        sentence = sentence.toLowerCase();
+        boolean[] alphabet = new boolean[26];
+        int index;
+        int count = 0;
+
+        for (int i = 0; i &lt; sentence.length(); i++) {
+            char ch = sentence.charAt(i);
+            if (ch &gt;= 'a' && ch &lt;= 'z') {
+                index = ch - 'a';
+                if (!alphabet[index]) {
+                    alphabet[index] = true;
+                    count++;
+                }
+            }
+        }
+
+        if (count == 26) {
+            System.out.println("Yes, it's a pangram.");
+        } else {
+            System.out.println("No, it's not a pangram.");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Convert the string to lowercase to handle case-insensitivity.</li>
+            <li>Use a boolean array of size 26 to track each alphabet occurrence.</li>
+            <li>Iterate through the string, mark characters found in the boolean array.</li>
+            <li>If all 26 alphabets are found, the string is a pangram.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Replace Spaces with %20 -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-exchange-alt me-2"></i> Replace Spaces with %20</h5>
+      <p class="card-text">Replace all spaces in a string with "%20".</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#replaceSpacesModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="replaceSpacesModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-exchange-alt me-2"></i> Replace Spaces with %20</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Replace all spaces in a string with "%20".</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"My name is Khan"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>"My%20name%20is%20Khan"</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class ReplaceSpaces {
+    public static void main(String[] args) {
+        String input = "My name is Khan";
+        String output = input.replace(" ", "%20");
+        System.out.println(output);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use the built-in <code>replace()</code> method to replace all spaces with "%20".</li>
+            <li>Print the modified string.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Make String Palindrome (Minimum Insertions) -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sync-alt me-2"></i> Make String Palindrome (Minimum Insertions)</h5>
+      <p class="card-text">Find the minimum characters to insert at the beginning to make a string palindrome.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#makePalindromeModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="makePalindromeModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sync-alt me-2"></i> Make String Palindrome (Minimum Insertions)</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Find the minimum characters to insert at the beginning to make a string palindrome.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"abcd"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Minimum Insertions: 3 (Result: "dcbabcd")</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class MinInsertionsPalindrome {
+    // Function to check if a string is palindrome
+    static boolean isPalindrome(String s) {
+        int start = 0, end = s.length() - 1;
+        while (start < end) {
+            if (s.charAt(start) != s.charAt(end)) return false;
+            start++;
+            end--;
+        }
+        return true;
+    }
+
+    // Function to find minimum insertions at beginning
+    static int minInsertionsToMakePalindrome(String s) {
+        int count = 0;
+        String temp = s;
+        // Keep adding characters from end until palindrome formed
+        while (!isPalindrome(temp)) {
+            count++;
+            temp = s.charAt(s.length() - count) + temp;
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        String input = "abcd";
+        int minInsertions = minInsertionsToMakePalindrome(input);
+
+        // Construct the result string
+        StringBuilder sb = new StringBuilder(input);
+        for (int i = minInsertions - 1; i >= 0; i--) {
+            sb.insert(0, input.charAt(input.length() - 1 - i));
+        }
+
+        System.out.println("Minimum Insertions: " + minInsertions + " (Result: \"" + sb.toString() + "\")");
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Check if the string is a palindrome.</li>
+            <li>If not, keep adding characters from the end of the string to the front until it becomes palindrome.</li>
+            <li>The count of added characters is the minimum insertions needed.</li>
+            <li>Print the minimum insertions and the resulting palindrome.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  </div>
+</div>
+
+
+
+<footer class="text-center">
+    <p>© 2023 Learning with Nitheesh. All rights reserved.</p>
+</footer>
+<button class="back-home-button" onclick="window.location.href='../../'">
+     Back to Home
+</button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

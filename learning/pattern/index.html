@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Basics Programs - Learning with Nitheesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="../../assets/favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #4e73df;
+      --secondary-color: #2e59d9;
+      --accent-color: #f8f9fc;
+      --text-color: #5a5c69;
+      --light-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+     .shine-text {
+      display: inline-block;
+      font-weight: bold;
+      background-image: linear-gradient(
+        90deg,
+        #f5c542,
+        #fff8b5,
+        #ffd700,
+        #fff8b5,
+        #f5c542
+      );
+      background-size: 300% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: glitter-text 2s linear infinite;
+    }
+
+    @keyframes glitter-text {
+      0% {
+        background-position: 200% center;
+      }
+      100% {
+        background-position: -200% center;
+      }
+    }
+    body {
+      background-color: #f8f9fc;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .header-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 0.5rem 0;
+      margin-bottom: 2rem;
+      border-radius: 0 0 20px 20px;
+      box-shadow: var(--light-shadow);
+    }
+    
+    .header-title {
+      font-weight: 800;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .header-subtitle {
+      font-weight: 300;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .program-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--light-shadow);
+      transition: var(--transition);
+      border-left: 4px solid var(--primary-color);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .card-text {
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .btn-view {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      align-self: flex-start;
+    }
+    
+    .btn-view:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .modal-content {
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-header {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 10px 10px 0 0;
+      padding: 1.25rem;
+    }
+    
+    .modal-title {
+      font-weight: 700;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .code-block {
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    .explanation-section {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    
+    .explanation-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+    }
+    
+    .io-section {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .input-box, .output-box {
+      flex: 1;
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    
+    .io-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    footer {
+      /* background-color: #2c3e50; */
+      font-weight: 500;
+      color: rgb(14, 109, 186);
+      
+    }
+        .back-home-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-home-button:hover {
+      background-color: var(--secondary-color);
+      transform: scale(1.05);
+    }
+
+    .back-home-button:active {
+      transform: scale(0.95);
+    }
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 1.8rem;
+      }
+      
+      .header-subtitle {
+        font-size: 1rem;
+      }
+      
+      .io-section {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<div class="header-section text-center">
+  <div class="container">
+    <h1 class="header-title">Java <span class="shine-text">Pattern </span> Programs </h1>
+    <p class="header-subtitle">Master fundamental Java concepts with these beginner-friendly programs</p>
+  </div>
+</div>
+
+<!-- Programs Grid -->
+<div class="container py-4">
+  <div class="row g-5">
+
+
+<!-- Program 18: Hollow Square Pattern -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-square me-2"></i> Hollow Square Pattern</h5>
+      <p class="card-text">A program to print a hollow square pattern.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program18Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program18Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-square me-2"></i> Hollow Square Pattern</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to print a hollow square pattern.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>5</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>*****
+*   *
+*   *
+*   *
+*****</pre>
+          </div>
+        </div>
+        <div class="code-block">
+public class HollowSquare {<br>
+    public static void main(String[] args) {<br>
+        int n = 5;  // Size of the square<br>
+        
+        for (int i = 0; i < n; i++) {<br>
+            for (int j = 0; j < n; j++) {<br>
+                // Print '*' for the first and last row, and first and last column<br>
+                if (i == 0 || i == n - 1 || j == 0 || j == n - 1) {<br>
+                    System.out.print("*");<br>
+                } else {<br>
+                    System.out.print(" ");<br>
+                }<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Loop through each row and column.</li>
+            <li>Print '*' for the first and last row, and first and last column. Print a space for other positions.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 19: Hollow Pyramid Pattern -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-pyramid me-2"></i> Hollow Pyramid Pattern</h5>
+      <p class="card-text">A program to print a hollow pyramid pattern.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program19Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program19Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-pyramid me-2"></i> Hollow Pyramid Pattern</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to print a hollow pyramid pattern.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>5</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>    *
+   * *
+  *   *
+ *     *
+*********</pre>
+          </div>
+        </div>
+        <div class="code-block">
+public class HollowPyramid {<br>
+    public static void main(String[] args) {<br>
+        int n = 5;  // Height of the pyramid<br>
+        
+        for (int i = 1; i <= n; i++) {<br>
+            // Print spaces for alignment<br>
+            for (int j = i; j < n; j++) {<br>
+                System.out.print(" ");<br>
+            }<br>
+            // Print stars and spaces in the pyramid structure<br>
+            for (int j = 1; j <= (2 * i - 1); j++) {<br>
+                // Print '*' for the edges and the last row<br>
+                if (j == 1 || j == (2 * i - 1) || i == n) {<br>
+                    System.out.print("*");<br>
+                } else {<br>
+                    System.out.print(" ");<br>
+                }<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use nested loops to print the correct number of spaces and stars.</li>
+            <li>For each row, print spaces before the stars for alignment.</li>
+            <li>Print stars at the edges of the pyramid, and spaces in between for all rows except the last one.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 20: Hollow Diamond Pattern -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-diamond me-2"></i> Hollow Diamond Pattern</h5>
+      <p class="card-text">A program to print a hollow diamond pattern.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program20Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program20Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-diamond me-2"></i> Hollow Diamond Pattern</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to print a hollow diamond pattern.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>5</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>    *
+   * *
+  *   *
+ *     *
+*       *
+ *     *
+  *   *
+   * *
+    *</pre>
+          </div>
+        </div>
+        <div class="code-block">
+public class HollowDiamond {<br>
+    public static void main(String[] args) {<br>
+        int n = 5;  // Number of rows for the top half of the diamond<br>
+        
+        // Top half of the diamond<br>
+        for (int i = 1; i <= n; i++) {<br>
+            // Print spaces before stars<br>
+            for (int j = i; j < n; j++) {<br>
+                System.out.print(" ");<br>
+            }<br>
+            // Print stars and spaces<br>
+            for (int j = 1; j <= (2 * i - 1); j++) {<br>
+                if (j == 1 || j == (2 * i - 1)) {<br>
+                    System.out.print("*");<br>
+                } else {<br>
+                    System.out.print(" ");<br>
+                }<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+
+        // Bottom half of the diamond<br>
+        for (int i = n - 1; i >= 1; i--) {<br>
+            // Print spaces before stars<br>
+            for (int j = n; j > i; j--) {<br>
+                System.out.print(" ");<br>
+            }<br>
+            // Print stars and spaces<br>
+            for (int j = 1; j <= (2 * i - 1); j++) {<br>
+                if (j == 1 || j == (2 * i - 1)) {<br>
+                    System.out.print("*");<br>
+                } else {<br>
+                    System.out.print(" ");<br>
+                }<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Print the top half of the diamond using a loop for spaces and stars.</li>
+            <li>In the bottom half, reverse the process to create the lower triangle.</li>
+            <li>Ensure spaces are printed in between the stars for a hollow effect, except for the edges.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 21: Butterfly Pattern -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-butterfly me-2"></i> Butterfly Pattern</h5>
+      <p class="card-text">A program to print a butterfly pattern.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program21Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program21Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-butterfly me-2"></i> Butterfly Pattern</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to print a butterfly pattern.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>4</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>*      *
+**    **
+***  ***
+********
+********
+***  ***
+**    **
+*      *</pre>
+          </div>
+        </div>
+        <div class="code-block">
+public class ButterflyPattern {<br>
+    public static void main(String[] args) {<br>
+        int n = 4; // Number of rows<br>
+
+        // Upper half of the butterfly<br>
+        for (int i = 1; i <= n; i++) {<br>
+            // Print the first part of the stars<br>
+            for (int j = 1; j <= i; j++) {<br>
+                System.out.print("*");<br>
+            }<br>
+            // Print the spaces in between<br>
+            for (int j = 1; j <= (2 * (n - i)); j++) {<br>
+                System.out.print(" ");<br>
+            }<br>
+            // Print the second part of the stars<br>
+            for (int j = 1; j <= i; j++) {<br>
+                System.out.print("*");<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+<br>
+        // Lower half of the butterfly<br>
+        for (int i = n; i >= 1; i--) {<br>
+            // Print the first part of the stars<br>
+            for (int j = 1; j <= i; j++) {<br>
+                System.out.print("*");<br>
+            }<br>
+            // Print the spaces in between<br>
+            for (int j = 1; j <= (2 * (n - i)); j++) {<br>
+                System.out.print(" ");<br>
+            }<br>
+            // Print the second part of the stars<br>
+            for (int j = 1; j <= i; j++) {<br>
+                System.out.print("*");<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>In the upper half, print stars on both sides and spaces in between.</li>
+            <li>The number of spaces decreases as the number of stars increases for each row.</li>
+            <li>The lower half is a mirror image of the upper half, which is printed after the upper half is completed.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 22: Right Pascal's Triangle -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-triangle me-2"></i> Right Pascal's Triangle</h5>
+      <p class="card-text">A program to print a right Pascal's triangle.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program22Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program22Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-triangle me-2"></i> Right Pascal's Triangle</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to print a right Pascal's triangle.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>5</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>*
+**
+***
+****
+*****
+****
+***
+**
+*</pre>
+          </div>
+        </div>
+        <div class="code-block">
+public class RightPascalsTriangle {<br>
+    public static void main(String[] args) {<br>
+        int n = 5; // Number of rows<br>
+
+        // Upper half of Pascal's Triangle<br>
+        for (int i = 1; i <= n; i++) {<br>
+            for (int j = 1; j <= i; j++) {<br>
+                System.out.print("*");<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+
+        // Lower half of Pascal's Triangle<br>
+        for (int i = n - 1; i >= 1; i--) {<br>
+            for (int j = 1; j <= i; j++) {<br>
+                System.out.print("*");<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>In the upper half, print an increasing number of stars for each row.</li>
+            <li>In the lower half, print a decreasing number of stars for each row, starting from the row before the peak.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 23: Left Pascal's Triangle -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-triangle me-2"></i> Left Pascal's Triangle</h5>
+      <p class="card-text">A program to print a left Pascal's triangle.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program23Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program23Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-triangle me-2"></i> Left Pascal's Triangle</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to print a left Pascal's triangle.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>5</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>    *
+   **
+  ***
+ ****
+*****
+ ****
+  ***
+   **
+    *</pre>
+          </div>
+        </div>
+        <div class="code-block">
+public class LeftPascalsTriangle {<br>
+    public static void main(String[] args) {<br>
+        int n = 5; // Number of rows<br>
+
+        // Upper half of Pascal's Triangle<br>
+        for (int i = 1; i <= n; i++) {<br>
+            // Print leading spaces<br>
+            for (int j = 1; j <= n - i; j++) {<br>
+                System.out.print(" ");<br>
+            }<br>
+            // Print stars<br>
+            for (int j = 1; j <= i; j++) {<br>
+                System.out.print("*");<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+
+        // Lower half of Pascal's Triangle<br>
+        for (int i = n - 1; i >= 1; i--) {<br>
+            // Print leading spaces<br>
+            for (int j = 1; j <= n - i; j++) {<br>
+                System.out.print(" ");<br>
+            }<br>
+            // Print stars<br>
+            for (int j = 1; j <= i; j++) {<br>
+                System.out.print("*");<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>In the upper half, print leading spaces first, followed by stars. The number of stars increases in each row.</li>
+            <li>In the lower half, print leading spaces first, followed by stars. The number of stars decreases in each row, starting from the row before the peak.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 24: Hourglass Pattern -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-hourglass-half me-2"></i> Hourglass Pattern</h5>
+      <p class="card-text">A program to print an hourglass pattern.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program24Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program24Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-hourglass-half me-2"></i> Hourglass Pattern</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to print an hourglass pattern.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>5</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>*********
+ *******
+  *****
+   ***
+    *
+   ***
+  *****
+ *******
+*********</pre>
+          </div>
+        </div>
+        <div class="code-block">
+public class HourglassPattern {<br>
+    public static void main(String[] args) {<br>
+        int n = 5; // Number of rows<br>
+
+        // Upper half of the hourglass<br>
+        for (int i = 0; i < n; i++) {<br>
+            // Print leading spaces<br>
+            for (int j = 0; j < i; j++) {<br>
+                System.out.print(" ");<br>
+            }<br>
+            // Print stars<br>
+            for (int j = 0; j < (2 * (n - i) - 1); j++) {<br>
+                System.out.print("*");<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+
+        // Lower half of the hourglass<br>
+        for (int i = 1; i < n; i++) {<br>
+            // Print leading spaces<br>
+            for (int j = 0; j < n - i - 1; j++) {<br>
+                System.out.print(" ");<br>
+            }<br>
+            // Print stars<br>
+            for (int j = 0; j < (2 * (i + 1) - 1); j++) {<br>
+                System.out.print("*");<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>In the upper half, print decreasing stars with leading spaces increasing in each row.</li>
+            <li>In the lower half, print increasing stars with leading spaces decreasing in each row.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 25: Alphabet Triangle Pattern -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-font me-2"></i> Alphabet Triangle Pattern</h5>
+      <p class="card-text">A program to print an alphabet triangle pattern.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program25Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program25Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-font me-2"></i> Alphabet Triangle Pattern</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to print an alphabet triangle pattern.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>5</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>A
+AB
+ABC
+ABCD
+ABCDE</pre>
+          </div>
+        </div>
+        <div class="code-block">
+public class AlphabetTrianglePattern {<br>
+    public static void main(String[] args) {<br>
+        int n = 5; // Number of rows<br>
+
+        // Loop for each row<br>
+        for (int i = 1; i <= n; i++) {<br>
+            // Loop to print the alphabet letters<br>
+            for (char j = 'A'; j < 'A' + i; j++) {<br>
+                System.out.print(j);<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>In each row, print the letters starting from 'A' up to the current row number.</li>
+            <li>The number of letters in each row increases as the rows increase.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 26: Zig-Zag Pattern -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-random me-2"></i> Zig-Zag Pattern</h5>
+      <p class="card-text">A program to print a zig-zag pattern.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program26Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program26Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-random me-2"></i> Zig-Zag Pattern</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to print a zig-zag pattern.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>7</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>  *   *   *  
+ * * * * * * 
+*   *   *   *</pre>
+          </div>
+        </div>
+        <div class="code-block">
+public class ZigZagPattern {<br>
+    public static void main(String[] args) {<br>
+        int n = 7; // Number of columns<br>
+
+        // Loop to print the upper part of the zig-zag pattern<br>
+        for (int i = 1; i <= 3; i++) {<br>
+            for (int j = 1; j <= n; j++) {<br>
+                if (j % 2 != 0) {<br>
+                    System.out.print("* ");<br>
+                } else {<br>
+                    System.out.print("  ");<br>
+                }<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+<br>
+        // Loop to print the bottom part of the zig-zag pattern<br>
+        for (int i = 1; i <= 3; i++) {<br>
+            for (int j = 1; j <= n; j++) {<br>
+                if (j % 2 == 0) {<br>
+                    System.out.print("* ");<br>
+                } else {<br>
+                    System.out.print("  ");<br>
+                }<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>For each row, we alternate between printing stars and spaces.</li>
+            <li>The pattern forms a zig-zag structure by alternating the direction of stars in subsequent rows.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 27: Binary Triangle Pattern -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-code me-2"></i> Binary Triangle Pattern</h5>
+      <p class="card-text">A program to print a binary number triangle pattern.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program27Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program27Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-code me-2"></i> Binary Triangle Pattern</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to print a binary number triangle pattern.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>5</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>1
+01
+101
+0101
+10101</pre>
+          </div>
+        </div>
+        <div class="code-block">
+public class BinaryTrianglePattern {<br>
+    public static void main(String[] args) {<br>
+        int n = 5; // Number of rows<br>
+
+        for (int i = 1; i <= n; i++) {<br>
+            for (int j = 1; j <= i; j++) {<br>
+                if ((i + j) % 2 == 0) {<br>
+                    System.out.print("1");<br>
+                } else {<br>
+                    System.out.print("0");<br>
+                }<br>
+            }<br>
+            System.out.println();<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>For each row, print the binary digits alternately starting from 1.</li>
+            <li>Use the condition `(i + j) % 2 == 0` to decide whether to print '1' or '0'.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  </div>
+</div>
+
+<footer class="text-center">
+
+    <p>© 2023 Learning with Nitheesh. All rights reserved.</p>
+
+</footer>
+<button class="back-home-button" onclick="window.location.href='../'">
+     Back to Home
+  </button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

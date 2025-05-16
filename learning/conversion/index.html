@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Basics Programs - Learning with Nitheesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="../../assets/favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #4e73df;
+      --secondary-color: #2e59d9;
+      --accent-color: #f8f9fc;
+      --text-color: #5a5c69;
+      --light-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+     .shine-text {
+      display: inline-block;
+      font-weight: bold;
+      background-image: linear-gradient(
+        90deg,
+        #f5c542,
+        #fff8b5,
+        #ffd700,
+        #fff8b5,
+        #f5c542
+      );
+      background-size: 300% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: glitter-text 2s linear infinite;
+    }
+
+    @keyframes glitter-text {
+      0% {
+        background-position: 200% center;
+      }
+      100% {
+        background-position: -200% center;
+      }
+    }
+    body {
+      background-color: #f8f9fc;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .header-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 0.5rem 0;
+      margin-bottom: 2rem;
+      border-radius: 0 0 20px 20px;
+      box-shadow: var(--light-shadow);
+    }
+    
+    .header-title {
+      font-weight: 800;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .header-subtitle {
+      font-weight: 300;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .program-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--light-shadow);
+      transition: var(--transition);
+      border-left: 4px solid var(--primary-color);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .card-text {
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .btn-view {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      align-self: flex-start;
+    }
+    
+    .btn-view:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .modal-content {
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-header {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 10px 10px 0 0;
+      padding: 1.25rem;
+    }
+    
+    .modal-title {
+      font-weight: 700;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .code-block {
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    .explanation-section {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    
+    .explanation-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+    }
+    
+    .io-section {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .input-box, .output-box {
+      flex: 1;
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    
+    .io-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    footer {
+      /* background-color: #2c3e50; */
+      font-weight: 500;
+      color: rgb(14, 109, 186);
+      
+    }
+        .back-home-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-home-button:hover {
+      background-color: var(--secondary-color);
+      transform: scale(1.05);
+    }
+
+    .back-home-button:active {
+      transform: scale(0.95);
+    }
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 1.8rem;
+      }
+      
+      .header-subtitle {
+        font-size: 1rem;
+      }
+      
+      .io-section {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<div class="header-section text-center">
+  <div class="container">
+    <h1 class="header-title">Java <span class="shine-text">Conversion</span> Programs</h1>
+    <p class="header-subtitle">Master fundamental Java concepts with these beginner-friendly programs</p>
+  </div>
+</div>
+
+<!-- Programs Grid -->
+<div class="container py-4">
+  <div class="row g-5">
+<!-- Program 28: Convert Integer to String -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-exchange-alt me-2"></i> Convert Integer to String</h5>
+      <p class="card-text">A program to convert an integer to a string.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program28Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program28Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-exchange-alt me-2"></i> Convert Integer to String</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to convert an integer to a string.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>123</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>String: "123"</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class ConvertIntegerToString {<br>
+    public static void main(String[] args) {<br>
+        int number = 123;<br>
+        String str = Integer.toString(number);<br>
+        System.out.println("String: \"" + str + "\"");<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use the method <code>Integer.toString()</code> to convert an integer to a string.</li>
+            <li>The result is a string representation of the integer.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 29: Convert String to Integer -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-exchange-alt me-2"></i> Convert String to Integer</h5>
+      <p class="card-text">A program to convert a string to an integer.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program29Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program29Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-exchange-alt me-2"></i> Convert String to Integer</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to convert a string to an integer.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"456"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Integer: 456</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class ConvertStringToInteger {<br>
+    public static void main(String[] args) {<br>
+        String str = "456";<br>
+        int number = Integer.parseInt(str);<br>
+        System.out.println("Integer: " + number);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use the method <code>Integer.parseInt()</code> to convert a string to an integer.</li>
+            <li>The result is an integer representation of the string.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 30: Convert Double to String -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-exchange-alt me-2"></i> Convert Double to String</h5>
+      <p class="card-text">A program to convert a double to a string.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program30Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program30Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-exchange-alt me-2"></i> Convert Double to String</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to convert a double to a string.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>3.14</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>String: "3.14"</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class ConvertDoubleToString {<br>
+    public static void main(String[] args) {<br>
+        double num = 3.14;<br>
+        String str = Double.toString(num);<br>
+        System.out.println("String: \"" + str + "\"");<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use the method <code>Double.toString()</code> to convert a double to a string.</li>
+            <li>The result is a string representation of the double.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 32: Convert Character to String -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-exchange-alt me-2"></i> Convert Character to String</h5>
+      <p class="card-text">A program to convert a character to a string.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program32Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program32Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-exchange-alt me-2"></i> Convert Character to String</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to convert a character to a string.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>'A'</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>String: "A"</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class ConvertCharToString {<br>
+    public static void main(String[] args) {<br>
+        char ch = 'A';<br>
+        String str = Character.toString(ch);<br>
+        System.out.println("String: " + str);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use the method <code>Character.toString()</code> to convert a character to a string.</li>
+            <li>The result is the string representation of the character.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 33: Convert String to Character Array -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-code me-2"></i> Convert String to Character Array</h5>
+      <p class="card-text">A program to convert a string to a character array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program33Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program33Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-code me-2"></i> Convert String to Character Array</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to convert a string to a character array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"Hello"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Character Array: ['H', 'e', 'l', 'l', 'o']</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class ConvertStringToCharArray {<br>
+    public static void main(String[] args) {<br>
+        String str = "Hello";<br>
+        char[] charArray = str.toCharArray();<br>
+        System.out.print("Character Array: [");<br>
+        for (int i = 0; i < charArray.length; i++) {<br>
+            System.out.print("'" + charArray[i] + "'");<br>
+            if (i < charArray.length - 1) {<br>
+                System.out.print(", ");<br>
+            }<br>
+        }<br>
+        System.out.println("]");<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use the <code>toCharArray()</code> method to convert a string into a character array.</li>
+            <li>Print each character in the array to display the character array format.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 34: Convert Integer to Binary, Octal, and Hexadecimal -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-exchange-alt me-2"></i> Convert Integer to Binary, Octal, and Hexadecimal</h5>
+      <p class="card-text">A program to convert an integer to binary, octal, and hexadecimal.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program34Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program34Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-exchange-alt me-2"></i> Convert Integer to Binary, Octal, and Hexadecimal</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to convert an integer to binary, octal, and hexadecimal.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>25</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Binary: 11001</p>
+            <p>Octal: 31</p>
+            <p>Hexadecimal: 19</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class ConvertInteger {<br>
+    public static void main(String[] args) {<br>
+        int number = 25;<br>
+        
+        // Convert to binary, octal, and hexadecimal<br>
+        String binary = Integer.toBinaryString(number);<br>
+        String octal = Integer.toOctalString(number);<br>
+        String hexadecimal = Integer.toHexString(number).toUpperCase();<br>
+
+        System.out.println("Binary: " + binary);<br>
+        System.out.println("Octal: " + octal);<br>
+        System.out.println("Hexadecimal: " + hexadecimal);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use the <code>Integer.toBinaryString()</code> method to convert the integer to binary.</li>
+            <li>Use the <code>Integer.toOctalString()</code> method to convert the integer to octal.</li>
+            <li>Use the <code>Integer.toHexString()</code> method to convert the integer to hexadecimal.</li>
+            <li>Convert the hexadecimal to uppercase for proper formatting.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 35: Convert Binary to Decimal -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-exchange-alt me-2"></i> Convert Binary to Decimal</h5>
+      <p class="card-text">A program to convert a binary number to a decimal.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program35Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program35Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-exchange-alt me-2"></i> Convert Binary to Decimal</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to convert a binary number to a decimal.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"1010"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Decimal: 10</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class BinaryToDecimal {<br>
+    public static void main(String[] args) {<br>
+        String binary = "1010"; // Binary number as a string<br>
+        int decimal = Integer.parseInt(binary, 2); // Convert binary to decimal using base 2<br>
+        
+        System.out.println("Decimal: " + decimal);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>The <code>Integer.parseInt()</code> method is used to convert a string to an integer.</li>
+            <li>The second argument of <code>parseInt()</code> specifies the base of the number (2 for binary).</li>
+            <li>The result is the decimal equivalent of the binary number.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 36: Convert Decimal to Binary -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-exchange-alt me-2"></i> Convert Decimal to Binary</h5>
+      <p class="card-text">A program to convert a decimal number to binary.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program36Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program36Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-exchange-alt me-2"></i> Convert Decimal to Binary</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to convert a decimal number to binary.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>13</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Binary: 1101</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class DecimalToBinary {<br>
+    public static void main(String[] args) {<br>
+        int decimal = 13; // Decimal number<br>
+        String binary = Integer.toBinaryString(decimal); // Convert decimal to binary<br>
+        
+        System.out.println("Binary: " + binary);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>The <code>Integer.toBinaryString()</code> method is used to convert a decimal number to its binary equivalent.</li>
+            <li>The result is the binary representation of the decimal number.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 37: Convert Fahrenheit to Celsius -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-thermometer-half me-2"></i> Convert Fahrenheit to Celsius</h5>
+      <p class="card-text">A program to convert temperature from Fahrenheit to Celsius.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program37Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program37Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-thermometer-half me-2"></i> Convert Fahrenheit to Celsius</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to convert temperature from Fahrenheit to Celsius.</p>
+        <p><strong>Formula:</strong> C = (F - 32) * 5/9</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>100 (Fahrenheit)</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Celsius: 37.78</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class FahrenheitToCelsius {<br>
+    public static void main(String[] args) {<br>
+        double fahrenheit = 100; // Fahrenheit temperature<br>
+        double celsius = (fahrenheit - 32) * 5 / 9; // Convert to Celsius<br>
+        
+        System.out.println("Celsius: " + String.format("%.2f", celsius));<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>The formula <strong>C = (F - 32) * 5/9</strong> is used to convert Fahrenheit to Celsius.</li>
+            <li>The result is displayed with two decimal places using <code>String.format("%.2f", celsius)</code>.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 34: Convert String to Double -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-random me-2"></i> Convert String to Double</h5>
+      <p class="card-text">A program to convert a string to a double.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program34Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program34Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-random me-2"></i> Convert String to Double</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to convert a string to a double.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>"2.718"</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Double: 2.718</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class StringToDouble {<br>
+    public static void main(String[] args) {<br>
+        String str = "2.718";<br>
+        double value = Double.parseDouble(str); // Convert String to double<br>
+
+        System.out.println("Double: " + value);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>The string <code>"2.718"</code> is converted to a <code>double</code> using <code>Double.parseDouble()</code>.</li>
+            <li>The converted value is printed directly.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+  </div>
+</div>
+
+<footer class="text-center">
+
+    <p>© 2023 Learning with Nitheesh. All rights reserved.</p>
+
+</footer>
+<button class="back-home-button" onclick="window.location.href='../'">
+     Back to Home
+  </button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

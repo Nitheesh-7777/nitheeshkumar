@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Basics Programs - Learning with Nitheesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="../../../assets/favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #4e73df;
+      --secondary-color: #2e59d9;
+      --accent-color: #f8f9fc;
+      --text-color: #5a5c69;
+      --light-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    body {
+      background-color: #f8f9fc;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .header-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 0.5rem 0;
+      margin-bottom: 2rem;
+      border-radius: 0 0 20px 20px;
+      box-shadow: var(--light-shadow);
+    }
+    
+    .header-title {
+      font-weight: 800;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .header-subtitle {
+      font-weight: 300;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .program-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--light-shadow);
+      transition: var(--transition);
+      border-left: 4px solid var(--primary-color);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .card-text {
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .btn-view {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      align-self: flex-start;
+    }
+    
+    .btn-view:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .modal-content {
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-header {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 10px 10px 0 0;
+      padding: 1.25rem;
+    }
+    
+    .modal-title {
+      font-weight: 700;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .code-block {
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    .explanation-section {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    
+    .explanation-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+    }
+    
+    .io-section {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .input-box, .output-box {
+      flex: 1;
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    
+    .io-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    footer {
+      /* background-color: #2c3e50; */
+      font-weight: 500;
+      color: rgb(14, 109, 186);
+      
+    }
+        .back-home-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-home-button:hover {
+      background-color: var(--secondary-color);
+      transform: scale(1.05);
+    }
+
+    .back-home-button:active {
+      transform: scale(0.95);
+    }
+     .shine-text {
+      display: inline-block;
+      font-weight: bold;
+      background-image: linear-gradient(
+        90deg,
+        #f5c542,
+        #fff8b5,
+        #ffd700,
+        #fff8b5,
+        #f5c542
+      );
+      background-size: 300% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: glitter-text 2s linear infinite;
+    }
+
+    @keyframes glitter-text {
+      0% {
+        background-position: 200% center;
+      }
+      100% {
+        background-position: -200% center;
+      }
+    }
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 1.8rem;
+      }
+      
+      .header-subtitle {
+        font-size: 1rem;
+      }
+      
+      .io-section {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<div class="header-section text-center">
+  <div class="container">
+    <h1 class="header-title">Java <span class="shine-text">Numbers Intermediate</span>  Programs </h1>
+    <p class="header-subtitle">Master fundamental Java concepts with these beginner-friendly programs</p>
+  </div>
+</div>
+
+<!-- Programs Grid -->
+<div class="container py-4">
+  <div class="row g-5">
+<!-- Program 79: Count Digits Without String Conversion -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sort-numeric-up me-2"></i> Count Digits Without String Conversion</h5>
+      <p class="card-text">Count the number of digits in a number without using string conversion.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program79Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program79Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sort-numeric-up me-2"></i> Count Digits Without String Conversion</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to count the number of digits in a number without converting it to a string.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>4567</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Digits Count: 4</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class CountDigits {
+    public static void main(String[] args) {
+        int num = 4567;
+        int count = 0;
+
+        while (num != 0) {
+            num /= 10;
+            count++;
+        }
+
+        System.out.println("Digits Count: " + count);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize a counter to 0.</li>
+            <li>Divide the number by 10 repeatedly until it becomes 0.</li>
+            <li>Each division removes one digit; increment the counter accordingly.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 80: Digital Root (Sum Until Single Digit) -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-infinity me-2"></i> Digital Root</h5>
+      <p class="card-text">Repeatedly sum digits of a number until a single digit remains.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program80Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program80Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-infinity me-2"></i> Digital Root</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to repeatedly sum the digits of a number until you get a single digit.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>9875</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Digital Root: 2</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class DigitalRoot {
+    public static void main(String[] args) {
+        int num = 9875;
+
+        while (num > 9) {
+            int sum = 0;
+            while (num != 0) {
+                sum += num % 10;
+                num /= 10;
+            }
+            num = sum;
+        }
+
+        System.out.println("Digital Root: " + num);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Keep summing the digits of the number.</li>
+            <li>If the sum is more than one digit, repeat the process.</li>
+            <li>Stop when a single-digit number is obtained.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 81: Harshad Number Check -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-divide me-2"></i> Harshad Number Check</h5>
+      <p class="card-text">Check whether a number is divisible by the sum of its digits.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program81Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program81Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-divide me-2"></i> Harshad Number Check</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to check whether a number is a Harshad (Niven) number.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>18</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Yes, it's a Harshad number.</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class HarshadNumber {
+    public static void main(String[] args) {
+        int num = 18;
+        int sum = 0, temp = num;
+
+        while (temp != 0) {
+            sum += temp % 10;
+            temp /= 10;
+        }
+
+        if (num % sum == 0) {
+            System.out.println("Yes, it's a Harshad number.");
+        } else {
+            System.out.println("No, it's not a Harshad number.");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Find the sum of the digits of the number.</li>
+            <li>Check if the original number is divisible by that sum.</li>
+            <li>If divisible, it is a Harshad number.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Find LCM Using GCD -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-equals me-2"></i> LCM Using GCD</h5>
+      <p class="card-text">Find the Least Common Multiple (LCM) of two numbers using GCD.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#lcmGcdModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="lcmGcdModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-equals me-2"></i> LCM Using GCD</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the Least Common Multiple (LCM) of two numbers using GCD.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>12, 18</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>LCM: 36</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class LCMUsingGCD {
+    public static void main(String[] args) {
+        int a = 12, b = 18;
+        int gcd = findGCD(a, b);
+        int lcm = (a * b) / gcd;
+
+        System.out.println("LCM: " + lcm);
+    }
+
+    public static int findGCD(int x, int y) {
+        while (y != 0) {
+            int temp = y;
+            y = x % y;
+            x = temp;
+        }
+        return x;
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use the Euclidean algorithm to find the GCD of the two numbers.</li>
+            <li>Apply the formula <code>LCM = (a × b) / GCD</code>.</li>
+            <li>Print the resulting LCM.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Trailing Zeroes in Factorial -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-percentage me-2"></i> Trailing Zeroes in Factorial</h5>
+      <p class="card-text">Count the number of trailing zeroes in the factorial of a number.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#trailingZeroesModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="trailingZeroesModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-percentage me-2"></i> Trailing Zeroes in Factorial</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to count the number of trailing zeroes in a factorial of a number.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>100</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Trailing Zeroes: 24</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class TrailingZeroesInFactorial {
+    public static void main(String[] args) {
+        int n = 100;
+        int count = 0;
+
+        for (int i = 5; n / i >= 1; i *= 5) {
+            count += n / i;
+        }
+
+        System.out.println("Trailing Zeroes: " + count);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Trailing zeroes are produced by multiples of 10, which are formed from 2 × 5.</li>
+            <li>Since factors of 2 are more frequent, count the number of 5s in the factorial.</li>
+            <li>Use a loop to divide n by 5, 25, 125... and accumulate the quotient.</li>
+            <li>Print the total count as the number of trailing zeroes.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Reverse Number Without String Conversion -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sync-alt me-2"></i> Reverse Number</h5>
+      <p class="card-text">Reverse a number without converting it to a string or using arrays.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#reverseNumberModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="reverseNumberModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sync-alt me-2"></i> Reverse Number</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to reverse a number without using string conversion or arrays.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>1234</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Reversed: 4321</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class ReverseNumber {
+    public static void main(String[] args) {
+        int num = 1234;
+        int reversed = 0;
+
+        while (num != 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+
+        System.out.println("Reversed: " + reversed);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize <code>reversed</code> to 0.</li>
+            <li>Extract the last digit using modulus (% 10).</li>
+            <li>Append the digit to <code>reversed</code> by multiplying the existing value by 10 and adding the digit.</li>
+            <li>Remove the last digit from the original number using integer division (/ 10).</li>
+            <li>Repeat until the number becomes 0 and print the reversed number.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Armstrong Number Check -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-cube me-2"></i> Armstrong Number</h5>
+      <p class="card-text">Check if a number is an Armstrong number.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#armstrongModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="armstrongModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-cube me-2"></i> Armstrong Number</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to check if a number is an Armstrong number.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>153</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Yes, it's an Armstrong number.</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class ArmstrongNumber {
+    public static void main(String[] args) {
+        int num = 153, original = num, result = 0;
+        int digits = String.valueOf(num).length();
+
+        while (num != 0) {
+            int digit = num % 10;
+            result += Math.pow(digit, digits);
+            num /= 10;
+        }
+
+        if (result == original)
+            System.out.println("Yes, it's an Armstrong number.");
+        else
+            System.out.println("No, it's not an Armstrong number.");
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Store the original number for comparison.</li>
+            <li>Count the number of digits.</li>
+            <li>Iterate through each digit, raising it to the power of the digit count and summing the result.</li>
+            <li>If the sum equals the original number, it's an Armstrong number.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Sum of First N Prime Numbers -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-plus-circle me-2"></i> Sum of First N Primes</h5>
+      <p class="card-text">Find the sum of the first N prime numbers.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#sumPrimesModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="sumPrimesModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-plus-circle me-2"></i> Sum of First N Prime Numbers</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the sum of the first N prime numbers.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>5</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Sum: 28</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class SumOfFirstNPrimes {
+    public static void main(String[] args) {
+        int n = 5; // Number of prime numbers to sum
+        int count = 0, num = 2, sum = 0;
+
+        while (count &lt; n) {
+            if (isPrime(num)) {
+                sum += num;
+                count++;
+            }
+            num++;
+        }
+
+        System.out.println("Sum: " + sum);
+    }
+
+    static boolean isPrime(int number) {
+        if (number &lt; 2) return false;
+        for (int i = 2; i &lt;= Math.sqrt(number); i++) {
+            if (number % i == 0) return false;
+        }
+        return true;
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize `count` to track how many primes we've found and `sum` to accumulate the total.</li>
+            <li>Use a helper function `isPrime` to check primality.</li>
+            <li>Loop through numbers and add primes to the sum until `count` reaches `n`.</li>
+            <li>Print the final sum.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: GCD of Array -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-divide me-2"></i> GCD of Array</h5>
+      <p class="card-text">Find the GCD of elements in an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#gcdArrayModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="gcdArrayModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-divide me-2"></i> GCD of Array</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the GCD of elements in an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[24, 36, 60]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>GCD: 12</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class GCDofArray {
+    public static void main(String[] args) {
+        int[] arr = {24, 36, 60};
+        int result = arr[0];
+
+        for (int i = 1; i &lt; arr.length; i++) {
+            result = gcd(result, arr[i]);
+        }
+
+        System.out.println("GCD: " + result);
+    }
+
+    static int gcd(int a, int b) {
+        if (b == 0)
+            return a;
+        return gcd(b, a % b);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize result as the first array element.</li>
+            <li>Iterate over the array and find the GCD of `result` with each element.</li>
+            <li>Use the Euclidean algorithm in the `gcd` function.</li>
+            <li>The final `result` holds the GCD of all elements.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Count Total Factors -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-calculator me-2"></i> Count Total Factors</h5>
+      <p class="card-text">Write a program to count the number of factors of a number.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#countFactorsModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="countFactorsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-calculator me-2"></i> Count Total Factors</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to count the number of factors of a number.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>12</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Total Factors: 6</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class CountTotalFactors {
+    public static void main(String[] args) {
+        int num = 12;
+        int count = 0;
+
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                count++;
+            }
+        }
+
+        System.out.println("Total Factors: " + count);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize count to 0.</li>
+            <li>Loop from 1 to the number, checking if the current number divides the input number.</li>
+            <li>Increment count if a divisor is found.</li>
+            <li>Print the total count of factors.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Palindrome Number Check -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sync-alt me-2"></i> Palindrome Number Check</h5>
+      <p class="card-text">Write a program to check if a number is a palindrome.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#palindromeNumberModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="palindromeNumberModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sync-alt me-2"></i> Palindrome Number Check</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to check if a number is a palindrome.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>1221</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Yes, it's a palindrome.</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class PalindromeNumberCheck {
+    public static void main(String[] args) {
+        int num = 1221;
+        int originalNum = num;
+        int reversed = 0;
+
+        while (num != 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+
+        if (originalNum == reversed) {
+            System.out.println("Yes, it's a palindrome.");
+        } else {
+            System.out.println("Not a palindrome.");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Store the original number.</li>
+            <li>Reverse the number by extracting digits and building a new reversed number.</li>
+            <li>Compare the reversed number with the original.</li>
+            <li>Print the result accordingly.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Decimal to Binary (Without Built-in Method) -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-code-branch me-2"></i> Decimal to Binary</h5>
+      <p class="card-text">Convert a decimal number to binary without using built-in methods.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#decimalToBinaryModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="decimalToBinaryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-code-branch me-2"></i> Decimal to Binary</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to convert decimal number to binary manually.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>10</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Binary: 1010</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class DecimalToBinary {
+    public static void main(String[] args) {
+        int num = 10;
+        String binary = "";
+
+        while (num > 0) {
+            int remainder = num % 2;
+            binary = remainder + binary;
+            num = num / 2;
+        }
+
+        System.out.println("Binary: " + binary);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Repeatedly divide the number by 2.</li>
+            <li>Store the remainder (0 or 1) each time.</li>
+            <li>Build the binary string by prepending each remainder.</li>
+            <li>Print the resulting binary string.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Sum of Two Squares -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-square-root-alt me-2"></i> Sum of Two Squares</h5>
+      <p class="card-text">Check if a number can be expressed as the sum of two square numbers.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#sumOfTwoSquaresModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="sumOfTwoSquaresModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-square-root-alt me-2"></i> Sum of Two Squares</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Check if a number can be expressed as the sum of two square numbers.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>50</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Yes (e.g., 7² + 1² = 49 + 1 = 50)</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class SumOfTwoSquares {
+    public static void main(String[] args) {
+        int n = 50;
+        boolean found = false;
+
+        for (int i = 0; i * i <= n; i++) {
+            int remainder = n - i * i;
+            int j = (int)Math.sqrt(remainder);
+
+            if (j * j == remainder) {
+                System.out.println("Yes (e.g., " + i + "² + " + j + "² = " + n + ")");
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No, it cannot be expressed as the sum of two squares.");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Iterate i from 0 to √n.</li>
+            <li>Calculate remainder = n - i².</li>
+            <li>Check if remainder is a perfect square (j² = remainder).</li>
+            <li>If yes, print the pair and break; otherwise, print no.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Sieve of Eratosthenes -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-filter me-2"></i> Sieve of Eratosthenes</h5>
+      <p class="card-text">Generate all prime numbers up to N using Sieve of Eratosthenes.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#sieveEratosthenesModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="sieveEratosthenesModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-filter me-2"></i> Sieve of Eratosthenes</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Generate all prime numbers up to N using the Sieve of Eratosthenes algorithm.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>30</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Primes: 2 3 5 7 11 13 17 19 23 29</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class SieveOfEratosthenes {
+    public static void main(String[] args) {
+        int n = 30;
+        boolean[] prime = new boolean[n + 1];
+        
+        // Initialize all entries as true. A value will be false if it is not a prime.
+        for (int i = 2; i <= n; i++) {
+            prime[i] = true;
+        }
+
+        for (int p = 2; p * p <= n; p++) {
+            if (prime[p]) {
+                for (int i = p * p; i <= n; i += p) {
+                    prime[i] = false;
+                }
+            }
+        }
+
+        System.out.print("Primes: ");
+        for (int i = 2; i <= n; i++) {
+            if (prime[i]) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize a boolean array marking all numbers as potential primes.</li>
+            <li>Start from the first prime number (2) and mark its multiples as non-prime.</li>
+            <li>Repeat for next unmarked numbers up to √n.</li>
+            <li>Print all numbers still marked as prime.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Digits That Divide the Number -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-calculator me-2"></i> Digits That Divide the Number</h5>
+      <p class="card-text">Count digits of a number that divide it completely.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#digitsDivideModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="digitsDivideModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-calculator me-2"></i> Digits That Divide the Number</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Count digits of a number that divide it completely.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>1012</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Count: 3</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class DigitsThatDivideNumber {
+    public static void main(String[] args) {
+        int num = 1012;
+        int temp = num;
+        int count = 0;
+
+        while (temp > 0) {
+            int digit = temp % 10;
+            temp /= 10;
+
+            if (digit != 0 && num % digit == 0) {
+                count++;
+            }
+        }
+
+        System.out.println("Count: " + count);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Extract each digit from the number.</li>
+            <li>Check if digit is non-zero and divides the number without remainder.</li>
+            <li>Increment count for every such digit.</li>
+            <li>Print the count.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Power of Number Using Recursion -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-power-off me-2"></i> Power of Number Using Recursion</h5>
+      <p class="card-text">Write a recursive function to calculate a<sup>b</sup>.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#powerRecursionModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="powerRecursionModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-power-off me-2"></i> Power of Number Using Recursion</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a recursive function to calculate a<sup>b</sup>.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>2<sup>5</sup></p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Result: 32</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class PowerUsingRecursion {
+    public static void main(String[] args) {
+        int base = 2;
+        int exponent = 5;
+        int result = power(base, exponent);
+        System.out.println("Result: " + result);
+    }
+
+    public static int power(int a, int b) {
+        if (b == 0) return 1;
+        return a * power(a, b - 1);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>If exponent is 0, return 1 (base case).</li>
+            <li>Recursively multiply the base a by the result of power(a, b-1).</li>
+            <li>Return the computed result.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Largest Prime Factor -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-search me-2"></i> Largest Prime Factor</h5>
+      <p class="card-text">Write a program to find the largest prime factor of a number.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#largestPrimeFactorModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="largestPrimeFactorModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-search me-2"></i> Largest Prime Factor</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the largest prime factor of a number.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>13195</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Largest Prime Factor: 29</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class LargestPrimeFactor {
+    public static void main(String[] args) {
+        long num = 13195;
+        long largestFactor = largestPrimeFactor(num);
+        System.out.println("Largest Prime Factor: " + largestFactor);
+    }
+
+    public static long largestPrimeFactor(long n) {
+        long maxPrime = -1;
+
+        // Divide out the factor 2
+        while (n % 2 == 0) {
+            maxPrime = 2;
+            n /= 2;
+        }
+
+        // Divide out odd factors
+        for (long i = 3; i <= Math.sqrt(n); i += 2) {
+            while (n % i == 0) {
+                maxPrime = i;
+                n /= i;
+            }
+        }
+
+        // If n is a prime number > 2
+        if (n > 2)
+            maxPrime = n;
+
+        return maxPrime;
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Divide the number by 2 repeatedly to remove all factors of 2.</li>
+            <li>Check for odd factors from 3 up to the square root of the remaining number.</li>
+            <li>Update the largest prime factor whenever a factor divides the number.</li>
+            <li>If the remaining number is greater than 2, it is a prime and largest factor.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Perfect Square Check using Binary Search -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-calculator me-2"></i> Perfect Square Check (Binary Search)</h5>
+      <p class="card-text">Check whether a number is a perfect square using binary search.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#perfectSquareBinarySearchModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="perfectSquareBinarySearchModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-calculator me-2"></i> Perfect Square Check (Binary Search)</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Check whether a number is a perfect square using binary search.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>64</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Yes, it's a perfect square.</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class PerfectSquareBinarySearch {
+    public static void main(String[] args) {
+        int num = 64;
+        if (isPerfectSquare(num)) {
+            System.out.println("Yes, it's a perfect square.");
+        } else {
+            System.out.println("No, it's not a perfect square.");
+        }
+    }
+
+    public static boolean isPerfectSquare(int num) {
+        if (num < 0) return false;
+
+        int low = 0, high = num;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            long square = (long) mid * mid;
+
+            if (square == num) {
+                return true;
+            } else if (square < num) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return false;
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use binary search between 0 and the number.</li>
+            <li>Calculate mid and its square in each iteration.</li>
+            <li>If square equals the number, it's a perfect square.</li>
+            <li>If square is less, move low to mid+1; else move high to mid-1.</li>
+            <li>If no exact square found, number is not a perfect square.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Nearest Palindrome Number -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-code-branch me-2"></i> Nearest Palindrome Number</h5>
+      <p class="card-text">Find the nearest palindrome to a given number.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#nearestPalindromeModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="nearestPalindromeModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-code-branch me-2"></i> Nearest Palindrome Number</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Find the nearest palindrome to a given number.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>123</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Nearest Palindrome: 121</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class NearestPalindrome {
+    public static void main(String[] args) {
+        int num = 123;
+        System.out.println("Nearest Palindrome: " + nearestPalindrome(num));
+    }
+
+    public static int nearestPalindrome(int num) {
+        if (num < 0) return 0; // No negative palindrome considered
+        
+        int lower = num - 1;
+        int higher = num + 1;
+        
+        while (true) {
+            if (isPalindrome(lower)) return lower;
+            if (isPalindrome(higher)) return higher;
+            lower--;
+            higher++;
+        }
+    }
+
+    public static boolean isPalindrome(int num) {
+        int original = num;
+        int reversed = 0;
+        while (num > 0) {
+            int digit = num % 10;
+            reversed = reversed * 10 + digit;
+            num /= 10;
+        }
+        return original == reversed;
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Start checking numbers less than and greater than the input simultaneously.</li>
+            <li>Use the palindrome check helper method for each candidate.</li>
+            <li>Return the first palindrome found closest to the input.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program: Count Set Bits in Binary Representation -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-microchip me-2"></i> Count Set Bits in Binary Representation</h5>
+      <p class="card-text">Count the number of 1s in the binary representation of a number.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#countSetBitsModal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="countSetBitsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-microchip me-2"></i> Count Set Bits in Binary Representation</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Count the number of 1s in the binary representation of a number.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>13</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Set Bits: 3</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class CountSetBits {
+    public static void main(String[] args) {
+        int num = 13;
+        System.out.println("Set Bits: " + countSetBits(num));
+    }
+
+    public static int countSetBits(int num) {
+        int count = 0;
+        while (num > 0) {
+            count += (num & 1);  // Check last bit
+            num >>= 1;           // Right shift
+        }
+        return count;
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize count to 0.</li>
+            <li>Use bitwise AND with 1 to check if the last bit is set.</li>
+            <li>Right shift the number by 1 and repeat until number becomes 0.</li>
+            <li>Return the total count of set bits.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+<footer class="text-center">
+    <p>© 2023 Learning with Nitheesh. All rights reserved.</p>
+</footer>
+<button class="back-home-button" onclick="window.location.href='../../'">
+     Back to Home
+</button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

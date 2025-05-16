@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Basics Programs - Learning with Nitheesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="../../assets/favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #4e73df;
+      --secondary-color: #2e59d9;
+      --accent-color: #f8f9fc;
+      --text-color: #5a5c69;
+      --light-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+      .shine-text {
+      display: inline-block;
+      font-weight: bold;
+      background-image: linear-gradient(
+        90deg,
+        #f5c542,
+        #fff8b5,
+        #ffd700,
+        #fff8b5,
+        #f5c542
+      );
+      background-size: 300% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: glitter-text 2s linear infinite;
+    }
+
+    @keyframes glitter-text {
+      0% {
+        background-position: 200% center;
+      }
+      100% {
+        background-position: -200% center;
+      }
+    }
+    body {
+      background-color: #f8f9fc;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .header-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 0.5rem 0;
+      margin-bottom: 2rem;
+      border-radius: 0 0 20px 20px;
+      box-shadow: var(--light-shadow);
+    }
+    
+    .header-title {
+      font-weight: 800;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .header-subtitle {
+      font-weight: 300;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .program-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--light-shadow);
+      transition: var(--transition);
+      border-left: 4px solid var(--primary-color);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .card-text {
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .btn-view {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      align-self: flex-start;
+    }
+    
+    .btn-view:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .modal-content {
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-header {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 10px 10px 0 0;
+      padding: 1.25rem;
+    }
+    
+    .modal-title {
+      font-weight: 700;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .code-block {
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    .explanation-section {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    
+    .explanation-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+    }
+    
+    .io-section {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .input-box, .output-box {
+      flex: 1;
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    
+    .io-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    footer {
+      /* background-color: #2c3e50; */
+      font-weight: 500;
+      color: rgb(14, 109, 186);
+      
+    }
+        .back-home-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-home-button:hover {
+      background-color: var(--secondary-color);
+      transform: scale(1.05);
+    }
+
+    .back-home-button:active {
+      transform: scale(0.95);
+    }
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 1.8rem;
+      }
+      
+      .header-subtitle {
+        font-size: 1rem;
+      }
+      
+      .io-section {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<div class="header-section text-center">
+  <div class="container">
+    <h1 class="header-title">Java <span class="shine-text"> Arrays </span> Programs</h1>
+    <p class="header-subtitle">Master fundamental Java concepts with these beginner-friendly programs</p>
+  </div>
+</div>
+
+<!-- Programs Grid -->
+<div class="container py-4">
+  <div class="row g-5">
+
+
+
+    <!-- Program 1: Find the Largest Element in an Array -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-arrow-up me-2"></i> Largest in Array</h5>
+      <p class="card-text">A program to find the largest element in an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program1Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program1Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-arrow-up me-2"></i> Largest in Array</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the largest element in an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>{5, 12, 3, 7, 20}</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Largest element: 20</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class LargestElement {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {5, 12, 3, 7, 20};<br>
+        int max = arr[0];<br>
+
+        for (int num : arr) {<br>
+            if (num > max) {<br>
+                max = num;<br>
+            }<br>
+        }<br>
+
+        System.out.println("Largest element: " + max);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize the maximum value as the first element.</li>
+            <li>Iterate through the array to compare and update the maximum.</li>
+            <li>Print the largest element found.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Program 2: Find the Smallest Element in an Array -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-arrow-down me-2"></i> Smallest in Array</h5>
+      <p class="card-text">A program to find the smallest element in an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program2Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program2Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-arrow-down me-2"></i> Smallest in Array</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the smallest element in an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>{8, 2, 15, 1, 10}</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Smallest element: 1</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class SmallestElement {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {8, 2, 15, 1, 10};<br>
+        int min = arr[0];<br>
+
+        for (int num : arr) {<br>
+            if (num < min) {<br>
+                min = num;<br>
+            }<br>
+        }<br>
+
+        System.out.println("Smallest element: " + min);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize the minimum value as the first element.</li>
+            <li>Iterate through the array to compare and update the minimum.</li>
+            <li>Print the smallest element found.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 3: Sum of All Elements in an Array -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-plus me-2"></i> Sum of Elements</h5>
+      <p class="card-text">A program to find the sum of all elements in an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program3Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program3Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-plus me-2"></i> Sum of Elements</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the sum of all elements in an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>{4, 6, 8, 2, 5}</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Sum: 25</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class SumArray {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {4, 6, 8, 2, 5};<br>
+        int sum = 0;<br>
+
+        for (int num : arr) {<br>
+            sum += num;<br>
+        }<br>
+
+        System.out.println("Sum: " + sum);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize sum as 0.</li>
+            <li>Iterate over the array and add each element to sum.</li>
+            <li>Print the sum after the loop.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Program 4: Reverse an Array -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-retweet me-2"></i> Reverse Array</h5>
+      <p class="card-text">A program to reverse an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program4Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program4Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-retweet me-2"></i> Reverse Array</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to reverse an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>{1, 2, 3, 4, 5}</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Reversed array: {5, 4, 3, 2, 1}</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class ReverseArray {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {1, 2, 3, 4, 5};<br>
+
+        System.out.print("Reversed array: {");<br>
+        for (int i = arr.length - 1; i >= 0; i--) {<br>
+            System.out.print(arr[i]);<br>
+            if (i != 0) System.out.print(", ");<br>
+        }<br>
+        System.out.println("}");<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Start from the last index of the array and go to the first.</li>
+            <li>Print each element during the loop.</li>
+            <li>Use a condition to format commas properly.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 5: Count Even and Odd Numbers in an Array -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sort-numeric-up-alt me-2"></i> Count Even & Odd</h5>
+      <p class="card-text">A program to count the number of even and odd numbers in an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program5Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program5Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sort-numeric-up-alt me-2"></i> Count Even & Odd</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to count the number of even and odd numbers in an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>{10, 3, 8, 7, 6, 2}</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Even count: 4<br>Odd count: 2</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class CountEvenOdd {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {10, 3, 8, 7, 6, 2};<br>
+        int even = 0, odd = 0;<br>
+
+        for (int num : arr) {<br>
+            if (num % 2 == 0)<br>
+                even++;<br>
+            else<br>
+                odd++;<br>
+        }<br>
+
+        System.out.println("Even count: " + even);<br>
+        System.out.println("Odd count: " + odd);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize counters for even and odd as 0.</li>
+            <li>Loop through each element of the array.</li>
+            <li>Use modulus to determine even or odd and increment counters.</li>
+            <li>Print both counters.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Program 6: Find the Second Largest Element in an Array -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-trophy me-2"></i> Second Largest</h5>
+      <p class="card-text">A program to find the second largest element in an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program6Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program6Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-trophy me-2"></i> Second Largest</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the second largest element in an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>{12, 45, 67, 23, 89, 55}</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Second largest element: 67</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class SecondLargest {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {12, 45, 67, 23, 89, 55};<br>
+        int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE;<br>
+
+        for (int num : arr) {<br>
+            if (num > first) {<br>
+                second = first;<br>
+                first = num;<br>
+            } else if (num > second && num != first) {<br>
+                second = num;<br>
+            }<br>
+        }<br>
+
+        System.out.println("Second largest element: " + second);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize two variables to track largest and second largest.</li>
+            <li>Loop through array updating the two variables as needed.</li>
+            <li>Ensure duplicates are handled and final result is printed.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 7: Sort an Array in Ascending Order -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sort-amount-up-alt me-2"></i> Sort Array</h5>
+      <p class="card-text">A program to sort an array in ascending order.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program7Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program7Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sort-amount-up-alt me-2"></i> Sort Array</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to sort an array in ascending order.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>{5, 2, 9, 1, 6}</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Sorted array: {1, 2, 5, 6, 9}</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class SortArray {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {5, 2, 9, 1, 6};<br>
+        java.util.Arrays.sort(arr);<br>
+
+        System.out.print("Sorted array: ");<br>
+        for (int num : arr) {<br>
+            System.out.print(num + " ");<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use Java's built-in Arrays.sort() to sort the array.</li>
+            <li>Iterate and print the sorted elements.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Program 8: Find Duplicate Elements in an Array -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-copy me-2"></i> Find Duplicates</h5>
+      <p class="card-text">A program to find duplicate elements in an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program8Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program8Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-copy me-2"></i> Find Duplicates</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find duplicate elements in an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>{3, 6, 8, 3, 2, 6, 9}</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Duplicate elements: 3, 6</p>
+          </div>
+        </div>
+        <div class="code-block">
+import java.util.HashSet;
+
+public class FindDuplicates {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {3, 6, 8, 3, 2, 6, 9};<br>
+        HashSet<Integer> seen = new HashSet<>();<br>
+        HashSet<Integer> duplicates = new HashSet<>();<br>
+
+        for (int num : arr) {<br>
+            if (!seen.add(num)) {<br>
+                duplicates.add(num);<br>
+            }<br>
+        }<br>
+
+        System.out.print("Duplicate elements: ");<br>
+        for (int dup : duplicates) {<br>
+            System.out.print(dup + " ");<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use a HashSet to track seen elements.</li>
+            <li>On encountering a duplicate, add it to a duplicates set.</li>
+            <li>Print the duplicate elements.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Program 9: Merge Two Arrays -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-compress-alt me-2"></i> Merge Arrays</h5>
+      <p class="card-text">A program to merge two arrays into one.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program9Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program9Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-compress-alt me-2"></i> Merge Arrays</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to merge two arrays into one.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>{1, 3, 5} and {2, 4, 6}</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Merged array: {1, 3, 5, 2, 4, 6}</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class MergeArrays {<br>
+    public static void main(String[] args) {<br>
+        int[] arr1 = {1, 3, 5};<br>
+        int[] arr2 = {2, 4, 6};<br>
+        int[] merged = new int[arr1.length + arr2.length];<br>
+
+        for (int i = 0; i < arr1.length; i++) {<br>
+            merged[i] = arr1[i];<br>
+        }<br>
+        for (int i = 0; i < arr2.length; i++) {<br>
+            merged[arr1.length + i] = arr2[i];<br>
+        }<br>
+
+        System.out.print("Merged array: ");<br>
+        for (int num : merged) {<br>
+            System.out.print(num + " ");<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Create a new array with a size equal to the sum of the two input arrays.</li>
+            <li>Copy elements of the first and second arrays into the new array.</li>
+            <li>Print the merged array.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Program 10: Left Rotate Array by One -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-undo me-2"></i> Left Rotate</h5>
+      <p class="card-text">A program to left rotate an array by one position.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program10Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="program10Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-undo me-2"></i> Left Rotate</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to left rotate an array by one position.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>{10, 20, 30, 40, 50}</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Rotated array: {20, 30, 40, 50, 10}</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class LeftRotateByOne {<br>
+    public static void main(String[] args) {<br>
+        int[] arr = {10, 20, 30, 40, 50};<br>
+        int first = arr[0];<br>
+
+        for (int i = 0; i < arr.length - 1; i++) {<br>
+            arr[i] = arr[i + 1];<br>
+        }<br>
+        arr[arr.length - 1] = first;<br>
+
+        System.out.print("Rotated array: ");<br>
+        for (int num : arr) {<br>
+            System.out.print(num + " ");<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Store the first element of the array.</li>
+            <li>Shift all other elements to the left.</li>
+            <li>Place the first element at the end of the array.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+
+
+<footer class="text-center">
+    <p>© 2023 Learning with Nitheesh. All rights reserved.</p>
+</footer>
+<button class="back-home-button" onclick="window.location.href='../'">
+     Back to Home
+</button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

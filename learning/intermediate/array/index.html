@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Basics Programs - Learning with Nitheesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="../../../assets/favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #4e73df;
+      --secondary-color: #2e59d9;
+      --accent-color: #f8f9fc;
+      --text-color: #5a5c69;
+      --light-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    body {
+      background-color: #f8f9fc;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .header-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 0.5rem 0;
+      margin-bottom: 2rem;
+      border-radius: 0 0 20px 20px;
+      box-shadow: var(--light-shadow);
+    }
+    
+    .header-title {
+      font-weight: 800;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .header-subtitle {
+      font-weight: 300;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .program-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--light-shadow);
+      transition: var(--transition);
+      border-left: 4px solid var(--primary-color);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .card-text {
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .btn-view {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      align-self: flex-start;
+    }
+    
+    .btn-view:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .modal-content {
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-header {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 10px 10px 0 0;
+      padding: 1.25rem;
+    }
+    
+    .modal-title {
+      font-weight: 700;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .code-block {
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    .explanation-section {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    
+    .explanation-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+    }
+    
+    .io-section {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .input-box, .output-box {
+      flex: 1;
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    
+    .io-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    footer {
+      /* background-color: #2c3e50; */
+      font-weight: 500;
+      color: rgb(14, 109, 186);
+      
+    }
+        .back-home-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-home-button:hover {
+      background-color: var(--secondary-color);
+      transform: scale(1.05);
+    }
+
+    .back-home-button:active {
+      transform: scale(0.95);
+    }
+     .shine-text {
+      display: inline-block;
+      font-weight: bold;
+      background-image: linear-gradient(
+        90deg,
+        #f5c542,
+        #fff8b5,
+        #ffd700,
+        #fff8b5,
+        #f5c542
+      );
+      background-size: 300% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: glitter-text 2s linear infinite;
+    }
+
+    @keyframes glitter-text {
+      0% {
+        background-position: 200% center;
+      }
+      100% {
+        background-position: -200% center;
+      }
+    }
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 1.8rem;
+      }
+      
+      .header-subtitle {
+        font-size: 1rem;
+      }
+      
+      .io-section {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<div class="header-section text-center">
+  <div class="container">
+    <h1 class="header-title">Java <span class="shine-text">Array Intermediate</span> Programs</h1>
+    <p class="header-subtitle">Master fundamental Java concepts with these beginner-friendly programs</p>
+  </div>
+</div>
+
+<!-- Programs Grid -->
+<div class="container py-4">
+  <div class="row g-5">
+<!-- Program 59: Find Second Largest Element -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sort-numeric-up-alt me-2"></i> Second Largest Element</h5>
+      <p class="card-text">Find the second largest element in an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program59Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program59Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sort-numeric-up-alt me-2"></i> Second Largest Element</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the second largest element in an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[12, 35, 1, 10, 34, 1]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Second Largest: 34</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class SecondLargest {
+    public static void main(String[] args) {
+        int[] arr = {12, 35, 1, 10, 34, 1};
+        int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE;
+
+        for (int num : arr) {
+            if (num > first) {
+                second = first;
+                first = num;
+            } else if (num > second && num != first) {
+                second = num;
+            }
+        }
+
+        System.out.println("Second Largest: " + second);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize first and second to the minimum integer value.</li>
+            <li>Traverse the array and update first and second accordingly.</li>
+            <li>Skip updating second if the current number equals the first.</li>
+            <li>Print the second largest number.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 60: Check if Array is Sorted -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-check-circle me-2"></i> Check Array Sorted</h5>
+      <p class="card-text">Check if the array is sorted in ascending order.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program60Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program60Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i> Check Array Sorted</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to check if the array is sorted in ascending order.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[1, 2, 3, 4, 5]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Yes, the array is sorted.</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class CheckSortedArray {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        boolean isSorted = true;
+
+        for (int i = 0; i &lt; arr.length - 1; i++) {
+            if (arr[i] &gt; arr[i + 1]) {
+                isSorted = false;
+                break;
+            }
+        }
+
+        if (isSorted)
+            System.out.println("Yes, the array is sorted.");
+        else
+            System.out.println("No, the array is not sorted.");
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Loop through the array and compare each element with the next.</li>
+            <li>If any element is greater than the next one, the array is not sorted.</li>
+            <li>Use a boolean flag to track if the array remains sorted.</li>
+            <li>Print the appropriate message based on the result.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 61: Find Missing Number in Array -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-question-circle me-2"></i> Find Missing Number</h5>
+      <p class="card-text">Find the missing number in an array from 1 to n+1.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program61Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program61Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-question-circle me-2"></i> Find Missing Number</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Find the missing number in an array of size n containing numbers from 1 to n+1.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[1, 2, 4, 5, 6]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Missing Number: 3</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class FindMissingNumber {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 4, 5, 6};
+        int n = arr.length + 1;
+        int total = n * (n + 1) / 2;
+
+        int sum = 0;
+        for (int num : arr) {
+            sum += num;
+        }
+
+        int missing = total - sum;
+        System.out.println("Missing Number: " + missing);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Calculate expected sum of numbers from 1 to n+1 using formula: n(n+1)/2.</li>
+            <li>Calculate actual sum of array elements.</li>
+            <li>Subtract actual sum from expected sum to find the missing number.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 62: Remove Duplicates from Array -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-clone me-2"></i> Remove Duplicates</h5>
+      <p class="card-text">Remove duplicate elements from an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program62Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program62Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-clone me-2"></i> Remove Duplicates</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to remove duplicate elements from an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[1, 2, 2, 3, 4, 4, 5]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>[1, 2, 3, 4, 5]</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.*;
+
+public class RemoveDuplicates {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 2, 3, 4, 4, 5};
+        Set&lt;Integer&gt; set = new LinkedHashSet&lt;&gt;();
+
+        for (int num : arr) {
+            set.add(num);
+        }
+
+        System.out.println(set);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Create a LinkedHashSet to preserve insertion order and eliminate duplicates.</li>
+            <li>Iterate through the array and add each element to the set.</li>
+            <li>Print the set which now contains only unique elements.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 63: Reverse Array In-Place -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sync-alt me-2"></i> Reverse Array In-Place</h5>
+      <p class="card-text">Reverse the elements of an array in-place.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program63Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program63Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sync-alt me-2"></i> Reverse Array In-Place</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to reverse the elements of an array in-place.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[1, 2, 3, 4, 5]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>[5, 4, 3, 2, 1]</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.Arrays;
+
+public class ReverseArray {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        int start = 0, end = arr.length - 1;
+
+        while (start &lt; end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+
+        System.out.println(Arrays.toString(arr));
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize two pointers, start at 0 and end at last index.</li>
+            <li>Swap elements at start and end until they meet.</li>
+            <li>This reverses the array in-place without using extra space.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 64: Merge Two Sorted Arrays -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-code-branch me-2"></i> Merge Two Sorted Arrays</h5>
+      <p class="card-text">Merge two sorted arrays into one sorted array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program64Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program64Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-code-branch me-2"></i> Merge Two Sorted Arrays</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Merge two sorted arrays into one sorted array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[1, 3, 5], [2, 4, 6]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>[1, 2, 3, 4, 5, 6]</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.Arrays;
+
+public class MergeSortedArrays {
+    public static void main(String[] args) {
+        int[] a = {1, 3, 5};
+        int[] b = {2, 4, 6};
+        int[] merged = new int[a.length + b.length];
+
+        int i = 0, j = 0, k = 0;
+        while (i &lt; a.length &amp;&amp; j &lt; b.length) {
+            if (a[i] &lt;= b[j]) {
+                merged[k++] = a[i++];
+            } else {
+                merged[k++] = b[j++];
+            }
+        }
+
+        while (i &lt; a.length) {
+            merged[k++] = a[i++];
+        }
+
+        while (j &lt; b.length) {
+            merged[k++] = b[j++];
+        }
+
+        System.out.println(Arrays.toString(merged));
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize three pointers for array A, B, and the merged array.</li>
+            <li>Compare elements and insert the smaller one into the merged array.</li>
+            <li>Copy any remaining elements from both arrays.</li>
+            <li>Print the merged array.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 65: Count Even and Odd Numbers -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-calculator me-2"></i> Count Even and Odd Numbers</h5>
+      <p class="card-text">Count the number of even and odd elements in an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program65Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program65Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-calculator me-2"></i> Count Even and Odd Numbers</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Count the number of even and odd elements in an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[1, 2, 3, 4, 5]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Even: 2, Odd: 3</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class CountEvenOdd {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        int evenCount = 0, oddCount = 0;
+
+        for (int num : arr) {
+            if (num % 2 == 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+        }
+
+        System.out.println("Even: " + evenCount + ", Odd: " + oddCount);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize counters for even and odd numbers.</li>
+            <li>Iterate through the array and use modulus operator to check parity.</li>
+            <li>Increment respective counters and print the result.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 66: Find All Pairs with Given Sum -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-link me-2"></i> Find Pairs with Given Sum</h5>
+      <p class="card-text">Find all pairs in the array whose sum equals a given number.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program66Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program66Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-link me-2"></i> Find Pairs with Given Sum</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Find all pairs in the array whose sum equals a given number.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Array: [1, 5, 7, -1], Sum = 6</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Pairs: (1, 5), (7, -1)</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.HashMap;
+
+public class PairSum {
+    public static void main(String[] args) {
+        int[] arr = {1, 5, 7, -1};
+        int sum = 6;
+        findPairs(arr, sum);
+    }
+
+    static void findPairs(int[] arr, int sum) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int num : arr) {
+            int complement = sum - num;
+            if (map.containsKey(complement)) {
+                int count = map.get(complement);
+                for (int i = 0; i < count; i++) {
+                    System.out.println("Pair: (" + complement + ", " + num + ")");
+                }
+            }
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use a hash map to track the count of each number.</li>
+            <li>For each element, calculate its complement (sum - element).</li>
+            <li>If the complement is found in the map, print the pair.</li>
+            <li>Update the count of the current element in the map.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 67: Find Majority Element -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-user-check me-2"></i> Find Majority Element</h5>
+      <p class="card-text">Find the element that appears more than n/2 times in the array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program67Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program67Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-user-check me-2"></i> Find Majority Element</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Find the element that appears more than n/2 times.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[3, 3, 4, 2, 3, 3, 5, 3]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Majority Element: 3</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class MajorityElement {
+    public static void main(String[] args) {
+        int[] arr = {3, 3, 4, 2, 3, 3, 5, 3};
+        int majority = findMajorityElement(arr);
+        if (majority != -1) {
+            System.out.println("Majority Element: " + majority);
+        } else {
+            System.out.println("No Majority Element");
+        }
+    }
+
+    static int findMajorityElement(int[] arr) {
+        int count = 0, candidate = -1;
+
+        for (int num : arr) {
+            if (count == 0) {
+                candidate = num;
+            }
+            count += (num == candidate) ? 1 : -1;
+        }
+
+        // Verify the candidate
+        count = 0;
+        for (int num : arr) {
+            if (num == candidate) {
+                count++;
+            }
+        }
+
+        return count > arr.length / 2 ? candidate : -1;
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use Boyer-Moore majority vote algorithm to find a candidate.</li>
+            <li>Reset count and verify if the candidate occurs more than n/2 times.</li>
+            <li>If it does, return it as the majority element.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 68: Rotate Array by K Positions -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sync-alt me-2"></i> Rotate Array by K Positions</h5>
+      <p class="card-text">Rotate the array to the right by k steps.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program68Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program68Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sync-alt me-2"></i> Rotate Array by K Positions</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Rotate the array to the right by k steps.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Array: [1, 2, 3, 4, 5, 6, 7], k = 3</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>[5, 6, 7, 1, 2, 3, 4]</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class RotateArray {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 6, 7};
+        int k = 3;
+        rotate(arr, k);
+
+        System.out.print("Rotated Array: [");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i != arr.length - 1) System.out.print(", ");
+        }
+        System.out.println("]");
+    }
+
+    static void rotate(int[] arr, int k) {
+        int n = arr.length;
+        k = k % n; // handle if k > n
+
+        reverse(arr, 0, n - 1);
+        reverse(arr, 0, k - 1);
+        reverse(arr, k, n - 1);
+    }
+
+    static void reverse(int[] arr, int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use the reversal algorithm for array rotation.</li>
+            <li>Reverse the entire array.</li>
+            <li>Reverse the first k elements.</li>
+            <li>Reverse the remaining elements.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 69: Count Frequencies of Elements -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-list-ol me-2"></i> Count Frequencies of Elements</h5>
+      <p class="card-text">Count frequency of each element in an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program69Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program69Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-list-ol me-2"></i> Count Frequencies of Elements</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Count frequency of each element in an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[10, 20, 20, 10, 10, 20, 5, 20]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>10: 3, 20: 4, 5: 1</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.HashMap;
+import java.util.Map;
+
+public class CountFrequencies {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 20, 10, 10, 20, 5, 20};
+        Map<Integer, Integer> frequencyMap = new HashMap<>();
+
+        for (int num : arr) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+        }
+
+        System.out.print("Frequencies: ");
+        for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+            System.out.print(entry.getKey() + ": " + entry.getValue() + ", ");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use a HashMap to store element frequencies.</li>
+            <li>Iterate through the array and update the counts.</li>
+            <li>Print each element and its frequency.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 70: Find Kth Smallest Element -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-sort-numeric-down me-2"></i> Find Kth Smallest Element</h5>
+      <p class="card-text">Find the k-th smallest element in an unsorted array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program70Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program70Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sort-numeric-down me-2"></i> Find Kth Smallest Element</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Find the k-th smallest element in an unsorted array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Array: [7, 10, 4, 3, 20, 15], k = 3</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Kth Smallest: 7</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.Arrays;
+
+public class KthSmallestElement {
+    public static void main(String[] args) {
+        int[] arr = {7, 10, 4, 3, 20, 15};
+        int k = 3;
+
+        Arrays.sort(arr);
+        System.out.println("Kth Smallest: " + arr[k - 1]);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Sort the array in ascending order using Arrays.sort().</li>
+            <li>Access the element at index k-1 as the kth smallest element.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 71: Find Leaders in the Array -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-star me-2"></i> Find Leaders in the Array</h5>
+      <p class="card-text">Find all leaders in the array (element greater than all to its right).</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program71Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program71Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-star me-2"></i> Find Leaders in the Array</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Find all leaders in the array (element greater than all to its right).</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[16, 17, 4, 3, 5, 2]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Leaders: 17, 5, 2</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.ArrayList;
+import java.util.Collections;
+
+public class FindLeaders {
+    public static void main(String[] args) {
+        int[] arr = {16, 17, 4, 3, 5, 2};
+        ArrayList<Integer> leaders = new ArrayList<>();
+        
+        int maxFromRight = arr[arr.length - 1];
+        leaders.add(maxFromRight);
+        
+        for (int i = arr.length - 2; i >= 0; i--) {
+            if (arr[i] > maxFromRight) {
+                maxFromRight = arr[i];
+                leaders.add(maxFromRight);
+            }
+        }
+        
+        Collections.reverse(leaders);
+        System.out.print("Leaders: ");
+        for (int leader : leaders) {
+            System.out.print(leader + ", ");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Start from the rightmost element, consider it as the current maximum.</li>
+            <li>Traverse the array from right to left.</li>
+            <li>If an element is greater than the current maximum, update the maximum and add it to the leaders list.</li>
+            <li>Reverse the list to display leaders in original order.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 72: Find First Repeating Element -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-exclamation-triangle me-2"></i> Find First Repeating Element</h5>
+      <p class="card-text">Find the first repeating element in an array.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program72Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program72Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-exclamation-triangle me-2"></i> Find First Repeating Element</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Find the first repeating element in an array.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[1, 2, 3, 4, 5, 2, 1]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>First Repeating: 2</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.HashSet;
+
+public class FirstRepeatingElement {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5, 2, 1};
+        HashSet<Integer> seen = new HashSet<>();
+        int firstRepeating = -1;
+        
+        for (int num : arr) {
+            if (seen.contains(num)) {
+                firstRepeating = num;
+                break;
+            }
+            seen.add(num);
+        }
+        
+        if (firstRepeating != -1) {
+            System.out.println("First Repeating: " + firstRepeating);
+        } else {
+            System.out.println("No repeating elements found.");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Traverse the array and track seen elements using a HashSet.</li>
+            <li>If an element is already in the set, it's the first repeating element.</li>
+            <li>Print the element and stop further checks.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 73: Find Subarray with Given Sum -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-list-alt me-2"></i> Find Subarray with Given Sum</h5>
+      <p class="card-text">Find a continuous subarray that adds to a given sum.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program73Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program73Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-list-alt me-2"></i> Find Subarray with Given Sum</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Find a continuous subarray that adds to a given sum.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>Array: [1, 4, 20, 3, 10, 5], Sum = 33</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Subarray: [20, 3, 10]</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class SubarrayWithGivenSum {
+    public static void main(String[] args) {
+        int[] arr = {1, 4, 20, 3, 10, 5};
+        int sum = 33;
+        
+        int currentSum = arr[0], start = 0;
+        boolean found = false;
+
+        for (int i = 1; i <= arr.length; i++) {
+            // Shrink the window as long as currentSum is greater than sum and start < i-1
+            while (currentSum > sum && start < i - 1) {
+                currentSum -= arr[start];
+                start++;
+            }
+            // Check if currentSum equals sum
+            if (currentSum == sum) {
+                System.out.print("Subarray: [");
+                for (int j = start; j < i; j++) {
+                    System.out.print(arr[j]);
+                    if (j < i - 1) System.out.print(", ");
+                }
+                System.out.println("]");
+                found = true;
+                break;
+            }
+            // Add next element if not reached end
+            if (i < arr.length) {
+                currentSum += arr[i];
+            }
+        }
+
+        if (!found) {
+            System.out.println("No subarray found with given sum.");
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use a sliding window approach with two pointers.</li>
+            <li>Expand window by adding elements to current sum.</li>
+            <li>Shrink window from the left if current sum exceeds target.</li>
+            <li>When current sum matches target, print the subarray.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 74: Move All Zeros to End -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-arrows-alt-h me-2"></i> Move All Zeros to End</h5>
+      <p class="card-text">Move all 0s to the end of array without changing the order of other elements.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program74Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program74Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-arrows-alt-h me-2"></i> Move All Zeros to End</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Move all 0s to the end of array without changing the order of other elements.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[0, 1, 0, 3, 12]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>[1, 3, 12, 0, 0]</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class MoveZerosToEnd {
+    public static void main(String[] args) {
+        int[] arr = {0, 1, 0, 3, 12};
+        int count = 0; // Count of non-zero elements
+
+        // Move all non-zero elements to the front
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != 0) {
+                arr[count++] = arr[i];
+            }
+        }
+
+        // Fill remaining positions with zero
+        while (count < arr.length) {
+            arr[count++] = 0;
+        }
+
+        // Print the modified array
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) System.out.print(", ");
+        }
+        System.out.println("]");
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Traverse array and move all non-zero elements to the front.</li>
+            <li>Fill the rest of the array with zeros.</li>
+            <li>This keeps the relative order of non-zero elements unchanged.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 75: Find Union and Intersection -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-project-diagram me-2"></i> Find Union and Intersection</h5>
+      <p class="card-text">Find the union and intersection of two arrays.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program75Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program75Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-project-diagram me-2"></i> Find Union and Intersection</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Find the union and intersection of two arrays.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[1, 2, 4], [2, 4, 6]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Union: [1, 2, 4, 6]
+Intersection: [2, 4]</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>import java.util.*;
+
+public class UnionIntersection {
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 4};
+        int[] arr2 = {2, 4, 6};
+
+        Set<Integer> unionSet = new LinkedHashSet<>();
+        Set<Integer> intersectionSet = new LinkedHashSet<>();
+
+        // Add elements from first array to union set
+        for (int num : arr1) {
+            unionSet.add(num);
+        }
+
+        // For second array, add to union, and if present in first, add to intersection
+        for (int num : arr2) {
+            if (!unionSet.add(num)) { // add() returns false if already present
+                intersectionSet.add(num);
+            }
+        }
+
+        System.out.println("Union: " + unionSet);
+        System.out.println("Intersection: " + intersectionSet);
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use sets to avoid duplicates.</li>
+            <li>Add all elements of first array to union set.</li>
+            <li>Add elements of second array to union; if already present, add to intersection.</li>
+            <li>Print union and intersection sets.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 76: Maximum Product Subarray -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-chart-line me-2"></i> Maximum Product Subarray</h5>
+      <p class="card-text">Find the contiguous subarray within an array with the largest product.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program76Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program76Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-chart-line me-2"></i> Maximum Product Subarray</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Find the contiguous subarray within an array with the largest product.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[2, 3, -2, 4]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Max Product: 6</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class MaxProductSubarray {
+    public static void main(String[] args) {
+        int[] arr = {2, 3, -2, 4};
+        
+        int maxProduct = maxProductSubarray(arr);
+        System.out.println("Max Product: " + maxProduct);
+    }
+
+    public static int maxProductSubarray(int[] nums) {
+        int maxSoFar = nums[0];
+        int minSoFar = nums[0];
+        int result = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            int tempMax = maxSoFar;
+            maxSoFar = Math.max(Math.max(nums[i], maxSoFar * nums[i]), minSoFar * nums[i]);
+            minSoFar = Math.min(Math.min(nums[i], tempMax * nums[i]), minSoFar * nums[i]);
+            result = Math.max(result, maxSoFar);
+        }
+
+        return result;
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Track maximum and minimum products up to current index (handle negative numbers).</li>
+            <li>At each step, update max and min considering the current element.</li>
+            <li>Keep updating the result with the maximum product found.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 77: Replace Every Element With Greatest on Right -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-exchange-alt me-2"></i> Replace Every Element With Greatest on Right</h5>
+      <p class="card-text">Replace every element with the greatest element on its right.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program77Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program77Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-exchange-alt me-2"></i> Replace Every Element With Greatest on Right</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Replace every element with the greatest element on its right.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[16, 17, 4, 3, 5, 2]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>[17, 5, 5, 5, 2, -1]</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class ReplaceWithGreatestOnRight {
+    public static void main(String[] args) {
+        int[] arr = {16, 17, 4, 3, 5, 2};
+        replaceElements(arr);
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i != arr.length - 1) System.out.print(", ");
+        }
+        System.out.println("]");
+    }
+
+    public static void replaceElements(int[] arr) {
+        int maxRight = -1;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            int temp = arr[i];
+            arr[i] = maxRight;
+            if (temp > maxRight) {
+                maxRight = temp;
+            }
+        }
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Traverse array from right to left.</li>
+            <li>Keep track of the maximum element to the right.</li>
+            <li>Replace current element with the max right value and update max if needed.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 78: Kadane’s Algorithm (Max Subarray Sum) -->
+<div class="col-md-6 col-lg-3">
+  <div class="program-card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-wave-square me-2"></i> Kadane’s Algorithm (Max Subarray Sum)</h5>
+      <p class="card-text">Find the maximum sum of a contiguous subarray.</p>
+      <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program78Modal">
+        <i class="fas fa-eye me-1"></i> View Program
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="program78Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-wave-square me-2"></i> Kadane’s Algorithm (Max Subarray Sum)</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the maximum sum of a contiguous subarray.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>[-2, 1, -3, 4, -1, 2, 1, -5, 4]</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <pre>Max Sum: 6 (Subarray: [4, -1, 2, 1])</pre>
+          </div>
+        </div>
+        <div class="code-block">
+<pre><code>public class KadanesAlgorithm {
+    public static void main(String[] args) {
+        int[] arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        int maxSum = Integer.MIN_VALUE;
+        int currentSum = 0;
+        int start = 0, end = 0, tempStart = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            currentSum += arr[i];
+            if (currentSum > maxSum) {
+                maxSum = currentSum;
+                start = tempStart;
+                end = i;
+            }
+            if (currentSum < 0) {
+                currentSum = 0;
+                tempStart = i + 1;
+            }
+        }
+
+        System.out.println("Max Sum: " + maxSum + " (Subarray: " + java.util.Arrays.toString(java.util.Arrays.copyOfRange(arr, start, end + 1)) + ")");
+    }
+}
+</code></pre>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use a variable to keep track of current subarray sum.</li>
+            <li>Reset current sum to 0 if it becomes negative.</li>
+            <li>Update max sum and subarray indexes when a new max is found.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+<footer class="text-center">
+    <p>© 2023 Learning with Nitheesh. All rights reserved.</p>
+</footer>
+<button class="back-home-button" onclick="window.location.href='../../'">
+     Back to Home
+</button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,3937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Number Programs - Learning with Nitheesh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="shortcut icon" href="../../assets/favicon.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-color: #4e73df;
+      --secondary-color: #2e59d9;
+      --accent-color: #f8f9fc;
+      --text-color: #5a5c69;
+      --light-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+     .shine-text {
+      display: inline-block;
+      font-weight: bold;
+      background-image: linear-gradient(
+        90deg,
+        #f5c542,
+        #fff8b5,
+        #ffd700,
+        #fff8b5,
+        #f5c542
+      );
+      background-size: 300% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: glitter-text 2s linear infinite;
+    }
+
+    @keyframes glitter-text {
+      0% {
+        background-position: 200% center;
+      }
+      100% {
+        background-position: -200% center;
+      }
+    }
+    body {
+      background-color: #f8f9fc;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .header-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 0.5rem 0;
+      margin-bottom: 2rem;
+      border-radius: 0 0 20px 20px;
+      box-shadow: var(--light-shadow);
+    }
+    
+    .header-title {
+      font-weight: 800;
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .header-subtitle {
+      font-weight: 300;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .program-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--light-shadow);
+      transition: var(--transition);
+      border-left: 4px solid var(--primary-color);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .program-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .card-text {
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .btn-view {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      align-self: flex-start;
+    }
+    
+    .btn-view:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .modal-content {
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-header {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 10px 10px 0 0;
+      padding: 1.25rem;
+    }
+    
+    .modal-title {
+      font-weight: 700;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+    }
+    
+    .code-block {
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    
+    .explanation-section {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    
+    .explanation-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.75rem;
+    }
+    
+    .io-section {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .input-box, .output-box {
+      flex: 1;
+      background-color: #f5f7fa;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    
+    .io-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    footer {
+      /* background-color: #2c3e50; */
+      font-weight: 500;
+      color: rgb(14, 109, 186);
+      
+    }
+        .back-home-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .back-home-button:hover {
+      background-color: var(--secondary-color);
+      transform: scale(1.05);
+    }
+
+    .back-home-button:active {
+      transform: scale(0.95);
+    }
+    @media (max-width: 768px) {
+      .header-title {
+        font-size: 1.8rem;
+      }
+      
+      .header-subtitle {
+        font-size: 1rem;
+      }
+      
+      .io-section {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header-section text-center">
+      <div class="container">
+        <h1 class="header-title">Java <span class="shine-text">Number</span>  Programs</h1>
+        <p class="header-subtitle">Master fundamental Java concepts with these beginner-friendly programs</p>
+      </div>
+    </div>
+
+    <!-- Programs Grid -->
+    <div class="container py-4">
+      <div class="row g-5">
+
+        <!-- Program 1 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="program-card">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-code me-2"></i> Hello, World!</h5>
+              <p class="card-text">The traditional first program in any programming language that demonstrates basic syntax.</p>
+              <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program1Modal">
+                <i class="fas fa-eye me-1"></i> View Program
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="program-card">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-calculator me-2"></i> Add Two Numbers</h5>
+              <p class="card-text">Learn how to perform basic arithmetic operations and variable assignment in Java.</p>
+              <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program2Modal">
+                <i class="fas fa-eye me-1"></i> View Program
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="program-card">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-check-circle me-2"></i> Find Even or Odd</h5>
+              <p class="card-text">Understand conditional statements and the modulus operator in Java.</p>
+              <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program3Modal">
+                <i class="fas fa-eye me-1"></i> View Program
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Program 4 -->
+        <div class="col-md-6 col-lg-3">
+        <div class="program-card">
+            <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-greater-than me-2"></i> Find the Largest Number</h5>
+            <p class="card-text">A program to compare two numbers and find the larger one using conditional logic.</p>
+            <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program4Modal">
+                <i class="fas fa-eye me-1"></i> View Program
+            </button>
+            </div>
+        </div>
+        </div>
+        <!-- Program 5 -->
+        <!-- Program 5: Simple Interest Calculation -->
+        <div class="col-md-6 col-lg-3">
+        <div class="program-card">
+            <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-percentage me-2"></i> Simple Interest Calculation</h5>
+            <p class="card-text">A program to calculate simple interest using the formula SI = (P × R × T) / 100.</p>
+            <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program5Modal">
+                <i class="fas fa-eye me-1"></i> View Program
+            </button>
+            </div>
+        </div>
+        </div>
+        <!-- Program 6: Check Leap Year -->
+        <div class="col-md-6 col-lg-3">
+        <div class="program-card">
+            <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-calendar-alt me-2"></i> Check Leap Year</h5>
+            <p class="card-text">A program to check whether a given year is a leap year.</p>
+            <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program6Modal">
+                <i class="fas fa-eye me-1"></i> View Program
+            </button>
+            </div>
+        </div>
+        </div>
+        <!-- Program 7: Swap Two Numbers Without Third Variable -->
+        <div class="col-md-6 col-lg-3">
+        <div class="program-card">
+            <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-exchange-alt me-2"></i> Swap Without Third Variable</h5>
+            <p class="card-text">A program to swap two numbers without using a third variable.</p>
+            <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program7Modal">
+                <i class="fas fa-eye me-1"></i> View Program
+            </button>
+            </div>
+        </div>
+        </div>
+        <!-- Program 8: Factorial of a Number -->
+        <div class="col-md-6 col-lg-3">
+        <div class="program-card">
+            <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-calculator me-2"></i> Factorial of a Number</h5>
+            <p class="card-text">A program to find the factorial of a number.</p>
+            <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program8Modal">
+                <i class="fas fa-eye me-1"></i> View Program
+            </button>
+            </div>
+        </div>
+        </div>
+        <!-- Program 9: Reverse a Number -->
+        <div class="col-md-6 col-lg-3">
+        <div class="program-card">
+            <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-undo me-2"></i> Reverse a Number</h5>
+            <p class="card-text">A program to reverse a given number.</p>
+            <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program9Modal">
+                <i class="fas fa-eye me-1"></i> View Program
+            </button>
+            </div>
+        </div>
+        </div>
+    <!-- Program 10: Sum of Digits -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-plus-circle me-2"></i> Sum of Digits</h5>
+          <p class="card-text">A program to find the sum of digits of a number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program10Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Program 11: Check Prime Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-check-circle me-2"></i> Check Prime Number</h5>
+          <p class="card-text">A program to check whether a number is prime or not.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program11Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Program 12: Generate Multiplication Table -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-times-circle me-2"></i> Multiplication Table</h5>
+          <p class="card-text">A program to print the multiplication table of a given number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program12Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Program 13: Find the Largest of Three Numbers -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-greater-than me-2"></i> Largest of Three Numbers</h5>
+          <p class="card-text">A program to find the largest of three numbers.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program13Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Program 14: Check Palindrome Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-sync-alt me-2"></i> Palindrome Number</h5>
+          <p class="card-text">A program to check whether a number is a palindrome.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program14Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- 15 -->
+    <!-- Program 15: Fibonacci Series -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-chart-line me-2"></i> Fibonacci Series</h5>
+          <p class="card-text">A program to print the Fibonacci series up to N terms.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program15Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Program 1: Armstrong Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-bolt me-2"></i> Armstrong Number</h5>
+          <p class="card-text">A program to check whether a number is an Armstrong number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program16Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="program16Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-bolt me-2"></i> Armstrong Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is an Armstrong number.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>153</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>153 is an Armstrong number</p>
+              </div>
+            </div>
+            <div class="code-block">
+              public class ArmstrongNumber { <br>
+                  public static void main(String[] args) {<br>
+                      int num = 153, sum = 0, temp = num;<br>
+                      while (temp != 0) {<br>
+                          int digit = temp % 10;<br>
+                          sum += digit * digit * digit;<br>
+                          temp /= 10;<br>
+                      }<br>
+                      if (sum == num)<br>
+                          System.out.println(num + " is an Armstrong number");<br>
+                      else<br>
+                          System.out.println(num + " is not an Armstrong number");<br>
+                  }<br>
+              }<br>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Initialize the number <code>num = 153</code>.</li>
+                <li>Loop through the digits and calculate the cube of each digit.</li>
+                <li>If the sum of cubes equals the number, it is an Armstrong number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 2: Perfect Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-check-circle me-2"></i> Perfect Number</h5>
+          <p class="card-text">A program to check whether a number is a Perfect number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program17Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="program17Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i> Perfect Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Perfect number (sum of its factors excluding itself equals the number).</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>28</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>28 is a Perfect Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+            public class PerfectNumber {<br>
+                public static void main(String[] args) {<br>
+                    int num = 28, sum = 0;<br>
+                    for (int i = 1; i < num; i++) {<br>
+                        if (num % i == 0) sum += i;<br>
+                    }<br>
+                    if (sum == num)<br>
+                        System.out.println(num + " is a Perfect Number");<br>
+                    else<br>
+                        System.out.println(num + " is not a Perfect Number");<br>
+                }<br>
+            }<br>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Initialize the number <code>num = 28</code>.</li>
+                <li>Loop from 1 to num-1 and find divisors.</li>
+                <li>Sum all divisors and compare with the number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 3: Strong Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-dumbbell me-2"></i> Strong Number</h5>
+          <p class="card-text">A program to check if a number is a Strong number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program18Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="program18Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-dumbbell me-2"></i> Strong Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check if a number is a Strong number (sum of factorials of digits equals the number).</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>145</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>145 is a Strong Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+              public class StrongNumber {<br>
+                  public static void main(String[] args) {<br>
+                      int num = 145, sum = 0, temp = num;<br>
+                      while (temp > 0) {<br>
+                          int digit = temp % 10;<br>
+                          int fact = 1;<br>
+                          for (int i = 1; i <= digit; i++) fact *= i;<br>
+                          sum += fact;<br>
+                          temp /= 10;<br>
+                      }<br>
+                      if (sum == num)<br>
+                          System.out.println(num + " is a Strong Number");<br>
+                      else<br>
+                          System.out.println(num + " is not a Strong Number");<br>
+                  }<br>
+              }<br>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Extract digits of the number.</li>
+                <li>Compute factorial of each digit and sum them.</li>
+                <li>If the sum equals the original number, it is a Strong number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 4: Automorphic Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-square-root-alt me-2"></i> Automorphic Number</h5>
+          <p class="card-text">A program to check if a number is Automorphic (its square ends with the number itself).</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program19Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="program19Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-square-root-alt me-2"></i> Automorphic Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check if a number is Automorphic (its square ends with the number itself).</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>25</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>25 is an Automorphic Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+              public class AutomorphicNumber {<br>
+                  public static void main(String[] args) {<br>
+                      int num = 25;<br>
+                      int square = num * num;<br>
+                      String numStr = Integer.toString(num);<br>
+                      String squareStr = Integer.toString(square);<br>
+                      if (squareStr.endsWith(numStr))<br>
+                          System.out.println(num + " is an Automorphic Number");<br>
+                      else<br>
+                          System.out.println(num + " is not an Automorphic Number");<br>
+                  }<br>
+              }<br>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Calculate the square of the number.</li>
+                <li>Check if the square ends with the number itself.</li>
+                <li>If yes, it is an Automorphic Number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Program 5: Harshad Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-divide me-2"></i> Harshad Number</h5>
+          <p class="card-text">A program to check if a number is a Harshad number (divisible by the sum of its digits).</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program20Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="program20Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-divide me-2"></i> Harshad Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check if a number is a Harshad number (divisible by the sum of its digits).</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>18</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>18 is a Harshad Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+              public class HarshadNumber {<br>
+                  public static void main(String[] args) {<br>
+                      int num = 18, sum = 0, temp = num;<br>
+                      while (temp > 0) {<br>
+                          sum += temp % 10;<br>
+                          temp /= 10;<br>
+                      }<br>
+                      if (num % sum == 0)<br>
+                          System.out.println(num + " is a Harshad Number");<br>
+                      else<br>
+                          System.out.println(num + " is not a Harshad Number");<br>
+                  }<br>
+              }<br>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Calculate the sum of the digits of the number.</li>
+                <li>Check if the number is divisible by this sum.</li>
+                <li>If yes, it is a Harshad Number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 6: Duck Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-egg me-2"></i> Duck Number</h5>
+          <p class="card-text">A program to check whether a number is a Duck number (contains at least one zero but not at the beginning).</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program21Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="program21Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-egg me-2"></i> Duck Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Duck number (contains at least one zero but not at the beginning).</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>1023</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>1023 is a Duck Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+              public class DuckNumber {<br>
+                  public static void main(String[] args) {<br>
+                      String num = "1023";<br>
+                      if (num.charAt(0) != '0' && num.contains("0"))<br>
+                          System.out.println(num + " is a Duck Number");<br>
+                      else<br>
+                          System.out.println(num + " is not a Duck Number");<br>
+                  }<br>
+              }<br>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Check if the number does not start with zero.</li>
+                <li>Check if it contains at least one zero elsewhere.</li>
+                <li>If both conditions are met, it is a Duck Number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Program 7: Neon Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-lightbulb me-2"></i> Neon Number</h5>
+          <p class="card-text">A program to check whether a number is a Neon number (sum of digits of square of the number equals the number).</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program22Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="program22Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-lightbulb me-2"></i> Neon Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Neon number (sum of digits of square of the number equals the number).</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>9</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>9 is a Neon Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+              public class NeonNumber {<br>
+                  public static void main(String[] args) {<br>
+                      int num = 9;<br>
+                      int square = num * num;<br>
+                      int sum = 0;<br>
+                      while (square > 0) {<br>
+                          sum += square % 10;<br>
+                          square /= 10;<br>
+                      }<br>
+                      if (sum == num)<br>
+                          System.out.println(num + " is a Neon Number");<br>
+                      else<br>
+                          System.out.println(num + " is not a Neon Number");<br>
+                  }<br>
+              }<br>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Calculate the square of the number.</li>
+                <li>Sum the digits of the square.</li>
+                <li>If the sum equals the original number, it's a Neon Number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 8: Kaprekar Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-square-root-alt me-2"></i> Kaprekar Number</h5>
+          <p class="card-text">A program to check whether a number is a Kaprekar number (sum of parts of its square equals the number).</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program23Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="program23Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-square-root-alt me-2"></i> Kaprekar Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Kaprekar number (sum of parts of its square equals the number).</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>45</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>45 is a Kaprekar Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+              public class KaprekarNumber {<br>
+                  public static void main(String[] args) {<br>
+                      int num = 45;<br>
+                      int square = num * num;<br>
+                      String str = String.valueOf(square);<br>
+                      int d = str.length() / 2;<br>
+                      int left = (d == 0) ? 0 : Integer.parseInt(str.substring(0, d));<br>
+                      int right = Integer.parseInt(str.substring(d));<br>
+                      if (left + right == num)<br>
+                          System.out.println(num + " is a Kaprekar Number");<br>
+                      else<br>
+                          System.out.println(num + " is not a Kaprekar Number");<br>
+                  }<br>
+              }<br>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Square the number and convert it to a string.</li>
+                <li>Split the string into two parts and convert to integers.</li>
+                <li>If their sum equals the original number, it is a Kaprekar Number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Program 9: Magic Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-magic me-2"></i> Magic Number</h5>
+          <p class="card-text">A program to check if a number is a Magic number (repeated sum of digits results in 1).</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program24Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="program24Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-magic me-2"></i> Magic Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check if a number is a Magic number (sum of digits repeated until a single digit results in 1).</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>19</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>19 is a Magic Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+              public class MagicNumber {<br>
+                  public static void main(String[] args) {<br>
+                      int num = 19;<br>
+                      int sum = num;<br>
+                      while (sum > 9) {<br>
+                          int temp = sum;<br>
+                          sum = 0;<br>
+                          while (temp > 0) {<br>
+                              sum += temp % 10;<br>
+                              temp /= 10;<br>
+                          }<br>
+                      }<br>
+                      if (sum == 1)<br>
+                          System.out.println(num + " is a Magic Number");<br>
+                      else<br>
+                          System.out.println(num + " is not a Magic Number");<br>
+                  }<br>
+              }<br>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Keep summing digits of the number until a single digit remains.</li>
+                <li>If that digit is 1, the number is a Magic Number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Program 10: HCF (GCD) -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-divide me-2"></i> HCF (GCD)</h5>
+          <p class="card-text">A program to find the HCF (GCD) of two numbers.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program25Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="program25Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-divide me-2"></i> HCF (GCD)</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to find the Highest Common Factor (HCF) or Greatest Common Divisor (GCD) of two numbers.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>36, 60</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>HCF of 36 and 60 is 12</p>
+              </div>
+            </div>
+            <div class="code-block">
+              public class HCF {<br>
+                  public static void main(String[] args) {<br>
+                      int a = 36, b = 60;<br>
+                      int hcf = 1;<br>
+                      for (int i = 1; i <= a || i <= b; i++) {<br>
+                          if (a % i == 0 && b % i == 0)<br>
+                              hcf = i;<br>
+                      }<br>
+                      System.out.println("HCF of " + a + " and " + b + " is " + hcf);<br>
+                  }<br>
+              }<br>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Iterate from 1 to the maximum of the two numbers.</li>
+                <li>Check which numbers divide both values exactly.</li>
+                <li>The largest of such numbers is the HCF.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Additional programs (2 to 10) will follow this structure, changing titles, code, input/output, and explanations appropriately. -->
+    <!-- Program 26: Automorphic Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-check-circle me-2"></i> Automorphic Number</h5>
+          <p class="card-text">Check whether a number is an Automorphic number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program26Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program26Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i> Automorphic Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is an Automorphic number.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>76</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>Automorphic Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+            <pre><code>public class AutomorphicNumber {
+                public static void main(String[] args) {
+                    int num = 76;
+                    int square = num * num;
+
+                    String numStr = String.valueOf(num);
+                    String squareStr = String.valueOf(square);
+
+                    if (squareStr.endsWith(numStr)) {
+                        System.out.println("Automorphic Number");
+                    } else {
+                        System.out.println("Not an Automorphic Number");
+                    }
+                }
+            }
+            </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Calculate the square of the number.</li>
+                <li>Convert both the number and its square to strings.</li>
+                <li>Check if the square ends with the number using <code>endsWith()</code> method.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 27: Peterson Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-check-circle me-2"></i> Peterson Number</h5>
+          <p class="card-text">Check whether a number is a Peterson number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program27Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program27Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i> Peterson Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Peterson number.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>145</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>Peterson Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+                <pre><code>public class PetersonNumber {
+                    public static void main(String[] args) {
+                        int num = 145;
+                        int temp = num;
+                        int sum = 0;
+
+                        while (temp > 0) {
+                            int digit = temp % 10;
+                            sum += factorial(digit);
+                            temp /= 10;
+                        }
+
+                        if (sum == num) {
+                            System.out.println("Peterson Number");
+                        } else {
+                            System.out.println("Not a Peterson Number");
+                        }
+                    }
+
+                    static int factorial(int n) {
+                        int fact = 1;
+                        for (int i = 2; i <= n; i++) {
+                            fact *= i;
+                        }
+                        return fact;
+                    }
+                }
+                </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Extract each digit of the number using modulus and division.</li>
+                <li>Compute the factorial of each digit.</li>
+                <li>Sum the factorials and compare the result with the original number.</li>
+                <li>If equal, it's a Peterson number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 28: Sunny Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-sun me-2"></i> Sunny Number</h5>
+          <p class="card-text">Check whether a number is a Sunny number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program28Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program28Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-sun me-2"></i> Sunny Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Sunny number.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>80</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>Sunny Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+              <pre><code>public class SunnyNumber {
+                  public static void main(String[] args) {
+                      int num = 80;
+                      int nextNum = num + 1;
+                      double sqrt = Math.sqrt(nextNum);
+
+                      if (sqrt == (int) sqrt) {
+                          System.out.println("Sunny Number");
+                      } else {
+                          System.out.println("Not a Sunny Number");
+                      }
+                  }
+              }
+              </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Add 1 to the number.</li>
+                <li>Check if the square root of the result is an integer.</li>
+                <li>If it is, the number is a Sunny number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 30: Fascinating Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-magic me-2"></i> Fascinating Number</h5>
+          <p class="card-text">Check whether a number is a Fascinating number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program30Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program30Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-magic me-2"></i> Fascinating Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Fascinating number.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>192</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>Fascinating Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+            <pre><code>public class FascinatingNumber {
+                public static void main(String[] args) {
+                    int num = 192;
+
+                    if (num < 100) {
+                        System.out.println("Not a Fascinating Number");
+                        return;
+                    }
+
+                    String result = "" + num + (num * 2) + (num * 3);
+
+                    boolean isFascinating = result.length() == 9;
+                    for (char c = '1'; c <= '9' && isFascinating; c++) {
+                        if (result.indexOf(c) == -1 || result.replace(String.valueOf(c), "").length() != result.length() - 1) {
+                            isFascinating = false;
+                        }
+                    }
+
+                    if (isFascinating) {
+                        System.out.println("Fascinating Number");
+                    } else {
+                        System.out.println("Not a Fascinating Number");
+                    }
+                }
+            }
+            </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Concatenate the number with its multiples by 2 and 3.</li>
+                <li>Check if the resulting string has all digits from 1 to 9 exactly once.</li>
+                <li>If true, the number is Fascinating.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 31: Keith Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-list-ol me-2"></i> Keith Number</h5>
+          <p class="card-text">Check whether a number is a Keith number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program31Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program31Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-list-ol me-2"></i> Keith Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Keith number.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>197</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>Keith Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>import java.util.ArrayList;
+
+    public class KeithNumber {
+        public static void main(String[] args) {
+            int num = 197;
+            int temp = num;
+            ArrayList&lt;Integer&gt; terms = new ArrayList&lt;&gt;();
+
+            // Extract digits and add to list
+            while (temp &gt; 0) {
+                terms.add(0, temp % 10);
+                temp /= 10;
+            }
+
+            int n = terms.size();
+            int sum = 0, i = n;
+
+            while (sum &lt; num) {
+                sum = 0;
+                for (int j = i - n; j &lt; i; j++) {
+                    sum += terms.get(j);
+                }
+                terms.add(sum);
+                i++;
+            }
+
+            if (sum == num) {
+                System.out.println("Keith Number");
+            } else {
+                System.out.println("Not a Keith Number");
+            }
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Start with the digits of the number.</li>
+                <li>Generate the sequence by summing the previous <code>n</code> digits.</li>
+                <li>If the number appears in the sequence, it is a Keith number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 32: Neon Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-bolt me-2"></i> Neon Number</h5>
+          <p class="card-text">Check whether a number is a Neon number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program32Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program32Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-bolt me-2"></i> Neon Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Neon number.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>9</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>Neon Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class NeonNumber {
+        public static void main(String[] args) {
+            int num = 9;
+            int square = num * num;
+            int sum = 0;
+
+            while (square &gt; 0) {
+                sum += square % 10;
+                square /= 10;
+            }
+
+            if (sum == num) {
+                System.out.println("Neon Number");
+            } else {
+                System.out.println("Not a Neon Number");
+            }
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Square the number.</li>
+                <li>Sum the digits of the square.</li>
+                <li>If the sum equals the original number, it is a Neon number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 33: Spy Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-search-dollar me-2"></i> Spy Number</h5>
+          <p class="card-text">Check whether a number is a Spy number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program33Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program33Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-search-dollar me-2"></i> Spy Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Spy number.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>123</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <p>Spy Number</p>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class SpyNumber {
+        public static void main(String[] args) {
+            int num = 123;
+            int sum = 0, product = 1;
+            int temp = num;
+
+            while (temp &gt; 0) {
+                int digit = temp % 10;
+                sum += digit;
+                product *= digit;
+                temp /= 10;
+            }
+
+            if (sum == product) {
+                System.out.println("Spy Number");
+            } else {
+                System.out.println("Not a Spy Number");
+            }
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Extract each digit of the number.</li>
+                <li>Calculate the sum and the product of the digits.</li>
+                <li>If both are equal, the number is a Spy number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 34: ATM Program -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-university me-2"></i> ATM Program</h5>
+          <p class="card-text">Simulate basic ATM operations using a menu-driven approach.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program34Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program34Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-university me-2"></i> ATM Program</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a Java program to simulate basic ATM operations such as withdraw, deposit, and check balance using a menu-driven approach.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>1 (Check Balance), 2 (Withdraw), 3 (Deposit)</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Current Balance: 1000
+    Withdrawn: 500
+    New Balance: 500</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>import java.util.Scanner;
+
+    public class ATMProgram {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            int balance = 1000;
+
+            while (true) {
+                System.out.println("\nATM Menu:");
+                System.out.println("1. Check Balance");
+                System.out.println("2. Withdraw");
+                System.out.println("3. Deposit");
+                System.out.println("4. Exit");
+                System.out.print("Choose an option: ");
+                int choice = scanner.nextInt();
+
+                switch (choice) {
+                    case 1:
+                        System.out.println("Current Balance: " + balance);
+                        break;
+                    case 2:
+                        System.out.print("Enter amount to withdraw: ");
+                        int withdraw = scanner.nextInt();
+                        if (withdraw &gt; balance) {
+                            System.out.println("Insufficient Balance.");
+                        } else {
+                            balance -= withdraw;
+                            System.out.println("Withdrawn: " + withdraw);
+                            System.out.println("New Balance: " + balance);
+                        }
+                        break;
+                    case 3:
+                        System.out.print("Enter amount to deposit: ");
+                        int deposit = scanner.nextInt();
+                        balance += deposit;
+                        System.out.println("Deposited: " + deposit);
+                        System.out.println("New Balance: " + balance);
+                        break;
+                    case 4:
+                        System.out.println("Thank you for using the ATM.");
+                        return;
+                    default:
+                        System.out.println("Invalid option.");
+                }
+            }
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>A menu is shown to the user to perform operations: check balance, withdraw, deposit, or exit.</li>
+                <li>Based on user input, the corresponding action is performed on the balance.</li>
+                <li>Validations are included for insufficient balance and invalid choices.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 35: Autobiographical Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-id-card me-2"></i> Autobiographical Number</h5>
+          <p class="card-text">Check whether a number is an Autobiographical number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program35Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program35Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-id-card me-2"></i> Autobiographical Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check if a number is an Autobiographical number. (Each digit describes how many times digits 0-9 occur in the number.)</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>1210</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Autobiographical Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class AutobiographicalNumber {
+        public static void main(String[] args) {
+            String num = "1210";
+            int[] count = new int[10];
+
+            // Count digits
+            for (int i = 0; i &lt; num.length(); i++) {
+                int digit = num.charAt(i) - '0';
+                count[digit]++;
+            }
+
+            // Check if each digit matches the frequency
+            boolean isAutoBio = true;
+            for (int i = 0; i &lt; num.length(); i++) {
+                int expected = num.charAt(i) - '0';
+                if (count[i] != expected) {
+                    isAutoBio = false;
+                    break;
+                }
+            }
+
+            if (isAutoBio) {
+                System.out.println("Autobiographical Number");
+            } else {
+                System.out.println("Not an Autobiographical Number");
+            }
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Each index in the number represents how many times that index (digit) appears in the entire number.</li>
+                <li>We count the occurrence of each digit and compare with the digit at corresponding index.</li>
+                <li>If all digits match this rule, it's an Autobiographical number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 36: Emirp Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-sync-alt me-2"></i> Emirp Number</h5>
+          <p class="card-text">Check whether a number is an Emirp number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program36Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program36Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-sync-alt me-2"></i> Emirp Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is an Emirp number or not. (A number is Emirp if it is prime and its reverse is also a different prime.)</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>13</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Emirp Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class EmirpNumber {
+        public static void main(String[] args) {
+            int num = 13;
+            
+            if (isPrime(num)) {
+                int rev = reverseNumber(num);
+                if (rev != num && isPrime(rev)) {
+                    System.out.println("Emirp Number");
+                } else {
+                    System.out.println("Not an Emirp Number");
+                }
+            } else {
+                System.out.println("Not an Emirp Number");
+            }
+        }
+
+        public static boolean isPrime(int n) {
+            if (n &lt;= 1) return false;
+            for (int i = 2; i &lt;= Math.sqrt(n); i++) {
+                if (n % i == 0) return false;
+            }
+            return true;
+        }
+
+        public static int reverseNumber(int n) {
+            int rev = 0;
+            while (n != 0) {
+                rev = rev * 10 + n % 10;
+                n /= 10;
+            }
+            return rev;
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Check if the number is prime.</li>
+                <li>Find the reverse of the number.</li>
+                <li>Check if the reverse is a different prime number.</li>
+                <li>If all conditions are true, it is an Emirp number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 37: Sphenic Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-cubes me-2"></i> Sphenic Number</h5>
+          <p class="card-text">Check whether a number is a Sphenic number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program37Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program37Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-cubes me-2"></i> Sphenic Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Sphenic number or not. (A number is Sphenic if it is a product of three distinct prime numbers.)</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>30</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Sphenic Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class SphenicNumber {
+        public static void main(String[] args) {
+            int num = 30;
+            int count = 0;
+            int product = 1;
+            int temp = num;
+
+            for (int i = 2; i <= temp && count &lt;= 3; i++) {
+                if (isPrime(i) && temp % i == 0) {
+                    count++;
+                    product *= i;
+                    temp /= i;
+                    while (temp % i == 0) {
+                        temp /= i; // Remove duplicates of the prime factor
+                    }
+                }
+            }
+
+            if (count == 3 && product == num) {
+                System.out.println("Sphenic Number");
+            } else {
+                System.out.println("Not a Sphenic Number");
+            }
+        }
+
+        public static boolean isPrime(int n) {
+            if (n &lt;= 1) return false;
+            for (int i = 2; i &lt;= Math.sqrt(n); i++) {
+                if (n % i == 0) return false;
+            }
+            return true;
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Factorize the number and count distinct prime factors.</li>
+                <li>Check if the count of distinct prime factors is exactly 3 and their product equals the number.</li>
+                <li>If true, the number is Sphenic.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 38: Buzz Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-bolt me-2"></i> Buzz Number</h5>
+          <p class="card-text">Check whether a number is a Buzz number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program38Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program38Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-bolt me-2"></i> Buzz Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Buzz number or not. (A number is Buzz if it ends with 7 or is divisible by 7.)</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>27</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Buzz Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class BuzzNumber {
+        public static void main(String[] args) {
+            int num = 27;
+            if (num % 7 == 0 || num % 10 == 7) {
+                System.out.println("Buzz Number");
+            } else {
+                System.out.println("Not a Buzz Number");
+            }
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Check if the number is divisible by 7 or ends with digit 7.</li>
+                <li>If yes, print "Buzz Number"; otherwise, print "Not a Buzz Number".</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 39: Evil Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-ghost me-2"></i> Evil Number</h5>
+          <p class="card-text">Check whether a number is an Evil number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program39Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program39Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-ghost me-2"></i> Evil Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is an Evil number. (A number is Evil if it has an even number of 1’s in its binary representation.)</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>9</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Evil Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class EvilNumber {
+        public static void main(String[] args) {
+            int num = 9;
+            int countOnes = 0;
+            int temp = num;
+
+            while (temp > 0) {
+                if ((temp & 1) == 1) {
+                    countOnes++;
+                }
+                temp >>= 1;
+            }
+
+            if (countOnes % 2 == 0) {
+                System.out.println("Evil Number");
+            } else {
+                System.out.println("Not an Evil Number");
+            }
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Convert the number to binary and count the number of 1's using bitwise operations.</li>
+                <li>If the count of 1's is even, it is an Evil Number.</li>
+                <li>Otherwise, it is not an Evil Number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 40: ISBN Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-book me-2"></i> ISBN Number</h5>
+          <p class="card-text">Validate a 10-digit ISBN number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program40Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program40Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-book me-2"></i> ISBN Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to validate a 10-digit ISBN number.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>0306406152</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Valid ISBN Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class ISBNNumber {
+        public static void main(String[] args) {
+            String isbn = "0306406152";
+            if (isValidISBN(isbn)) {
+                System.out.println("Valid ISBN Number");
+            } else {
+                System.out.println("Invalid ISBN Number");
+            }
+        }
+
+        public static boolean isValidISBN(String isbn) {
+            if (isbn == null || isbn.length() != 10) {
+                return false;
+            }
+
+            int sum = 0;
+            for (int i = 0; i < 9; i++) {
+                char ch = isbn.charAt(i);
+                if (!Character.isDigit(ch)) {
+                    return false;
+                }
+                sum += (ch - '0') * (10 - i);
+            }
+
+            char lastChar = isbn.charAt(9);
+            if (lastChar != 'X' && !Character.isDigit(lastChar)) {
+                return false;
+            }
+
+            sum += (lastChar == 'X') ? 10 : (lastChar - '0');
+
+            return (sum % 11 == 0);
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>ISBN-10 validation multiplies each digit by its position weight (10 to 1) and sums them.</li>
+                <li>The last digit can be 'X' representing 10.</li>
+                <li>If the total sum is divisible by 11, the ISBN is valid.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 41: Krishnamurthy Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-calculator me-2"></i> Krishnamurthy Number</h5>
+          <p class="card-text">Check whether a number is a Krishnamurthy number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program41Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program41Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-calculator me-2"></i> Krishnamurthy Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Krishnamurthy number.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>145</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Krishnamurthy Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class KrishnamurthyNumber {
+        public static void main(String[] args) {
+            int num = 145;
+            if (isKrishnamurthy(num)) {
+                System.out.println("Krishnamurthy Number");
+            } else {
+                System.out.println("Not a Krishnamurthy Number");
+            }
+        }
+
+        public static boolean isKrishnamurthy(int num) {
+            int sum = 0;
+            int temp = num;
+            while (temp > 0) {
+                int digit = temp % 10;
+                sum += factorial(digit);
+                temp /= 10;
+            }
+            return sum == num;
+        }
+
+        public static int factorial(int n) {
+            int fact = 1;
+            for (int i = 2; i <= n; i++) {
+                fact *= i;
+            }
+            return fact;
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Calculate the factorial of each digit of the number.</li>
+                <li>Sum all these factorials.</li>
+                <li>If the sum equals the original number, it is a Krishnamurthy number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 42: Bouncy Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-random me-2"></i> Bouncy Number</h5>
+          <p class="card-text">Check whether a number is a Bouncy number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program42Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program42Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-random me-2"></i> Bouncy Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Bouncy number.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>155349</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Bouncy Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class BouncyNumber {
+        public static void main(String[] args) {
+            int num = 155349;
+            if (isBouncy(num)) {
+                System.out.println("Bouncy Number");
+            } else {
+                System.out.println("Not a Bouncy Number");
+            }
+        }
+
+        public static boolean isBouncy(int num) {
+            boolean increasing = false;
+            boolean decreasing = false;
+            int prevDigit = num % 10;
+            num /= 10;
+
+            while (num > 0) {
+                int currDigit = num % 10;
+                if (currDigit < prevDigit) {
+                    increasing = true;
+                } else if (currDigit > prevDigit) {
+                    decreasing = true;
+                }
+                if (increasing && decreasing) {
+                    return true; // Bouncy
+                }
+                prevDigit = currDigit;
+                num /= 10;
+            }
+            return false; // Not Bouncy
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Traverse digits from right to left.</li>
+                <li>Check if digits are increasing or decreasing.</li>
+                <li>If both increasing and decreasing patterns exist, the number is bouncy.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 43: Mystery Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-question-circle me-2"></i> Mystery Number</h5>
+          <p class="card-text">Check whether a number is a Mystery number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program43Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program43Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-question-circle me-2"></i> Mystery Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Mystery number. (A number is Mystery if it can be expressed as the sum of two numbers and their reverse.)</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>121</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Mystery Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class MysteryNumber {
+        public static void main(String[] args) {
+            int num = 121;
+            if (isMystery(num)) {
+                System.out.println("Mystery Number");
+            } else {
+                System.out.println("Not a Mystery Number");
+            }
+        }
+
+        // Returns reverse of a number
+        public static int reverse(int n) {
+            int rev = 0;
+            while (n > 0) {
+                rev = rev * 10 + n % 10;
+                n /= 10;
+            }
+            return rev;
+        }
+
+        public static boolean isMystery(int num) {
+            // Check for any pair (a,b) such that num = a + b + reverse(a) + reverse(b)
+            for (int a = 0; a <= num; a++) {
+                for (int b = 0; b <= num; b++) {
+                    int sum = a + b + reverse(a) + reverse(b);
+                    if (sum == num) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Check all possible pairs (a, b) such that sum of a, b, and their reverses equals the number.</li>
+                <li>If any such pair exists, the number is a Mystery number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 44: Smith Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-calculator me-2"></i> Smith Number</h5>
+          <p class="card-text">Check whether a number is a Smith number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program44Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program44Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-calculator me-2"></i> Smith Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Smith number. (A number is Smith if it is a composite number for which the sum of digits equals the sum of digits of its prime factors.)</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>666</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Smith Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class SmithNumber {
+        public static void main(String[] args) {
+            int num = 666;
+            if (isSmithNumber(num)) {
+                System.out.println("Smith Number");
+            } else {
+                System.out.println("Not a Smith Number");
+            }
+        }
+
+        // Function to calculate sum of digits
+        public static int sumOfDigits(int n) {
+            int sum = 0;
+            while (n > 0) {
+                sum += n % 10;
+                n /= 10;
+            }
+            return sum;
+        }
+
+        // Check if prime
+        public static boolean isPrime(int n) {
+            if (n <= 1) return false;
+            for (int i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i == 0) return false;
+            }
+            return true;
+        }
+
+        // Check Smith Number
+        public static boolean isSmithNumber(int n) {
+            if (isPrime(n)) return false; // Smith number must be composite
+
+            int originalSum = sumOfDigits(n);
+            int primeFactorSum = 0;
+            int temp = n;
+
+            // Find prime factors and sum their digits
+            for (int i = 2; i <= temp; i++) {
+                while (temp % i == 0) {
+                    primeFactorSum += sumOfDigits(i);
+                    temp /= i;
+                }
+            }
+
+            return originalSum == primeFactorSum;
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Calculate sum of digits of the number.</li>
+                <li>Find prime factors of the number and sum digits of those factors.</li>
+                <li>If both sums are equal and the number is composite, it is a Smith number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 45: Strontio Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-calculator me-2"></i> Strontio Number</h5>
+          <p class="card-text">Check whether a number is a Strontio number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program45Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program45Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-calculator me-2"></i> Strontio Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Strontio number. (A number is Strontio if multiplying it by 2 results in a 4-digit number where the middle two digits are the same.)</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>7694</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Strontio Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class StrontioNumber {
+        public static void main(String[] args) {
+            int num = 7694;
+            if (isStrontio(num)) {
+                System.out.println("Strontio Number");
+            } else {
+                System.out.println("Not a Strontio Number");
+            }
+        }
+
+        public static boolean isStrontio(int n) {
+            int product = n * 2;
+            String prodStr = String.valueOf(product);
+
+            // Check if product is a 4-digit number
+            if (prodStr.length() != 4) {
+                return false;
+            }
+
+            // Check if middle two digits are the same
+            return prodStr.charAt(1) == prodStr.charAt(2);
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Multiply the number by 2.</li>
+                <li>Check if the product is a 4-digit number.</li>
+                <li>Check if the middle two digits of the product are the same.</li>
+                <li>If yes, it is a Strontio number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 46: Xylem and Phloem Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-tree me-2"></i> Xylem and Phloem Number</h5>
+          <p class="card-text">Check whether a number is a Xylem or Phloem number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program46Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program46Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-tree me-2"></i> Xylem and Phloem Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a Xylem or Phloem number. (Xylem: sum of extreme digits = sum of mean digits; otherwise Phloem.)</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>1234</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Phloem Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class XylemPhloemNumber {
+        public static void main(String[] args) {
+            int num = 1234;
+            if (isXylem(num)) {
+                System.out.println("Xylem Number");
+            } else {
+                System.out.println("Phloem Number");
+            }
+        }
+
+        public static boolean isXylem(int n) {
+            String s = String.valueOf(n);
+            int length = s.length();
+
+            int sumExtreme = s.charAt(0) - '0' + s.charAt(length - 1) - '0';
+
+            int sumMean = 0;
+            for (int i = 1; i < length - 1; i++) {
+                sumMean += s.charAt(i) - '0';
+            }
+
+            return sumExtreme == sumMean;
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Extract the digits as characters.</li>
+                <li>Sum the first and last digits (extreme digits).</li>
+                <li>Sum the digits between the first and last (mean digits).</li>
+                <li>If both sums are equal, the number is Xylem; otherwise, Phloem.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 47: nth Prime Number -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-hashtag me-2"></i> nth Prime Number</h5>
+          <p class="card-text">Find the nth prime number.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program47Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program47Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-hashtag me-2"></i> nth Prime Number</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to find the nth prime number.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>10</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>29</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class NthPrimeNumber {
+        public static void main(String[] args) {
+            int n = 10;
+            System.out.println(n + "th prime number is: " + findNthPrime(n));
+        }
+
+        public static int findNthPrime(int n) {
+            int count = 0;
+            int num = 1;
+
+            while (count < n) {
+                num++;
+                if (isPrime(num)) {
+                    count++;
+                }
+            }
+            return num;
+        }
+
+        public static boolean isPrime(int number) {
+            if (number <= 1) return false;
+            if (number == 2) return true;
+
+            for (int i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i == 0) return false;
+            }
+            return true;
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Iterate numbers starting from 2 upwards.</li>
+                <li>Check if the number is prime using the <code>isPrime</code> method.</li>
+                <li>Count primes until the nth prime is found.</li>
+                <li>Return the nth prime number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 48: Alternate Prime Numbers -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-asterisk me-2"></i> Alternate Prime Numbers</h5>
+          <p class="card-text">Display alternate prime numbers up to a limit.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program48Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program48Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-asterisk me-2"></i> Alternate Prime Numbers</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to display alternate prime numbers up to a limit.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>20</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>2, 5, 11, 17</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>import java.util.ArrayList;
+
+    public class AlternatePrimeNumbers {
+        public static void main(String[] args) {
+            int limit = 20;
+            ArrayList<Integer> primes = new ArrayList<>();
+
+            for (int i = 2; i <= limit; i++) {
+                if (isPrime(i)) {
+                    primes.add(i);
+                }
+            }
+
+            System.out.print("Alternate primes up to " + limit + ": ");
+            for (int i = 0; i < primes.size(); i += 2) {
+                System.out.print(primes.get(i));
+                if (i + 2 < primes.size()) {
+                    System.out.print(", ");
+                }
+            }
+        }
+
+        public static boolean isPrime(int num) {
+            if (num <= 1) return false;
+            if (num == 2) return true;
+
+            for (int i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i == 0) return false;
+            }
+            return true;
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Find all prime numbers up to the given limit.</li>
+                <li>Store them in a list.</li>
+                <li>Print every alternate prime starting from the first.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 49: Square Root Without sqrt Method -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-square-root-alt me-2"></i> Square Root Without sqrt Method</h5>
+          <p class="card-text">Find the square root of a number without using the sqrt() method.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program49Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program49Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-square-root-alt me-2"></i> Square Root Without sqrt Method</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to find the square root of a number without using the sqrt() method.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>25</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>5</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class SquareRootWithoutSqrt {
+        public static void main(String[] args) {
+            int num = 25;
+            double sqrt = 0;
+            double precision = 0.0001;
+
+            // Using binary search to find square root
+            double low = 0;
+            double high = num;
+
+            while ((high - low) > precision) {
+                double mid = (low + high) / 2;
+                if (mid * mid == num) {
+                    sqrt = mid;
+                    break;
+                } else if (mid * mid < num) {
+                    low = mid;
+                    sqrt = mid;
+                } else {
+                    high = mid;
+                }
+            }
+
+            System.out.printf("Square root of %d is %.4f%n", num, sqrt);
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>We use binary search between 0 and the number to approximate the square root.</li>
+                <li>Check the mid value’s square and adjust the search space accordingly.</li>
+                <li>Stop when the difference between low and high is within the desired precision.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 50: Swap Two Numbers Using Bitwise Operator -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-exchange-alt me-2"></i> Swap Two Numbers Using Bitwise Operator</h5>
+          <p class="card-text">Swap two numbers using the bitwise XOR operator.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program50Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program50Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-exchange-alt me-2"></i> Swap Two Numbers Using Bitwise Operator</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to swap two numbers using bitwise XOR operator.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>a = 5, b = 10</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>a = 10, b = 5</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class SwapUsingBitwiseXOR {
+        public static void main(String[] args) {
+            int a = 5, b = 10;
+
+            a = a ^ b;  // Step 1
+            b = a ^ b;  // Step 2
+            a = a ^ b;  // Step 3
+
+            System.out.println("a = " + a + ", b = " + b);
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>The XOR operator (^) swaps values without using a temporary variable.</li>
+                <li>Step 1 stores combined information in 'a'.</li>
+                <li>Step 2 extracts original 'a' into 'b'.</li>
+                <li>Step 3 extracts original 'b' into 'a'.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 51: GCD of Two Numbers -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-calculator me-2"></i> GCD of Two Numbers</h5>
+          <p class="card-text">Find the Greatest Common Divisor (GCD) of two numbers.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program51Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program51Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-calculator me-2"></i> GCD of Two Numbers</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to find the GCD of two numbers.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>54, 24</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>GCD: 6</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class GCDOfTwoNumbers {
+        public static void main(String[] args) {
+            int a = 54, b = 24;
+            int gcd = findGCD(a, b);
+            System.out.println("GCD: " + gcd);
+        }
+
+        public static int findGCD(int a, int b) {
+            while (b != 0) {
+                int temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Uses the Euclidean algorithm to compute GCD.</li>
+                <li>Repeatedly replaces the larger number by its remainder when divided by the smaller number.</li>
+                <li>When the remainder becomes zero, the other number is the GCD.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 52: Largest of Three Numbers -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-sort-numeric-up me-2"></i> Largest of Three Numbers</h5>
+          <p class="card-text">Find the largest among three numbers.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program52Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program52Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-sort-numeric-up me-2"></i> Largest of Three Numbers</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to find the largest of three numbers.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>10, 25, 15</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Largest: 25</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class LargestOfThree {
+        public static void main(String[] args) {
+            int a = 10, b = 25, c = 15;
+            int largest = a;
+
+            if (b > largest) {
+                largest = b;
+            }
+            if (c > largest) {
+                largest = c;
+            }
+
+            System.out.println("Largest: " + largest);
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Initially assume the first number is largest.</li>
+                <li>Compare second and third numbers with the current largest and update accordingly.</li>
+                <li>Print the largest number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 53: Smallest of Three Numbers Using Ternary Operator -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-sort-numeric-down me-2"></i> Smallest of Three Numbers Using Ternary Operator</h5>
+          <p class="card-text">Find the smallest among three numbers using ternary operator.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program53Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program53Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-sort-numeric-down me-2"></i> Smallest of Three Numbers Using Ternary Operator</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to find the smallest of three numbers using the ternary operator.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>10, 25, 5</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Smallest: 5</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class SmallestOfThreeTernary {
+        public static void main(String[] args) {
+            int a = 10, b = 25, c = 5;
+
+            int smallest = (a < b) ? ((a < c) ? a : c) : ((b < c) ? b : c);
+
+            System.out.println("Smallest: " + smallest);
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Use nested ternary operators to compare the three numbers.</li>
+                <li>First compare a and b; then compare the smaller of those with c.</li>
+                <li>Print the smallest number.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 54: Check if Number is Positive or Negative -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-plus-minus me-2"></i> Check if Number is Positive or Negative</h5>
+          <p class="card-text">Check whether a given number is positive, negative, or zero.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program54Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program54Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-plus-minus me-2"></i> Check if Number is Positive or Negative</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a given number is positive, negative or zero.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>-8</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Negative Number</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class CheckPositiveNegative {
+        public static void main(String[] args) {
+            int num = -8;
+
+            if (num > 0) {
+                System.out.println("Positive Number");
+            } else if (num < 0) {
+                System.out.println("Negative Number");
+            } else {
+                System.out.println("Zero");
+            }
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Use if-else statements to check the sign of the number.</li>
+                <li>If number is greater than zero, print "Positive Number".</li>
+                <li>If less than zero, print "Negative Number".</li>
+                <li>If zero, print "Zero".</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 55: Perfect Square Check -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-check-circle me-2"></i> Perfect Square Check</h5>
+          <p class="card-text">Check whether a number is a perfect square.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program55Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program55Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i> Perfect Square Check</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to check whether a number is a perfect square.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>49</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Perfect Square</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class PerfectSquareCheck {
+        public static void main(String[] args) {
+            int num = 49;
+            int sqrt = (int) Math.sqrt(num);
+
+            if (sqrt * sqrt == num) {
+                System.out.println("Perfect Square");
+            } else {
+                System.out.println("Not a Perfect Square");
+            }
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Calculate the integer square root of the number.</li>
+                <li>Check if the square of this integer equals the original number.</li>
+                <li>If equal, it is a perfect square; otherwise, it is not.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 56: Even Numbers From 1 to 100 -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-list-ol me-2"></i> Even Numbers From 1 to 100</h5>
+          <p class="card-text">Display even numbers from 1 to 100.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program56Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program56Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-list-ol me-2"></i> Even Numbers From 1 to 100</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to display even numbers from 1 to 100.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>1 to 100</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>2, 4, 6, 8, ..., 100</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class EvenNumbers {
+        public static void main(String[] args) {
+            for (int i = 2; i <= 100; i += 2) {
+                System.out.print(i);
+                if (i < 100) {
+                    System.out.print(", ");
+                }
+            }
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Use a for loop starting from 2 to 100 incremented by 2.</li>
+                <li>Print each even number, separated by commas.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 57: Odd Numbers From 1 to 100 -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-list-ol me-2"></i> Odd Numbers From 1 to 100</h5>
+          <p class="card-text">Display odd numbers from 1 to 100.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program57Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program57Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-list-ol me-2"></i> Odd Numbers From 1 to 100</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to display odd numbers from 1 to 100.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>1 to 100</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>1, 3, 5, 7, ..., 99</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class OddNumbers {
+        public static void main(String[] args) {
+            for (int i = 1; i <= 100; i += 2) {
+                System.out.print(i);
+                if (i < 99) {
+                    System.out.print(", ");
+                }
+            }
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Use a for loop starting from 1 to 100 incremented by 2.</li>
+                <li>Print each odd number separated by commas.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Program 58: Sum of Natural Numbers -->
+    <div class="col-md-6 col-lg-3">
+      <div class="program-card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-superscript me-2"></i> Sum of Natural Numbers
+</h5>
+          <p class="card-text">Find the sum of the first n natural numbers.</p>
+          <button class="btn btn-view" data-bs-toggle="modal" data-bs-target="#program58Modal">
+            <i class="fas fa-eye me-1"></i> View Program
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="program58Modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="fas fa-superscript me-2"></i> Sum of Natural Numbers</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Write a program to find the sum of the first n natural numbers.</p>
+            <div class="io-section">
+              <div class="input-box">
+                <div class="io-title">Input</div>
+                <p>10</p>
+              </div>
+              <div class="output-box">
+                <div class="io-title">Output</div>
+                <pre>Sum: 55</pre>
+              </div>
+            </div>
+            <div class="code-block">
+    <pre><code>public class SumOfNaturalNumbers {
+        public static void main(String[] args) {
+            int n = 10; // Number of natural numbers to sum
+            int sum = 0;
+
+            for (int i = 1; i <= n; i++) {
+                sum += i;
+            }
+
+            System.out.println("Sum: " + sum);
+        }
+    }
+    </code></pre>
+            </div>
+            <div class="explanation-section">
+              <div class="explanation-title">Explanation:</div>
+              <ol>
+                <li>Initialize sum to 0.</li>
+                <li>Use a for loop from 1 to n, adding each number to sum.</li>
+                <li>Print the final sum.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+</div>
+
+<!-- Modals for Program Details -->
+
+<!-- Program 1 Modal -->
+<div class="modal fade" id="program1Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-code me-2"></i> Hello, World!</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>The simplest Java program that demonstrates the basic structure of a Java application.</p>
+        
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>None</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Hello, World!</p>
+          </div>
+        </div>
+        
+        <div class="code-block">
+public class HelloWorld {<br>
+    public static void main(String[] args) {<br>
+        System.out.println("Hello, World!");<br>
+    }<br>
+}<br>
+        </div>
+        
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li><code>public class HelloWorld</code> - Defines a class named HelloWorld (must match filename)</li>
+            <li><code>public static void main(String[] args)</code> - The entry point of any Java program</li>
+            <li><code>System.out.println()</code> - Prints the specified message to the console</li>
+            <li>The program demonstrates the basic structure required for a Java application</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Program 2 Modal -->
+<div class="modal fade" id="program2Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-calculator me-2"></i> Add Two Numbers</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>A simple program demonstrating variable declaration, assignment, and basic arithmetic in Java.</p>
+        
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>5, 10</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Sum: 15</p>
+          </div>
+        </div>
+        
+        <div class="code-block">
+public class AddNumbers {<br>
+    public static void main(String[] args) {<br>
+        int num1 = 5;<br>
+        int num2 = 10;<br>
+        int sum = num1 + num2;<br>
+        System.out.println("Sum: " + sum);<br>
+    }<br>
+}<br>
+        </div>
+        
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li><code>int num1 = 5;</code> - Declares an integer variable num1 and assigns value 5</li>
+            <li><code>int num2 = 10;</code> - Declares an integer variable num2 and assigns value 10</li>
+            <li><code>int sum = num1 + num2;</code> - Adds the two numbers and stores result in sum</li>
+            <li><code>System.out.println()</code> - Prints the result with descriptive text</li>
+            <li>Demonstrates basic variable operations in Java</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Program 3 Modal -->
+<div class="modal fade" id="program3Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i> Find Even or Odd</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>A program that checks whether a given number is even or odd using conditional statements.</p>
+        
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>7</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>7 is Odd</p>
+          </div>
+        </div>
+        
+        <div class="code-block">
+public class EvenOdd {<br>
+    public static void main(String[] args) {<br>
+        int num = 7;<br>
+        
+        if(num % 2 == 0) {<br>
+            System.out.println(num + " is Even");<br>
+        } else {<br>
+            System.out.println(num + " is Odd");<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li><code>int num = 7;</code> - Declares and initializes the number to check</li>
+            <li><code>num % 2 == 0</code> - Uses modulus operator to check divisibility by 2</li>
+            <li>The if-else statement determines which message to print</li>
+            <li>Even numbers produce 0 remainder when divided by 2</li>
+            <li>Odd numbers produce 1 remainder when divided by 2</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- Program 4 Modal -->
+<div class="modal fade" id="program4Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-greater-than me-2"></i> Find the Largest Number</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>A simple comparison program to find the largest of two given numbers using if-else condition.</p>
+
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>8, 12</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Largest number: 12</p>
+          </div>
+        </div>
+
+        <div class="code-block">
+public class LargestOfTwo {<br>
+    public static void main(String[] args) {<br>
+        int a = 8, b = 12;<br>
+        if(a > b) {<br>
+            System.out.println("Largest number: " + a);<br>
+        } else {<br>
+            System.out.println("Largest number: " + b);<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li><code>int a = 8, b = 12;</code> - Two integer variables are initialized</li>
+            <li><code>if(a > b)</code> - Compares whether a is greater than b</li>
+            <li>Depending on the result, the larger number is printed</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 5 Modal -->
+<div class="modal fade" id="program5Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-percentage me-2"></i> Simple Interest Calculation</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to calculate simple interest using the formula SI = (P × R × T) / 100.</p>
+        <div class="io-section">
+          <div class="input-box">
+            <div class="io-title">Input</div>
+            <p>P=1000, R=5, T=2</p>
+          </div>
+          <div class="output-box">
+            <div class="io-title">Output</div>
+            <p>Simple Interest: 100.0</p>
+          </div>
+        </div>
+        <div class="code-block">
+public class SimpleInterest {<br>
+    public static void main(String[] args) {<br>
+        double P = 1000, R = 5, T = 2;<br>
+        double SI = (P * R * T) / 100;<br>
+        System.out.println("Simple Interest: " + SI);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li><code>double P = 1000, R = 5, T = 2;</code> - Principal, Rate and Time are initialized</li>
+            <li><code>SI = (P * R * T) / 100;</code> - Formula for simple interest</li>
+            <li>The result is printed using <code>System.out.println()</code></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Program 6 Modal -->
+<div class="modal fade" id="program6Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-calendar-alt me-2"></i> Check Leap Year</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to check whether a given year is a leap year.</p>
+        <div class="io-section">
+          <div class="input-box"><div class="io-title">Input</div><p>2024</p></div>
+          <div class="output-box"><div class="io-title">Output</div><p>2024 is a Leap Year</p></div>
+        </div>
+        <div class="code-block">
+public class LeapYearCheck {<br>
+    public static void main(String[] args) {<br>
+        int year = 2024;<br>
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))<br>
+            System.out.println(year + " is a Leap Year");<br>
+        else<br>
+            System.out.println(year + " is not a Leap Year");<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li><code>year = 2024;</code> - The year to check.</li>
+            <li><code>(year % 4 == 0 &amp;&amp; year % 100 != 0) || (year % 400 == 0)</code> - Leap year condition.</li>
+            <li>Output is printed based on the condition result.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 7 -->
+<div class="modal fade" id="program7Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-exchange-alt me-2"></i> Swap Without Third Variable</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to swap two numbers without using a third variable.</p>
+        <div class="io-section">
+          <div class="input-box"><div class="io-title">Input</div><p>a=5, b=10</p></div>
+          <div class="output-box"><div class="io-title">Output</div><p>After swapping: a=10, b=5</p></div>
+        </div>
+        <div class="code-block">
+public class SwapNumbers {<br>
+    public static void main(String[] args) {<br>
+        int a = 5, b = 10;<br>
+        a = a + b;<br>
+        b = a - b;<br>
+        a = a - b;<br>
+        System.out.println("After swapping: a=" + a + ", b=" + b);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li><code>a = a + b;</code> - Sum of a and b stored in a.</li>
+            <li><code>b = a - b;</code> - b becomes original a.</li>
+            <li><code>a = a - b;</code> - a becomes original b.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 8 -->
+ <div class="modal fade" id="program8Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-calculator me-2"></i> Factorial of a Number</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the factorial of a number.</p>
+        <div class="io-section">
+          <div class="input-box"><div class="io-title">Input</div><p>5</p></div>
+          <div class="output-box"><div class="io-title">Output</div><p>Factorial of 5 is 120</p></div>
+        </div>
+        <div class="code-block">
+public class Factorial {<br>
+    public static void main(String[] args) {<br>
+        int num = 5;<br>
+        int fact = 1;<br>
+        for (int i = 1; i <= num; i++) {<br>
+            fact *= i;<br>
+        }<br>
+        System.out.println("Factorial of " + num + " is " + fact);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Initialize <code>fact = 1</code> and loop from 1 to <code>num</code>.</li>
+            <li>Multiply <code>fact</code> with each iterator <code>i</code>.</li>
+            <li>Print the result after loop ends.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 9 -->
+
+<div class="modal fade" id="program9Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-undo me-2"></i> Reverse a Number</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to reverse a given number.</p>
+        <div class="io-section">
+          <div class="input-box"><div class="io-title">Input</div><p>1234</p></div>
+          <div class="output-box"><div class="io-title">Output</div><p>Reversed number: 4321</p></div>
+        </div>
+        <div class="code-block">
+public class ReverseNumber {<br>
+    public static void main(String[] args) {<br>
+        int num = 1234, rev = 0;<br>
+        while (num != 0) {<br>
+            int digit = num % 10;<br>
+            rev = rev * 10 + digit;<br>
+            num /= 10;<br>
+        }<br>
+        System.out.println("Reversed number: " + rev);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Extract digits using <code>num % 10</code>.</li>
+            <li>Build reversed number using <code>rev = rev * 10 + digit</code>.</li>
+            <li>Continue until the original number becomes 0.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 10 -->
+ <div class="modal fade" id="program10Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-plus-circle me-2"></i> Sum of Digits</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the sum of digits of a number.</p>
+        <div class="io-section">
+          <div class="input-box"><div class="io-title">Input</div><p>123</p></div>
+          <div class="output-box"><div class="io-title">Output</div><p>Sum of digits: 6</p></div>
+        </div>
+        <div class="code-block">
+public class SumOfDigits {<br>
+    public static void main(String[] args) {<br>
+        int num = 123, sum = 0;<br>
+        while (num != 0) {<br>
+            sum += num % 10;<br>
+            num /= 10;<br>
+        }<br>
+        System.out.println("Sum of digits: " + sum);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use <code>num % 10</code> to extract the last digit.</li>
+            <li>Add it to <code>sum</code> and remove the last digit using <code>num /= 10</code>.</li>
+            <li>Repeat until number becomes 0.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 11 -->
+<div class="modal fade" id="program11Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i> Check Prime Number</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to check whether a number is prime or not.</p>
+        <div class="io-section">
+          <div class="input-box"><div class="io-title">Input</div><p>7</p></div>
+          <div class="output-box"><div class="io-title">Output</div><p>7 is a Prime Number</p></div>
+        </div>
+        <div class="code-block">
+public class PrimeCheck {<br>
+    public static void main(String[] args) {<br>
+        int num = 7;<br>
+        boolean isPrime = true;<br>
+        if (num <= 1)<br>
+            isPrime = false;<br>
+        else {<br>
+            for (int i = 2; i <= num / 2; i++) {<br>
+                if (num % i == 0) {<br>
+                    isPrime = false;<br>
+                    break;<br>
+                }<br>
+            }<br>
+        }<br>
+        if (isPrime)<br>
+            System.out.println(num + " is a Prime Number");<br>
+        else<br>
+            System.out.println(num + " is not a Prime Number");<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Check divisibility from 2 to <code>num / 2</code>.</li>
+            <li>If divisible, set <code>isPrime = false</code>.</li>
+            <li>Print result based on final <code>isPrime</code> value.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 12 -->
+<div class="modal fade" id="program12Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-times-circle me-2"></i> Multiplication Table</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to print the multiplication table of a given number.</p>
+        <div class="io-section">
+          <div class="input-box"><div class="io-title">Input</div><p>5</p></div>
+          <div class="output-box"><div class="io-title">Output</div>
+            <pre>
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50
+            </pre>
+          </div>
+        </div>
+        <div class="code-block">
+public class MultiplicationTable {<br>
+    public static void main(String[] args) {<br>
+        int num = 5;<br>
+        for (int i = 1; i <= 10; i++) {<br>
+            System.out.println(num + " x " + i + " = " + (num * i));<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Use a <code>for</code> loop from 1 to 10.</li>
+            <li>Print <code>num * i</code> in each iteration.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 13 -->
+ <div class="modal fade" id="program13Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-greater-than me-2"></i> Largest of Three Numbers</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to find the largest of three numbers.</p>
+        <div class="io-section">
+          <div class="input-box"><div class="io-title">Input</div><p>15, 25, 10</p></div>
+          <div class="output-box"><div class="io-title">Output</div><p>Largest number: 25</p></div>
+        </div>
+        <div class="code-block">
+public class LargestOfThree {<br>
+    public static void main(String[] args) {<br>
+        int a = 15, b = 25, c = 10;<br>
+        int largest = a;<br>
+        if (b > largest) largest = b;<br>
+        if (c > largest) largest = c;<br>
+        System.out.println("Largest number: " + largest);<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Start by assuming <code>a</code> is the largest.</li>
+            <li>Compare <code>b</code> and <code>c</code> with the current largest and update it accordingly.</li>
+            <li>Print the largest number.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 14 -->
+ <div class="modal fade" id="program14Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-sync-alt me-2"></i> Palindrome Number</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to check whether a number is a palindrome (same forward and backward).</p>
+        <div class="io-section">
+          <div class="input-box"><div class="io-title">Input</div><p>121</p></div>
+          <div class="output-box"><div class="io-title">Output</div><p>121 is a Palindrome Number</p></div>
+        </div>
+        <div class="code-block">
+public class PalindromeCheck {<br>
+    public static void main(String[] args) {<br>
+        int num = 121, original = num, reversed = 0;<br>
+        while (num != 0) {<br>
+            int digit = num % 10;<br>
+            reversed = reversed * 10 + digit;<br>
+            num /= 10;<br>
+        }<br>
+        if (original == reversed)<br>
+            System.out.println(original + " is a Palindrome Number");<br>
+        else<br>
+            System.out.println(original + " is not a Palindrome Number");<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Reverse the number digit by digit.</li>
+            <li>Compare the reversed number with the original.</li>
+            <li>If they match, it is a palindrome.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 15 -->
+ <div class="modal fade" id="program15Modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-chart-line me-2"></i> Fibonacci Series</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Write a program to print the Fibonacci series up to N terms.</p>
+        <div class="io-section">
+          <div class="input-box"><div class="io-title">Input</div><p>5</p></div>
+          <div class="output-box"><div class="io-title">Output</div><p>Fibonacci Series: 0 1 1 2 3</p></div>
+        </div>
+        <div class="code-block">
+public class FibonacciSeries {<br>
+    public static void main(String[] args) {<br>
+        int n = 5, a = 0, b = 1;<br>
+        System.out.print("Fibonacci Series: " + a + " " + b);<br>
+        for (int i = 2; i < n; i++) {<br>
+            int next = a + b;<br>
+            System.out.print(" " + next);<br>
+            a = b;<br>
+            b = next;<br>
+        }<br>
+    }<br>
+}<br>
+        </div>
+        <div class="explanation-section">
+          <div class="explanation-title">Explanation:</div>
+          <ol>
+            <li>Start with 0 and 1.</li>
+            <li>Add the last two numbers to generate the next term.</li>
+            <li>Repeat this process for N terms.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="text-center">
+
+    <p>© 2023 Learning with Nitheesh. All rights reserved.</p>
+
+</footer>
+<button class="back-home-button" onclick="window.location.href='../'">
+     Back to Home
+  </button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

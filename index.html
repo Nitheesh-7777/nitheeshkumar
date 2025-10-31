@@ -775,27 +775,947 @@
     </div>
   </section>
 
-  <!-- Certifications Section -->
-  <section id="certifications" class="section">
-    <div class="container">
-      <h2 class="section-title">Certifications & Achievements</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="experience-card reveal">
-            <h3>ISTQB Foundation Level</h3>
-            <p><b>International Software Testing Qualifications Board</b></p>
-            <p>Certified in Software Testing</p>
+<!-- Certifications Section -->
+<section id="certifications" class="section">
+  <div class="container">
+    <h2 class="section-title">Certifications & Achievements</h2>
+    <p class="text-center mb-5 reveal">Validating expertise through recognized certifications and measurable achievements</p>
+    
+    <div class="row justify-content-center">
+      <!-- ISTQB Certification -->
+      <div class="col-lg-8">
+        <div class="certification-card featured-cert reveal">
+          <div class="cert-ribbon">Featured Certification</div>
+          <div class="cert-header">
+            <div class="cert-badge">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="cert-title-section">
+              <h3>ISTQB Foundation Level</h3>
+              <p class="cert-issuer">International Software Testing Qualifications Board</p>
+              <div class="cert-verified">
+                <i class="fas fa-check-circle"></i>
+                <span>Verified Certificate</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="experience-card reveal">
-            <h3>Training Achievements</h3>
-            <p>Trained 600+ students in programming</p>
+          
+          <div class="cert-content">
+            <p class="cert-desc">Certified in Software Testing methodologies, test design techniques, and quality assurance best practices. This certification validates comprehensive knowledge of software testing principles.</p>
+            
+            <div class="cert-meta">
+              <div class="meta-item">
+                <i class="far fa-calendar"></i>
+                <div>
+                  <span class="meta-label">Issued Date</span>
+                  <span class="meta-value">March 2023</span>
+                </div>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-id-card"></i>
+                <div>
+                  <span class="meta-label">Certificate ID</span>
+                  <span class="meta-value">ITB-CTFL-121164</span>
+                </div>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                  <span class="meta-label">Valid Until</span>
+                  <span class="meta-value">Lifetime</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="cert-skills">
+              <h5>Skills Validated:</h5>
+              <div class="skills-grid">
+                <span class="skill-tag">
+                  <i class="fas fa-check"></i>
+                  Test Design Techniques
+                </span>
+                <span class="skill-tag">
+                  <i class="fas fa-check"></i>
+                  Test Management
+                </span>
+                <span class="skill-tag">
+                  <i class="fas fa-check"></i>
+                  Quality Assurance
+                </span>
+                <span class="skill-tag">
+                  <i class="fas fa-check"></i>
+                  Bug Tracking
+                </span>
+                <span class="skill-tag">
+                  <i class="fas fa-check"></i>
+                  Test Automation
+                </span>
+                <span class="skill-tag">
+                  <i class="fas fa-check"></i>
+                  Agile Testing
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="cert-actions">
+            <button class="btn btn-view-cert" onclick="openCertificate()">
+              <i class="fas fa-eye me-2"></i>View Certificate
+            </button>
+            <button class="btn btn-download-cert" onclick="downloadCertificate()">
+              <i class="fas fa-download me-2"></i>Download PDF
+            </button>
+            <button class="btn btn-verify-cert" onclick="verifyCertificate()">
+              <i class="fas fa-shield-alt me-2"></i>Verify Online
+            </button>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- Certificate Modal -->
+<div id="certificateModal" class="cert-modal">
+  <div class="cert-modal-content">
+    <div class="cert-modal-header">
+      <div class="header-left">
+        <h3>
+          <i class="fas fa-award me-2"></i>
+          ISTQB Foundation Level Certificate
+        </h3>
+        <p class="cert-id">ID: ITB-CTFL-121164</p>
+      </div>
+      <div class="header-right">
+        <button class="btn btn-download-sm" onclick="downloadCertificate()">
+          <i class="fas fa-download"></i>
+        </button>
+        <span class="cert-close" onclick="closeCertificate()">&times;</span>
+      </div>
+    </div>
+    
+    <div class="cert-modal-body">
+      <div class="pdf-viewer" id="pdfViewer">
+        <div class="pdf-container">
+          <div class="pdf-toolbar">
+            <div class="toolbar-left">
+              <button class="tool-btn" onclick="changeZoom(-0.1)">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <span class="zoom-level" id="zoomLevel">100%</span>
+              <button class="tool-btn" onclick="changeZoom(0.1)">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button class="tool-btn" onclick="resetZoom()">
+                <i class="fas fa-expand-arrows-alt"></i>
+              </button>
+            </div>
+            <div class="toolbar-right">
+              <button class="tool-btn" onclick="rotateViewer()">
+                <i class="fas fa-redo"></i>
+              </button>
+              <button class="tool-btn" onclick="fitToScreen()">
+                <i class="fas fa-desktop"></i>
+              </button>
+              <button class="tool-btn" onclick="printCertificate()">
+                <i class="fas fa-print"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="pdf-content">
+            <div class="pdf-frame-container" id="pdfFrameContainer">
+              <iframe 
+                id="pdfFrame"
+                src="assets/istqb.pdf"
+                width="100%" 
+                height="600"
+                style="border: none; border-radius: 10px;"
+                onload="onPDFLoad()"
+              >
+                <div class="pdf-fallback">
+                  <div class="fallback-content">
+                    <i class="fas fa-file-pdf fa-4x"></i>
+                    <h4>PDF Preview Not Available</h4>
+                    <p>Your browser doesn't support PDF preview. Please download the certificate to view it.</p>
+                    <button class="btn btn-primary" onclick="downloadCertificate()">
+                      <i class="fas fa-download me-2"></i>Download Certificate
+                    </button>
+                  </div>
+                </div>
+              </iframe>
+            </div>
+          </div>
+          
+          <div class="pdf-navigation">
+            <button class="nav-btn" onclick="previousPage()" id="prevBtn">
+              <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <span class="page-info" id="pageInfo">Loading...</span>
+            <button class="nav-btn" onclick="nextPage()" id="nextBtn">
+              Next <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Loading Spinner -->
+<div id="pdfLoading" class="pdf-loading">
+  <div class="loading-content">
+    <div class="spinner"></div>
+    <p>Loading Certificate...</p>
+  </div>
+</div>
+
+<style>
+/* Certifications Section */
+#certifications {
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+}
+
+.certification-card {
+  background: white;
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.certification-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(108, 99, 255, 0.15);
+}
+
+.featured-cert {
+  border: 3px solid var(--primary);
+}
+
+.cert-ribbon {
+  position: absolute;
+    top: 35px;
+    right: -53px;
+    background: var(--accent);
+    color: white;
+    padding: 4px 35px;
+    font-size: 0.7rem;
+    font-weight: 600;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 10px rgba(255, 101, 132, 0.3);
+}
+
+.cert-header {
+  display: flex;
+  align-items: center;
+  padding: 30px 30px 20px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+}
+
+.cert-badge {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin-right: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.cert-title-section h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.cert-issuer {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+
+.cert-verified {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.cert-verified i {
+  color: #4ade80;
+  margin-right: 8px;
+}
+
+.cert-content {
+  padding: 30px;
+}
+
+.cert-desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin-bottom: 25px;
+}
+
+.cert-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border-left: 4px solid var(--primary);
+}
+
+.meta-item i {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-right: 15px;
+  width: 30px;
+  text-align: center;
+}
+
+.meta-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 5px;
+}
+
+.meta-value {
+  display: block;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.cert-skills h5 {
+  color: var(--dark);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.skill-tag {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background: #f0f7ff;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--primary);
+  font-weight: 500;
+  border: 1px solid #e1effe;
+}
+
+.skill-tag i {
+  margin-right: 8px;
+  color: #10b981;
+}
+
+.cert-actions {
+  display: flex;
+  gap: 15px;
+  padding: 20px 30px;
+  background: #f8fafc;
+  border-top: 1px solid #e5e7eb;
+  flex-wrap: wrap;
+}
+
+.btn-view-cert, .btn-download-cert, .btn-verify-cert {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-view-cert {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-view-cert:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(108, 99, 255, 0.3);
+}
+
+.btn-download-cert {
+  background: white;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-download-cert:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-verify-cert {
+  background: #10b981;
+  color: white;
+}
+
+.btn-verify-cert:hover {
+  background: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Certificate Modal */
+.cert-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cert-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1000px;
+  height: 90vh;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from { transform: translate(-50%, -60%); opacity: 0; }
+  to { transform: translate(-50%, -50%); opacity: 1; }
+}
+
+.cert-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+}
+
+.header-left h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+}
+
+.cert-id {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 5px 0 0 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-download-sm {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-download-sm:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.cert-close {
+  font-size: 2rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.cert-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.cert-modal-body {
+  height: calc(100% - 80px);
+  padding: 0;
+}
+
+.pdf-viewer {
+  height: 100%;
+  background: #f8fafc;
+}
+
+.pdf-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pdf-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.toolbar-left, .toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tool-btn {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.tool-btn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.zoom-level {
+  font-weight: 600;
+  color: var(--dark);
+  min-width: 50px;
+  text-align: center;
+}
+
+.pdf-content {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.pdf-frame-container {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+#pdfFrame {
+  width: 100%;
+  min-height: 600px;
+  transition: transform 0.3s ease;
+}
+
+.pdf-fallback {
+  padding: 40px;
+  text-align: center;
+  background: #f8fafc;
+  border-radius: 15px;
+}
+
+.fallback-content i {
+  color: #e53e3e;
+  margin-bottom: 20px;
+}
+
+.fallback-content h4 {
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.fallback-content p {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.pdf-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+}
+
+.nav-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.page-info {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+/* Loading Spinner */
+.pdf-loading {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1001;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdf-loading.show {
+  display: flex;
+}
+
+.loading-content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-content p {
+  color: var(--dark);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cert-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .cert-badge {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  
+  .cert-meta {
+    grid-template-columns: 1fr;
+  }
+  
+  .cert-actions {
+    flex-direction: column;
+  }
+  
+  .cert-modal-content {
+    width: 95%;
+    height: 95vh;
+  }
+  
+  .pdf-toolbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .toolbar-left, .toolbar-right {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .pdf-navigation {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+</style>
+
+<script>
+// PDF Viewer State
+let currentZoom = 1;
+let currentRotation = 0;
+let totalPages = 1;
+let currentPage = 1;
+
+// Certificate Modal Functions
+function openCertificate() {
+  const modal = document.getElementById('certificateModal');
+  const loading = document.getElementById('pdfLoading');
+  
+  // Show loading
+  loading.classList.add('show');
+  
+  // Reset viewer state
+  resetViewer();
+  
+  // Open modal after a short delay to show loading
+  setTimeout(() => {
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    // Hide loading after PDF is ready
+    setTimeout(() => {
+      loading.classList.remove('show');
+    }, 1000);
+  }, 500);
+}
+
+function closeCertificate() {
+  const modal = document.getElementById('certificateModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+function downloadCertificate() {
+  // Create download link for the actual PDF
+  const link = document.createElement('a');
+  link.href = 'assets/istqb.pdf';
+  link.download = 'ISTQB_Certificate_Nitheesh_Kumar.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  // Show download confirmation
+  showNotification('ISTQB Certificate download started!', 'success');
+}
+
+function verifyCertificate() {
+  // Open ISTQB verification page
+  window.open('https://scr.istqb.org/?name=Frank%20Kn&number=&orderBy=firstName&orderDirection=ASC&dateStart=&dateEnd=&expiryStart=&expiryEnd=&certificationBody=&certificationLevel=&country=&resultsPerPage=25&page=2', '_blank');
+}
+
+// PDF Viewer Functions
+function onPDFLoad() {
+  // This function is called when the PDF iframe loads
+  updatePageInfo();
+}
+
+function changeZoom(delta) {
+  const pdfFrame = document.getElementById('pdfFrame');
+  currentZoom = Math.max(0.5, Math.min(3, currentZoom + delta));
+  pdfFrame.style.transform = `scale(${currentZoom}) rotate(${currentRotation}deg)`;
+  document.getElementById('zoomLevel').textContent = `${Math.round(currentZoom * 100)}%`;
+}
+
+function resetZoom() {
+  const pdfFrame = document.getElementById('pdfFrame');
+  currentZoom = 1;
+  pdfFrame.style.transform = `scale(${currentZoom}) rotate(${currentRotation}deg)`;
+  document.getElementById('zoomLevel').textContent = `${Math.round(currentZoom * 100)}%`;
+}
+
+function rotateViewer() {
+  const pdfFrame = document.getElementById('pdfFrame');
+  currentRotation = (currentRotation + 90) % 360;
+  pdfFrame.style.transform = `scale(${currentZoom}) rotate(${currentRotation}deg)`;
+}
+
+function fitToScreen() {
+  const pdfFrame = document.getElementById('pdfFrame');
+  const container = document.getElementById('pdfFrameContainer');
+  const containerWidth = container.clientWidth;
+  const pdfWidth = 800; // Assuming PDF width is 800px
+  
+  currentZoom = (containerWidth - 40) / pdfWidth; // 40px for padding
+  currentZoom = Math.max(0.5, Math.min(1, currentZoom)); // Limit zoom range
+    
+  pdfFrame.style.transform = `scale(${currentZoom}) rotate(${currentRotation}deg)`;
+  document.getElementById('zoomLevel').textContent = `${Math.round(currentZoom * 100)}%`;
+}
+
+function printCertificate() {
+  // Open PDF in new window for printing
+  const printWindow = window.open('assets/istqb.pdf', '_blank');
+  if (printWindow) {
+    printWindow.onload = function() {
+      printWindow.print();
+    };
+  }
+}
+
+function previousPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    updatePageInfo();
+  }
+}
+
+function nextPage() {
+  if (currentPage < totalPages) {
+    currentPage++;
+    updatePageInfo();
+  }
+}
+
+function updatePageInfo() {
+  const pageInfo = document.getElementById('pageInfo');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  
+  pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+  prevBtn.disabled = currentPage <= 1;
+  nextBtn.disabled = currentPage >= totalPages;
+}
+
+function resetViewer() {
+  currentZoom = 1;
+  currentRotation = 0;
+  currentPage = 1;
+  
+  const pdfFrame = document.getElementById('pdfFrame');
+  pdfFrame.style.transform = 'scale(1) rotate(0deg)';
+  document.getElementById('zoomLevel').textContent = '100%';
+  updatePageInfo();
+}
+
+function showNotification(message, type) {
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.innerHTML = `
+    <div class="notification-content">
+      <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+      <span>${message}</span>
+    </div>
+  `;
+  
+  // Add styles
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: ${type === 'success' ? '#10b981' : '#e53e3e'};
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1002;
+    animation: slideInRight 0.3s ease;
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Remove after 3 seconds
+  setTimeout(() => {
+    notification.style.animation = 'slideOutRight 0.3s ease';
+    setTimeout(() => {
+      document.body.removeChild(notification);
+    }, 300);
+  }, 3000);
+}
+
+// Add CSS animations for notifications
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes slideOutRight {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+  }
+`;
+document.head.appendChild(style);
+
+// Close modal on ESC key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeCertificate();
+  }
+});
+
+// Initialize viewer
+document.addEventListener('DOMContentLoaded', function() {
+  // Set initial state
+  resetViewer();
+});
+</script>
 
   <!-- Trainer Experience Section -->
   <section id="training" class="section bg-light">
